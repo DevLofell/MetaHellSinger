@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 88b9b11ad00a01e44aa1c4d1ab3954eb
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 30102
+  packageName: Fx Explosion Pack
+  packageVersion: 1.2
+  assetPath: Assets/Fx Explosion Pack/Script/DestroyEffect.cs
+  uploadId: 230858

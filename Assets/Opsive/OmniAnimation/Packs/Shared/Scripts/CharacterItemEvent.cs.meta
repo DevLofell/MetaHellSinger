@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b317c0c3901faa64aaf5024e9feda13d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 286945
+  packageName: Omni Animation - Core Locomotion Pack
+  packageVersion: 1.0
+  assetPath: Assets/Opsive/OmniAnimation/Packs/Shared/Scripts/CharacterItemEvent.cs
+  uploadId: 671667

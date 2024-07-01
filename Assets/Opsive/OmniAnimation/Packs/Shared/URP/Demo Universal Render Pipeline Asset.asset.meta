@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b3cae8accb771eb45afc45f9563caf73
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 286945
+  packageName: Omni Animation - Core Locomotion Pack
+  packageVersion: 1.0
+  assetPath: Assets/Opsive/OmniAnimation/Packs/Shared/URP/Demo Universal Render Pipeline
+    Asset.asset
+  uploadId: 671667

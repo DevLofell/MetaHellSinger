@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2ff86db2445160a4e85fc734f353e3da
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 286945
+  packageName: Omni Animation - Core Locomotion Pack
+  packageVersion: 1.0
+  assetPath: Assets/Opsive/OmniAnimation/Packs/Shared/Scripts/MotionController.cs
+  uploadId: 671667

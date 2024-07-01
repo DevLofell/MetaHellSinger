@@ -6,7 +6,7 @@ public class Cam : MonoBehaviour
 {
     public Transform target;
 
-    public float rotSpeed = 200f;
+    public float rotSpeed = 500f;
     float mx = 0;
     float my = 0;
     // Start is called before the first frame update
@@ -27,10 +27,11 @@ public class Cam : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
 
+
         mx += mouseX * rotSpeed * Time.deltaTime;
         my += mouseY * rotSpeed * Time.deltaTime;
 
-        my = Mathf.Clamp(my, -88f, 88f);
+        my = Mathf.Clamp(my, -60f, 88f);
 
 
         transform.eulerAngles = new Vector3(-my, mx, 0);

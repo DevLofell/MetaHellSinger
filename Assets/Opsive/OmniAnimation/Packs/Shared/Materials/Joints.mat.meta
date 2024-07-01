@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0b7d104b30d53b9479c6c0b1f0f905e4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 286945
+  packageName: Omni Animation - Core Locomotion Pack
+  packageVersion: 1.0
+  assetPath: Assets/Opsive/OmniAnimation/Packs/Shared/Materials/Joints.mat
+  uploadId: 671667
