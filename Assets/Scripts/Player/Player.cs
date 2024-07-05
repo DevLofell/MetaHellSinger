@@ -23,35 +23,52 @@ public class Player : MonoBehaviour
     #region 점프 변수
     //점프
     //중력 변수
-    public float gravity = -10f;
+    public float gravity = -4f;
     //수직 속력 변수
     public float yVelocity = 0;
     //점프력 변수
-    public float jumpPower = 5f;
+    public float jumpPower = 1.7f;
     //점프상태 변수
     public bool isJumping = false;
-
+    //현재 점프 수
     int nowJumpCount = 0;
+    //최대 점프 수
     int maxJumpCount = 2;
 
     #endregion
 
     //원거리공격
-    //피격 이펙트 오브젝트
-    public GameObject bulletEffect;
+    //파이어볼 프리팹
+    public GameObject fireBallFactory;
+    //파이어볼 생성 위치
+    public GameObject fireBallPos;
+    //파이어볼 스피드
+    public float fireBallSpeed = 5.0f;
+    //파이어볼 방향
+    public Vector3 fireBallDir;
+
+
 
     //피격 파티클 시스템
     ParticleSystem ps;
 
     //애니메이터
     public Animator anim;
+    private PlayerAnimator playerAnimator;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        playerAnimator = GetComponentInChildren<PlayerAnimator>();
+    }
+
     void Start()
     {
         cc = GetComponent<CharacterController>();
 
-        ps = bulletEffect.GetComponent<ParticleSystem>();
+        //ps = bulletEffect.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -97,8 +114,16 @@ public class Player : MonoBehaviour
         //점프 기능
         //스페이스바 누르면 점프
 
-        //캐릭터 수직 속도에 중력 값을 적용
-        yVelocity += gravity * Time.deltaTime;
+        if (!cc.isGrounded)
+        {
+            //캐릭터 수직 속도에 중력 값을 적용
+            yVelocity += gravity * Time.deltaTime;
+
+        }
+        else
+        {
+            yVelocity = 0;
+        }
 
 
 
@@ -118,7 +143,6 @@ public class Player : MonoBehaviour
             yVelocity = jumpPower;
             isJumping = true;
             nowJumpCount++;
-            //애니메이션
         }
 
 
@@ -130,30 +154,71 @@ public class Player : MonoBehaviour
 
 
         //애니메이션
+        //무빙 애니메이션 실행
+        playerAnimator.OnMovement(h, v);
+
     }
 
-    void PlayerFire()
+    public void PlayerFire()
     {
-        if (Input.GetMouseButtonDown(0))
+
+        if (Input.GetButtonDown("Fire1"))
         {
-            //레이를 생성한 후 발사될 위치와 진행 방향을 설정한다.
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-            //레이가 부딪힌 대상의 정보를 저장할 변수를 생성한다.
-            RaycastHit hitInfo = new RaycastHit();
-
-            //레이를 발사한 후 만일 부딪힌 물체가 있으면 피격 이펙트를 표시한다.
-            if(Physics.Raycast(ray, out hitInfo))
+            //무기 상태가 칼일 때
+            if (playerAnimator.animator.GetInteger("weaponState") == 0 )
             {
-                //피격 이펙트의 위치를 레이가 부딪힌 지점으로 이동
-                bulletEffect.transform.position = hitInfo.point;
+                ////칼질 애니메이션 실행
+                playerAnimator.OnSwordAttack();
 
-                //피격 이펙트의 forward 방향을 레이가 부딪힌 지점의 법선 벡터와 일치시킨다.
-                bulletEffect.transform.forward = hitInfo.normal;
-
-                //피격 이펙트를 플레이
-                ps.Play();
             }
+            if (playerAnimator.animator.GetInteger("weaponState") == 1)
+            {
+                #region 플레이어 원거리
+                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+                RaycastHit hitInfo = new RaycastHit();
+
+                //파이어볼을 생성한다
+                GameObject fireBall = Instantiate(fireBallFactory);
+                //파이어볼의 위치를 생성위치에 맞춘다.
+                fireBall.transform.position = fireBallPos.transform.position;
+                //레이를 쐈는데...
+                //무언가와 부딪혔으면 부딪힌 곳으로
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+
+                    //파이어볼의 방향을 화면 중앙(레이)으로 한다.
+                    fireBallDir = hitInfo.point - fireBall.transform.position;
+                    //앞으로 이동한다.
+                    fireBall.transform.forward = fireBallDir.normalized;
+
+                }
+                //부딪힌곳이 없으면 카메라가 바라보는 방향으로
+                else
+                {
+                    //파이어볼의 앞을 레이쪽으로 바꾼다.
+                    fireBall.transform.forward = Camera.main.transform.forward;
+
+                }
+                //2초 뒤에 파이어볼을 파괴한다.
+                Destroy(fireBall, 2);
+                #endregion
+
+            }
+
+        }
+        //1번을 누르면
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //애니메이션 상태를 스워드로 바꾸기
+            playerAnimator.OnSwordState();
+        }
+
+        //2번을 누르면
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            //애니메이션 상태를 원거리로 바꾸기
+            playerAnimator.OnFireState();
         }
     }
 

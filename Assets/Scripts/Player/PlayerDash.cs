@@ -7,14 +7,15 @@ public class PlayerDash : MonoBehaviour
     public Player playerScript;
 
     public CharacterController characterController;
-    public float dashDistance = 10f;
-    public float dashCooldown = 2f;
+    public float dashDistance = 5f;
+    public float dashCooldown = 1f;
     public float dashDuration = 0.2f;
 
     private float nextDashTime;
     private Vector3 dashDirection;
     private bool isDashing;
     private float dashStartTime;
+
 
     void Update()
     {
