@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
     #region 플레이어 기본 움직임
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
     public Animator anim;
     private PlayerAnimator playerAnimator;
 
+    
     private void Awake()
     {
         Cursor.visible = false;
@@ -159,52 +161,57 @@ public class Player : MonoBehaviour
 
     }
 
+    public void Fire()
+    {
+        //무기 상태가 칼일 때
+        if (playerAnimator.animator.GetInteger("weaponState") == 0)
+        {
+            ////칼질 애니메이션 실행
+            playerAnimator.OnSwordAttack();
+
+        }
+        if (playerAnimator.animator.GetInteger("weaponState") == 1)
+        {
+            #region 플레이어 원거리
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+            RaycastHit hitInfo = new RaycastHit();
+
+            //파이어볼을 생성한다
+            GameObject fireBall = Instantiate(fireBallFactory);
+            //파이어볼의 위치를 생성위치에 맞춘다.
+            fireBall.transform.position = fireBallPos.transform.position;
+            //레이를 쐈는데...
+            //무언가와 부딪혔으면 부딪힌 곳으로
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+
+                //파이어볼의 방향을 화면 중앙(레이)으로 한다.
+                fireBallDir = hitInfo.point - fireBall.transform.position;
+                //앞으로 이동한다.
+                fireBall.transform.forward = fireBallDir.normalized;
+
+            }
+            //부딪힌곳이 없으면 카메라가 바라보는 방향으로
+            else
+            {
+                //파이어볼의 앞을 레이쪽으로 바꾼다.
+                fireBall.transform.forward = Camera.main.transform.forward;
+
+            }
+            //2초 뒤에 파이어볼을 파괴한다.
+            Destroy(fireBall, 2);
+            #endregion
+
+        }
+    }
+
     public void PlayerFire()
     {
 
         if (Input.GetButtonDown("Fire1"))
         {
-            //무기 상태가 칼일 때
-            if (playerAnimator.animator.GetInteger("weaponState") == 0 )
-            {
-                ////칼질 애니메이션 실행
-                playerAnimator.OnSwordAttack();
-
-            }
-            if (playerAnimator.animator.GetInteger("weaponState") == 1)
-            {
-                #region 플레이어 원거리
-                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-                RaycastHit hitInfo = new RaycastHit();
-
-                //파이어볼을 생성한다
-                GameObject fireBall = Instantiate(fireBallFactory);
-                //파이어볼의 위치를 생성위치에 맞춘다.
-                fireBall.transform.position = fireBallPos.transform.position;
-                //레이를 쐈는데...
-                //무언가와 부딪혔으면 부딪힌 곳으로
-                if (Physics.Raycast(ray, out hitInfo))
-                {
-
-                    //파이어볼의 방향을 화면 중앙(레이)으로 한다.
-                    fireBallDir = hitInfo.point - fireBall.transform.position;
-                    //앞으로 이동한다.
-                    fireBall.transform.forward = fireBallDir.normalized;
-
-                }
-                //부딪힌곳이 없으면 카메라가 바라보는 방향으로
-                else
-                {
-                    //파이어볼의 앞을 레이쪽으로 바꾼다.
-                    fireBall.transform.forward = Camera.main.transform.forward;
-
-                }
-                //2초 뒤에 파이어볼을 파괴한다.
-                Destroy(fireBall, 2);
-                #endregion
-
-            }
+            
 
         }
         //1번을 누르면
