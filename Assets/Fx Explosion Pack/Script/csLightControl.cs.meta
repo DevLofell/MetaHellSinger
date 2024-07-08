@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 741004066245a714390df3757b77251a
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 30102
+  packageName: Fx Explosion Pack
+  packageVersion: 1.2
+  assetPath: Assets/Fx Explosion Pack/Script/csLightControl.cs
+  uploadId: 230858
