@@ -5,55 +5,55 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    #region ÇÃ·¹ÀÌ¾î ±âº» ¿òÁ÷ÀÓ
-    //Ä«¸Þ¶ó È¸Àü ¼Óµµ °ª
+    #region ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //Ä«ï¿½Þ¶ï¿½ È¸ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½
     public float rotSpeed = 200f;
 
-    //ÇÃ·¹ÀÌ¾î ¸¶¿ì½º È¸Àü
+    //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ì½º È¸ï¿½ï¿½
     float mx = 0;
 
-    //ÇÃ·¹ÀÌ¾î ½ºÇÇµå
+    //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½Çµï¿½
     public float moveSpeed = 7f;
 
-    //ÇÃ·¹ÀÌ¾î ÀÌµ¿ ¹æÇâ
+    //ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
     public Vector3 dir;
 
     CharacterController cc;
     #endregion
 
-    #region Á¡ÇÁ º¯¼ö
-    //Á¡ÇÁ
-    //Áß·Â º¯¼ö
+    #region ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ß·ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float gravity = -4f;
-    //¼öÁ÷ ¼Ó·Â º¯¼ö
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½Ó·ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float yVelocity = 0;
-    //Á¡ÇÁ·Â º¯¼ö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float jumpPower = 1.7f;
-    //Á¡ÇÁ»óÅÂ º¯¼ö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public bool isJumping = false;
-    //ÇöÀç Á¡ÇÁ ¼ö
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     int nowJumpCount = 0;
-    //ÃÖ´ë Á¡ÇÁ ¼ö
+    //ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     int maxJumpCount = 2;
 
     #endregion
 
-    //¿ø°Å¸®°ø°Ý
-    //ÆÄÀÌ¾îº¼ ÇÁ¸®ÆÕ
+    //ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ï¿½ï¿½Ì¾îº¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public GameObject fireBallFactory;
-    //ÆÄÀÌ¾îº¼ »ý¼º À§Ä¡
+    //ï¿½ï¿½ï¿½Ì¾îº¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
     public GameObject fireBallPos;
-    //ÆÄÀÌ¾îº¼ ½ºÇÇµå
+    //ï¿½ï¿½ï¿½Ì¾îº¼ ï¿½ï¿½ï¿½Çµï¿½
     public float fireBallSpeed = 5.0f;
-    //ÆÄÀÌ¾îº¼ ¹æÇâ
+    //ï¿½ï¿½ï¿½Ì¾îº¼ ï¿½ï¿½ï¿½ï¿½
     public Vector3 fireBallDir;
 
 
 
-    //ÇÇ°Ý ÆÄÆ¼Å¬ ½Ã½ºÅÛ
+    //ï¿½Ç°ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½Ã½ï¿½ï¿½ï¿½
     ParticleSystem ps;
 
-    //¾Ö´Ï¸ÞÀÌÅÍ
+    //ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½
     public Animator anim;
     private PlayerAnimator playerAnimator;
 
@@ -83,8 +83,7 @@ public class Player : MonoBehaviour
 
     void PlayerRotate()
     {
-
-
+        
         float mouseX = Input.GetAxis("Mouse X");
 
         mx += mouseX * rotSpeed * Time.deltaTime;
@@ -113,12 +112,12 @@ public class Player : MonoBehaviour
         dir.y = 0;
         dir = dir.normalized * scalar;
 
-        //Á¡ÇÁ ±â´É
-        //½ºÆäÀÌ½º¹Ù ´©¸£¸é Á¡ÇÁ
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
         if (!cc.isGrounded)
         {
-            //Ä³¸¯ÅÍ ¼öÁ÷ ¼Óµµ¿¡ Áß·Â °ªÀ» Àû¿ë
+            //Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ß·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             yVelocity += gravity * Time.deltaTime;
 
         }
@@ -155,51 +154,51 @@ public class Player : MonoBehaviour
         //transform.position += dir * moveSpeed * Time.deltaTime;
 
 
-        //¾Ö´Ï¸ÞÀÌ¼Ç
-        //¹«ºù ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
+        //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
         playerAnimator.OnMovement(h, v);
 
     }
 
     public void Fire()
     {
-        //¹«±â »óÅÂ°¡ Ä®ÀÏ ¶§
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â°ï¿½ Ä®ï¿½ï¿½ ï¿½ï¿½
         if (playerAnimator.animator.GetInteger("weaponState") == 0)
         {
-            ////Ä®Áú ¾Ö´Ï¸ÞÀÌ¼Ç ½ÇÇà
+            ////Ä®ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½
             playerAnimator.OnSwordAttack();
 
         }
         if (playerAnimator.animator.GetInteger("weaponState") == 1)
         {
-            #region ÇÃ·¹ÀÌ¾î ¿ø°Å¸®
+            #region ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½Å¸ï¿½
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
             RaycastHit hitInfo = new RaycastHit();
 
-            //ÆÄÀÌ¾îº¼À» »ý¼ºÇÑ´Ù
+            //ï¿½ï¿½ï¿½Ì¾îº¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
             GameObject fireBall = Instantiate(fireBallFactory);
-            //ÆÄÀÌ¾îº¼ÀÇ À§Ä¡¸¦ »ý¼ºÀ§Ä¡¿¡ ¸ÂÃá´Ù.
+            //ï¿½ï¿½ï¿½Ì¾îº¼ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
             fireBall.transform.position = fireBallPos.transform.position;
-            //·¹ÀÌ¸¦ ½ú´Âµ¥...
-            //¹«¾ð°¡¿Í ºÎµúÇûÀ¸¸é ºÎµúÈù °÷À¸·Î
+            //ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Âµï¿½...
+            //ï¿½ï¿½ï¿½ð°¡¿ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if (Physics.Raycast(ray, out hitInfo))
             {
 
-                //ÆÄÀÌ¾îº¼ÀÇ ¹æÇâÀ» È­¸é Áß¾Ó(·¹ÀÌ)À¸·Î ÇÑ´Ù.
+                //ï¿½ï¿½ï¿½Ì¾îº¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ß¾ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
                 fireBallDir = hitInfo.point - fireBall.transform.position;
-                //¾ÕÀ¸·Î ÀÌµ¿ÇÑ´Ù.
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ñ´ï¿½.
                 fireBall.transform.forward = fireBallDir.normalized;
 
             }
-            //ºÎµúÈù°÷ÀÌ ¾øÀ¸¸é Ä«¸Þ¶ó°¡ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î
+            //ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½Þ¶ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             else
             {
-                //ÆÄÀÌ¾îº¼ÀÇ ¾ÕÀ» ·¹ÀÌÂÊÀ¸·Î ¹Ù²Û´Ù.
+                //ï¿½ï¿½ï¿½Ì¾îº¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Û´ï¿½.
                 fireBall.transform.forward = Camera.main.transform.forward;
 
             }
-            //2ÃÊ µÚ¿¡ ÆÄÀÌ¾îº¼À» ÆÄ±«ÇÑ´Ù.
+            //2ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½Ì¾îº¼ï¿½ï¿½ ï¿½Ä±ï¿½ï¿½Ñ´ï¿½.
             Destroy(fireBall, 2);
             #endregion
 
@@ -214,17 +213,17 @@ public class Player : MonoBehaviour
             
 
         }
-        //1¹øÀ» ´©¸£¸é
+        //1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            //¾Ö´Ï¸ÞÀÌ¼Ç »óÅÂ¸¦ ½º¿öµå·Î ¹Ù²Ù±â
+            //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù±ï¿½
             playerAnimator.OnSwordState();
         }
 
-        //2¹øÀ» ´©¸£¸é
+        //2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //¾Ö´Ï¸ÞÀÌ¼Ç »óÅÂ¸¦ ¿ø°Å¸®·Î ¹Ù²Ù±â
+            //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ù²Ù±ï¿½
             playerAnimator.OnFireState();
         }
     }
