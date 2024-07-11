@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     //�ذ� Ư������
     public LayerMask enemyLayer;
     public float stunRadius = 5.0f;
+    public GameObject stunEffectFactory;
 
     #region �÷��̾� �⺻ ������
     //ī�޶� ȸ�� �ӵ� ��
@@ -68,7 +69,6 @@ public class Player : MonoBehaviour
     ParticleSystem ps;
 
     //�ִϸ�����
-    public Animator anim;
     private PlayerAnimator playerAnimator;
 
     
@@ -357,6 +357,9 @@ public class Player : MonoBehaviour
                 {
                     print("��ų�ߵ�");
                     enemy.Stun();
+                    GameObject stunEffect = Instantiate(stunEffectFactory);
+                    stunEffect.transform.position = enemy.transform.position;
+                    Destroy(stunEffect, 5);
                 }
 
             }
