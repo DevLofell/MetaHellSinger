@@ -12,11 +12,7 @@ public class FireBall : MonoBehaviour
     public int fireBallDamage = 120;
 
     public Vector3 dir;
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
+   
     void Update()
     {
         ////앞으로 이동한다.

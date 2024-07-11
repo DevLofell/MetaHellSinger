@@ -9720,5 +9720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc8b679772b22c408a70cda7287180c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallSpeed: 20
+  fireBallSpeed: 35
   fireBallEffectFactory: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
+  fireBallDamage: 120
+  dir: {x: 0, y: 0, z: 0}
