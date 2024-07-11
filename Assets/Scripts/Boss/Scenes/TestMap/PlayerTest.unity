@@ -225,6 +225,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2167855630026182193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &232335259 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8979022355182249155, guid: f3978c44f7fb36246b698fdea7f77528, type: 3}
+  m_PrefabInstance: {fileID: 1396513514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &264230247
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c3c222e75d707418eccf617473f3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGroggy: 0
+  groggyUI: {fileID: 7575052227830722893, guid: acb3e1f43958bd146a67c6a96c4194bc, type: 3}
+  enemyAni: {fileID: 232335259}
   enemyCurrHP: 0
   enemyMaxHP: 1000
   damageUI: {fileID: 498900224039504634, guid: 165c8a44c9fac744f8ee62c9f6fdedfa, type: 3}
@@ -1089,6 +1097,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollision: {fileID: 1802730481}
   animator: {fileID: 5866666021168018520}
+  skull: {fileID: 919132149482616997}
+  sword: {fileID: 2073097321}
 --- !u!1 &1104848115
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,7 +1886,7 @@ GameObject:
   - component: {fileID: 1487569688}
   - component: {fileID: 1487569687}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Wall2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2128,6 +2138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44afc43b876252e41a95dfce16c26744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  stunRadius: 50
   rotSpeed: 500
   moveSpeed: 7
   dir: {x: 0, y: 0, z: 0}
@@ -2137,7 +2151,6 @@ MonoBehaviour:
   isJumping: 0
   fireBallFactory: {fileID: 1947871717301538, guid: a990e3ac1318b834488c784d851f42a9, type: 3}
   fireBallPos: {fileID: 220807985}
-  fireBallSpeed: 5
   fireBallDir: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
 --- !u!143 &1536679870
@@ -2497,7 +2510,7 @@ GameObject:
   - component: {fileID: 2003042371}
   - component: {fileID: 2003042370}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
