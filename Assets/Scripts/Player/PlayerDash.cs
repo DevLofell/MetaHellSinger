@@ -46,8 +46,6 @@ public class PlayerDash : MonoBehaviour
 
         }
 
-
-
         dashStartTime = Time.time;
         nextDashTime = Time.time + dashCooldown;
         isDashing = true;
