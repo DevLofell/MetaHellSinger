@@ -20,7 +20,7 @@ public class DamageSystem : MonoBehaviour
     void Update()
     {
         Vector3 pos = Camera.main.WorldToScreenPoint(target.position);
-        up += Vector3.up * uiSpeed * Time.deltaTime;
+        up += Vector3.up * (uiSpeed * Time.deltaTime);
         rt.anchoredPosition = pos + up;
     }
     public void DamageMove(Transform tr)

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using static EnemyGroggyState;
 
 
@@ -41,11 +43,13 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     //데미지가 뜨는 위치
     public Transform damagePos;
+    public Transform groggyPos;
 
-    //데미지 UI의 렉트포지션
+    //UI의 렉트포지션
     public RectTransform rtDamageUI;
 
-
+    private RectTransform _rectTransformGroggyUI;
+    private GameObject _groggyUIObj;
     private LayerMask _enemyLayer;
     private NavMeshAgent _navMeshAgent;
     private Transform _player;
@@ -67,6 +71,7 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     void Start()
     {
+        Debug.LogWarning(_groggyUIObj);
         groggyHp = maxHp / 10;
         hp = maxHp;
         mState = EnemyState.Idle;
@@ -80,13 +85,13 @@ public class EnemyFsmJiwon : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         canvas = GameObject.Find("Canvas");
-        _enemyLayer = LayerMask.NameToLayer("Enemy");
+        _enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         switch (mState)
         {
             case EnemyState.Idle:
@@ -104,6 +109,9 @@ public class EnemyFsmJiwon : MonoBehaviour
             case EnemyState.Stun:
                 Stun();
                 break;
+            case EnemyState.Groggy:
+                Groggy();
+                break;
             case EnemyState.Damaged:
                 // Damaged();
                 break;
@@ -113,19 +121,25 @@ public class EnemyFsmJiwon : MonoBehaviour
         }
     }
     
-    private void Damaged()
+    private void Damaged(EnemyState prevState)
     {
-        StartCoroutine(DamageProcess());
+        StartCoroutine(DamageProcess(prevState));
     }
 
-    private IEnumerator DamageProcess()
+    private IEnumerator DamageProcess(EnemyState prevState)
     {
         // 피격 모션 만큼 기다리기
         yield return new WaitForSeconds(waitDamagedSec);
 
-        // 현재 상태를 이동 상태로 전환한다.
-        mState = EnemyState.Move;
-        print("상태 전환: Damaged -> Move");
+        if (mState is not EnemyState.Groggy and EnemyState.Stun)
+        {
+            mState = EnemyState.Idle;
+        }
+        else
+        {
+            mState = prevState;
+        }
+        print("상태 전환: Damaged -> " + mState);
     }
 
     private void Return()
@@ -161,14 +175,18 @@ public class EnemyFsmJiwon : MonoBehaviour
     // TODO: 그로기 상태 시 죽여야 함
     private IEnumerator DieProcess()
     {
-        print("상태 전환 : 죽음");
+        mState = EnemyState.Die;
+        _anim.SetBool(OnStun, false);
+        _anim.SetBool(OnGroggy, false);
+        _anim.SetTrigger(Die1);
         _characterController.enabled = false;
         groggyState = WAS_GROGGY;
-        if (mState == EnemyState.Stun)
+        print("죽음 당시 mState : " + mState);
+        OnDieWhenStun();
+        if (_groggyUIObj)
         {
-            OnDieWhenStun();
+            Destroy(_groggyUIObj);
         }
-        mState = EnemyState.Die;
         yield return new WaitForSeconds(5f);
         print("!소멸");
         Destroy(gameObject);
@@ -209,6 +227,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         else
         {
             var currentToPlayerDistance = Vector3.Distance(transform.position, _player.position);
+            if (mState is EnemyState.Stun or EnemyState.Groggy) return;
             if (currentToPlayerDistance > attackDistance)
             {
                 _navMeshAgent.isStopped = true;
@@ -246,6 +265,7 @@ public class EnemyFsmJiwon : MonoBehaviour
             return;
         }
 
+        EnemyState prevEnemyState = mState;
         hp -= hitPower;
         print("적 체력 hp : " + hp);
         _navMeshAgent.isStopped = true;
@@ -257,23 +277,22 @@ public class EnemyFsmJiwon : MonoBehaviour
             print("상태 전환: Any state -> Damaged");
             if (hp <= groggyHp && groggyState == NOT_GROGGY)
             {
-                print("상태 전환: 그로기");
                 mState = EnemyState.Groggy;
-                _anim.SetTrigger(OnGroggy);
+                _anim.SetBool(OnStun, false);
+                _anim.SetBool(OnGroggy, true);
                 print("상태 전환: Any State -> Groggy");
                 Groggy();
             }
             else
             {
+                OnDamageUI(hitPower);
                 _anim.SetTrigger(Damaged1);
-                Damaged();
+                Damaged(prevEnemyState);
             }
         }
         else
         {
-            mState = EnemyState.Die;
             print("상태 전환: Any state -> Die");
-            _anim.SetTrigger(Die1);
             Die();
         }
     }
@@ -290,23 +309,52 @@ public class EnemyFsmJiwon : MonoBehaviour
         {
             groggyState = WAS_GROGGY;
             mState = EnemyState.Idle;
+            _anim.SetBool(OnGroggy, false);
+            Destroy(_groggyUIObj);
             return;
         }
         groggyTimer -= Time.deltaTime;
-        Instantiate(groggyUI, canvas.transform);
+        _navMeshAgent.isStopped = true;
 
         // 적의 중앙에 E라는 글씨가 뜬다
+        OnGroggyUI();
+    }
+    
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void OnDamageUI(int damageValue)
+    {
+        GameObject damage = Instantiate(damageUI, canvas.transform);
+        Text damageText = damage.GetComponent<Text>();
+        damageText.text = Convert.ToString(damageValue);
+        
+        DamageSystem ds = damage.GetComponent<DamageSystem>();
+        ds.DamageMove(damagePos);
+        Destroy(damage, 2);
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void OnGroggyUI()
+    {
+        if (_groggyUIObj == null)
+        {
+            _groggyUIObj = Instantiate(groggyUI, canvas.transform);
+            _rectTransformGroggyUI = _groggyUIObj.GetComponent<RectTransform>();
+        }
+
+        _rectTransformGroggyUI.anchoredPosition = Camera.main.WorldToScreenPoint(groggyPos.transform.position);
+    }
+
+    // ReSharper disable Unity.PerformanceAnalysis
     private void OnDieWhenStun()
     {
+        print("OnDieWhenStun 호출");
         // 주변의 적들을 탐색하고
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunDeadRadius, _enemyLayer);
         foreach (Collider hitCollider in hitColliders)
         {
             EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
             if (!enemy) continue;
-            // 주변 적들이 스턴 상태인지 확인하고
+            // 주변 적들이 스턴 상태인지 확인하고;
             if (enemy.mState == EnemyState.Stun)
             {
                 enemy.Die();
@@ -316,17 +364,24 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     public void OnStunChanged()
     {
-        mState = EnemyState.Stun;
+        if (mState != EnemyState.Die)
+        { 
+            mState = EnemyState.Stun;
+        }
         stunTimer = stunTime;
+        _navMeshAgent.isStopped = true;
     }
 
     private void Stun()
     {
-        stunTimer -= Time.deltaTime;
-        _anim.SetTrigger(OnStun);
         if (stunTimer < 0.0f)
         {
             mState = EnemyState.Idle;
+            _anim.SetBool(OnStun, false);
+            return;
         }
+        stunTimer -= Time.deltaTime;
+        _anim.SetBool(OnStun, true);
+      
     }
 }
