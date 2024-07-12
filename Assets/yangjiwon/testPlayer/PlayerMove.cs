@@ -23,6 +23,10 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Fire2"))
+        {
+            StunSkill();
+        }
         
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -39,10 +43,6 @@ public class PlayerMove : MonoBehaviour
         yVelocity += gravity * Time.deltaTime;
         dir.y = yVelocity;
 
-        if (Input.GetButtonDown($"E"))
-        {
-            
-        }
 
         if (_characterController.collisionFlags == CollisionFlags.Below)
         {
@@ -78,8 +78,32 @@ public class PlayerMove : MonoBehaviour
         
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
+    void StunSkill()
+    {
+        print("StunSkill 호출");
+        LayerMask enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5, enemyLayer);
+        foreach (Collider hitCollider in hitColliders)
+        {
+            EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
+            
+            if (enemy != null)
+            {
+                Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
+                if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
+                {
+                    print("스턴발생");
+                    enemy.OnStunChanged();
+                }
+
+            }
+        }
+    }
+    
     void OneShot()
     {
+        print("oneShot 호출");
         LayerMask layerMask = LayerMask.GetMask("Enemy");
         //�������� ���̸� ���� ���������ȿ� �ִ� ������ ���� ã�´�
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, layerMask);
