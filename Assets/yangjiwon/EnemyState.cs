@@ -6,5 +6,7 @@ public enum EnemyState
     Attack,
     Return,
     Damaged,
-    Die
+    Die,
+    Stun,
+    Groggy
 }
