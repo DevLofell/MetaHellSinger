@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ec067ad17e3b0e743a5092f7c81b445b
+timeCreated: 1450014696
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animated FX Shaders/Pref AFXS/Platform_Adt.prefab
+  uploadId: 223263

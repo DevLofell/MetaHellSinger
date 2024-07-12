@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e3926e8289f48304fb039acda74c3f1d
+timeCreated: 1442054297
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animations/Trail.controller
+  uploadId: 223263

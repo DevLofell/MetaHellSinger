@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: fae0664a96a088d48aa250419f2b8402
+timeCreated: 1441553888
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Shaders/Special FX/Special FX Dissolve Distortion
+    Intersection.shader
+  uploadId: 223263

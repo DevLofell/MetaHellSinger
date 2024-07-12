@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 036eef9d264e3f94abe38ae3c8babbf7
+timeCreated: 1450014720
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animated FX Shaders/Pref AFXS/Fire Adt.prefab
+  uploadId: 223263

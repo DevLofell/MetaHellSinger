@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1a0281336be6dc846a95e92a817c0108
+timeCreated: 1441560054
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Scene/Special FX Shaders.unity
+  uploadId: 223263

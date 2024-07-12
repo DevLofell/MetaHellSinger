@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3d47cd18fd372c148b594f84bbc4122d
+timeCreated: 1443191380
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Materials/Fire_Cylinder.mat
+  uploadId: 223263

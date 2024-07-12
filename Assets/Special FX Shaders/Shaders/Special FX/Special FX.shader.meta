@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ba204f34246245a489526486b90990fb
+timeCreated: 1425783466
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Shaders/Special FX/Special FX.shader
+  uploadId: 223263
