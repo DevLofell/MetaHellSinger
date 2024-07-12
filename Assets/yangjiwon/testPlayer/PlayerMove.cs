@@ -23,6 +23,11 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OneShot();
+        }
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
@@ -33,6 +38,11 @@ public class PlayerMove : MonoBehaviour
 
         yVelocity += gravity * Time.deltaTime;
         dir.y = yVelocity;
+
+        if (Input.GetButtonDown($"E"))
+        {
+            
+        }
 
         if (_characterController.collisionFlags == CollisionFlags.Below)
         {
@@ -66,5 +76,42 @@ public class PlayerMove : MonoBehaviour
         hp -= damage;
         print("Player hp : " + hp);
         
+    }
+    
+    void OneShot()
+    {
+        LayerMask layerMask = LayerMask.GetMask("Enemy");
+        //�������� ���̸� ���� ���������ȿ� �ִ� ������ ���� ã�´�
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, layerMask);
+        EnemyFsmJiwon nearestEnemy = null;
+        float nearestDistance = float.MaxValue;
+
+        //ã�� ������ �迭�� �����Ѵ�
+        foreach (Collider hitCollider in hitColliders)
+        {
+            EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
+            if (enemy)
+            {
+                //����(1. ȭ�鳻�� �־�� �Ѵ� 2. ���� ����� ��)
+                Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
+                if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
+                {
+                    if (enemy.mState == EnemyState.Groggy)
+                    {
+                        float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                        if (distance < nearestDistance)
+                        {
+                            nearestDistance = distance;
+                            nearestEnemy = enemy;
+                        }
+
+                    }
+                }
+            }
+        }
+        if (nearestEnemy)
+        {
+            nearestEnemy.Die();
+        }
     }
 }

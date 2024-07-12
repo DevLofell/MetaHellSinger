@@ -23,6 +23,9 @@ public class EnemyController_GH : MonoBehaviour
 
     //그로기UI
     public GameObject groggyUI;
+    public GameObject groggyPos;
+    RectTransform rtGroggyUI;
+    GameObject groggy;
 
     //스턴스킬
     private bool isStunned = false;
@@ -30,7 +33,6 @@ public class EnemyController_GH : MonoBehaviour
     private float stunTimer = 0.0f;
     //스턴 연계 죽음
     public float stunDeadRadius = 5.0f;
-
 
 
     public Animator enemyAni;
@@ -58,20 +60,24 @@ public class EnemyController_GH : MonoBehaviour
         {
             isDead = true;
             isGroggy = false;
+            //그로기상태에서 죽으면 그로기 UI파괴
+            Destroy(groggy);
+
+
         }
         //적의 체력이 10퍼 이하 이고 그로기를 한 번도 안걸렸을 때 그로기 상태로 만든다.
         if ((enemyCurrHP / enemyMaxHP) <= 0.1f && groggyCount < 1)
         {
-            GameObject groggy = Instantiate(groggyUI, GameObject.Find("Canvas").transform);
+            groggy = Instantiate(groggyUI, GameObject.Find("Canvas").transform);
             Groggy();
         }
-
 
         //적이 스턴 상태일 때
         if (isStunned)
         {
             stunTimer -= Time.deltaTime;
             enemyAni.SetTrigger("OnStun");
+
             //만약 스턴 상태일때 죽으면
             if (isDead)
             {
@@ -87,7 +93,6 @@ public class EnemyController_GH : MonoBehaviour
                         {
                             //그 적들의 체력을 다 0으로 만든다.
                             enemy.enemyCurrHP = 0;
-
                         }
                     }
                 }
@@ -99,17 +104,21 @@ public class EnemyController_GH : MonoBehaviour
                 isStunned = false;
             }
         }
-        else if (isGroggy)
+        if(isGroggy)
         {
+            OnGroggyUI();
             groggyTimer -= Time.deltaTime;
             enemyAni.SetTrigger("OnStun");
             if (groggyTimer <= 0)
             {
                 isGroggy = false;
+                //그로기 상태가 끝나면 UI파괴
+                Destroy(groggy);
             }
         }
-        else
+        else if (!isStunned)
         {
+            
             //적 움직임
         }
     }
@@ -133,24 +142,18 @@ public class EnemyController_GH : MonoBehaviour
         damageText.text = Convert.ToString(damageValue);
 
 
-
         //Vector3 pos = Camera.main.WorldToScreenPoint(damagePos.position);
         DamageSystem ds = damage.GetComponent<DamageSystem>();
         ds.DamageMove(damagePos);
         Destroy(damage, 2);
     }
-    public void OnGroggyUI(int damageValue)
+
+    //그로기 UI
+    public void OnGroggyUI()
     {
-        GameObject damage = Instantiate(damageUI, GameObject.Find("Canvas").transform);
-        Text damageText = damage.GetComponent<Text>();
-        damageText.text = Convert.ToString(damageValue);
-
-
-
-        //Vector3 pos = Camera.main.WorldToScreenPoint(damagePos.position);
-        DamageSystem ds = damage.GetComponent<DamageSystem>();
-        ds.DamageMove(damagePos);
-        Destroy(damage, 2);
+        Vector3 pos2 = Camera.main.WorldToScreenPoint(groggyPos.transform.position);
+        rtGroggyUI = groggy.GetComponent<RectTransform>();
+        rtGroggyUI.anchoredPosition = pos2;
     }
     public void Stun()
     {

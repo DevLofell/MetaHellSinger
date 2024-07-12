@@ -32,13 +32,13 @@ public class NoteData : MonoBehaviour
 
                 if (timingRatio >= 0.75f && timingRatio < 0.8f)
                 {
-                    Debug.Log("Great");
+                    //Debug.Log("Great");
                     OnNoteHit?.Invoke("Great");
                     Destroy(gameObject);
                 }
                 else if (timingRatio >= 0.8f && timingRatio < 0.9f)
                 {
-                    Debug.Log("Good");
+                    //Debug.Log("Good");
                     OnNoteHit?.Invoke("Good");
                     Destroy(gameObject);
                 }
