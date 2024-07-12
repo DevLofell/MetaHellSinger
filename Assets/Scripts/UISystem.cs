@@ -43,18 +43,7 @@ public class UISystem : MonoBehaviour
 
     }
 
-    public void UpdateHP(float value)
-    {
-        // 현재 HP를 value 더하자.
-        Player.instance.currHP += value;
 
-        // 현재 HP가 0이면
-        if (Player.instance.currHP <= 0)
-        {
-            // 파괴하자
-            //Destroy(gameObject);
-        }
-    }
 
     void WeaponChange()
     {

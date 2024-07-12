@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     //즉살 공격
     bool onOneShot = false;
-    EnemyController_GH nearestEnemy = null;
+    EnemyFsmJiwon nearestEnemy = null;
     float speTime = 0;
 
     //스컬 특수공격
@@ -346,22 +346,24 @@ public class Player : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     void StunSkill()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);
+        print("StunSkill 호출");
+        LayerMask enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5, enemyLayer);
         foreach (Collider hitCollider in hitColliders)
         {
-            EnemyController_GH enemy = hitCollider.GetComponent<EnemyController_GH>();
+            EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
+
             if (enemy != null)
             {
                 Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
                 if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
                 {
                     print("스턴발생");
-                    enemy.Stun();
-                    GameObject stunEffect = Instantiate(stunEffectFactory);
-                    stunEffect.transform.position = enemy.transform.position;
-                    Destroy(stunEffect, 10);
+                    enemy.OnStunChanged();
+                    //이펙트 추가
                 }
 
             }
@@ -370,20 +372,24 @@ public class Player : MonoBehaviour
     //즉살스킬
     void OneShot()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRadius, enemyLayer);
-
+        print("oneShot 호출");
+        LayerMask layerMask = LayerMask.GetMask("Enemy");
+        //�������� ���̸� ���� ���������ȿ� �ִ� ������ ���� ã�´�
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, layerMask);
+        EnemyFsmJiwon nearestEnemy = null;
         float nearestDistance = float.MaxValue;
 
+        //ã�� ������ �迭�� �����Ѵ�
         foreach (Collider hitCollider in hitColliders)
         {
-            EnemyController_GH enemy = hitCollider.GetComponent<EnemyController_GH>();
-            if (enemy != null)
+            EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
+            if (enemy)
             {
-
+                //����(1. ȭ�鳻�� �־�� �Ѵ� 2. ���� ����� ��)
                 Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
                 if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
                 {
-                    if (enemy.isGroggy)
+                    if (enemy.mState == EnemyState.Groggy)
                     {
                         float distance = Vector3.Distance(transform.position, enemy.transform.position);
                         if (distance < nearestDistance)
@@ -396,15 +402,9 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (nearestEnemy != null)
+        if (nearestEnemy)
         {
-            //즉살스킬 모드로 한다.
-            onOneShot = true;
-
-            playerAnimator.GroggyAttack();
-
-            //적의 체력을 0으로 만든다.
-            nearestEnemy.enemyCurrHP = 0;
+            nearestEnemy.Die();
         }
     }
     public void SlashAni(int attackNum)
@@ -414,5 +414,17 @@ public class Player : MonoBehaviour
         effectex.transform.forward = slashPos.transform.forward;
         Destroy(effectex, 0.3f);
 
+    }
+    public void UpdateHP(float value)
+    {
+        // 현재 HP를 value 더하자.
+        currHP += value;
+
+        // 현재 HP가 0이면
+        if (currHP <= 0)
+        {
+            // 파괴하자
+            Destroy(gameObject);
+        }
     }
 }

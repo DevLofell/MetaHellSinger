@@ -16,7 +16,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     public float attackDistance = 2f;
     public float moveDistance = 20f;
     public int attackPower = 3;
-    public int maxHp = 100;
+    public int maxHp = 1000;
     public int hp;
     public float waitDamagedSec = 1.0f;
     public float attackDelay = 2f;
@@ -53,7 +53,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     private LayerMask _enemyLayer;
     private NavMeshAgent _navMeshAgent;
     private Transform _player;
-    private PlayerMove _playerMove;
+    private Player _playerScript;
     private float _currentTime;
     private Vector3 _originPos;
     private Quaternion _originRot;
@@ -71,14 +71,13 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     void Start()
     {
-        Debug.LogWarning(_groggyUIObj);
         groggyHp = maxHp / 10;
         hp = maxHp;
         mState = EnemyState.Idle;
         stunTimer = stunTime;
         // TODO: 플레이어로 변경
-        _player = GameObject.Find("PlayerTest").transform;
-        _playerMove = _player.GetComponent<PlayerMove>();
+        _player = GameObject.Find("Player").transform;
+        _playerScript = _player.GetComponent<Player>();
         _characterController = GetComponent<CharacterController>();
         _originPos = transform.position;
         _originRot = transform.rotation;
@@ -300,7 +299,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     public void AttackAction()
     {
         // TODO: 플레이어 피격 함수로 변경
-        _playerMove.DamageAction(attackPower);
+        _playerScript.UpdateHP(-attackPower);
     }
 
     private void Groggy()
