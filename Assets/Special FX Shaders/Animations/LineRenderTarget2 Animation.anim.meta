@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1bae62fb7bba6b74ab604bb8acae11ed
+timeCreated: 1443959048
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animations/LineRenderTarget2 Animation.anim
+  uploadId: 223263

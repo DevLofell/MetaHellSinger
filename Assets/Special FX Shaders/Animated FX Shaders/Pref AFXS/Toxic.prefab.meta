@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3f17acde0d1c3bd4fa9434bf5a9e7d80
+timeCreated: 1450014770
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animated FX Shaders/Pref AFXS/Toxic.prefab
+  uploadId: 223263

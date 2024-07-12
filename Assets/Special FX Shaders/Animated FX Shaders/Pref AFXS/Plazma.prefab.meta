@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 98016c0cc1c84c74f9cf64119fc50b87
+timeCreated: 1450014750
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animated FX Shaders/Pref AFXS/Plazma.prefab
+  uploadId: 223263

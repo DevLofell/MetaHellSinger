@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bf3d233a35872954b94ff8b50fb3e982
+timeCreated: 1438861998
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Shaders/Special FX/Special FX Intersection.shader
+  uploadId: 223263

@@ -34,7 +34,7 @@ ModelImporter:
       name: Great Sword Slash3
       takeName: mixamo.com
       internalID: -203655887218126122
-      firstFrame: 0
+      firstFrame: 15
       lastFrame: 90
       wrapMode: 0
       orientationOffsetY: 0
@@ -55,12 +55,12 @@ ModelImporter:
       bodyMask: 01000000010000000100000000000000000000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.48072565
+      - time: 0.7320918
         functionName: OnAttackCollision
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
-        intParameter: 0
+        intParameter: 3
         messageOptions: 0
       transformMask: []
       maskType: 3

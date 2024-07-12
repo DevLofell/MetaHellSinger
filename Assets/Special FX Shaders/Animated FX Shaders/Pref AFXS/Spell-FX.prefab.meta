@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1b7caed803988534ba0421ae950df32d
+timeCreated: 1450014698
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animated FX Shaders/Pref AFXS/Spell-FX.prefab
+  uploadId: 223263

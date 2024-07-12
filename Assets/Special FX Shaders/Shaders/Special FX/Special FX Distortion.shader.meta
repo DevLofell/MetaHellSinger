@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d25492679ddc94a49b6992a162dd0232
+timeCreated: 1426584529
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Shaders/Special FX/Special FX Distortion.shader
+  uploadId: 223263

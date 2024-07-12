@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c467fa96082db7d48a0aa8986799b38e
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animated FX Shaders/Materials AFXS/Spirit
+    trail.mat
+  uploadId: 223263

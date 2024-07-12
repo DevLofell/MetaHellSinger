@@ -7,10 +7,15 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance;
+
     //플레이어 체력
     public float currHP = 0;
     public float maxHP = 1000;
 
+    //플레이어 마나
+    public float currMP = 0;
+    public float maxMP = 1000;
 
     //즉살 공격
     bool onOneShot = false;
@@ -64,10 +69,22 @@ public class Player : MonoBehaviour
 
     //플레이어 애니메이터
     private PlayerAnimator playerAnimator;
+    //칼질 애니메이션
+    public List<GameObject> slashEffectList;
+    //칼질 애니메이션 위치
+    public GameObject slashPos;
 
-    
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -249,9 +266,10 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                ////Į�� �ִϸ��̼� ����
+                //칼질 애니메이션
                 playerAnimator.OnSwordAttack();
-
+                //칼질 이펙트
+                //SlashAni();
                 onOneShot = false;
 
             }
@@ -301,26 +319,27 @@ public class Player : MonoBehaviour
             }
         }
 
-        //���� ���°� Į�� ��
+        //칼질 특수 공격
         if (playerAnimator.animator.GetInteger("weaponState") == 2)
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                ////Į�� �ִϸ��̼� ����
+                //칼질 이펙트
+                //SlashAni();
                 playerAnimator.OnSpeSwordAttack();
             }
         }
-        //1���� ������
+        //칼상태로 변경
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            //�ִϸ��̼� ���¸� �������?�ٲٱ�
+            //칼 애니메이션
             playerAnimator.OnSwordState();
         }
 
-        //2���� ������
+        //해골 상태 변경
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //�ִϸ��̼� ���¸� ���Ÿ��� �ٲٱ�
+            //해골 애니메이션
             playerAnimator.OnFireState();
 
 
@@ -387,5 +406,13 @@ public class Player : MonoBehaviour
             //적의 체력을 0으로 만든다.
             nearestEnemy.enemyCurrHP = 0;
         }
+    }
+    public void SlashAni(int attackNum)
+    {
+        GameObject effectex = Instantiate(slashEffectList[attackNum - 1]);
+        effectex.transform.position = slashPos.transform.position;
+        effectex.transform.forward = slashPos.transform.forward;
+        Destroy(effectex, 0.3f);
+
     }
 }

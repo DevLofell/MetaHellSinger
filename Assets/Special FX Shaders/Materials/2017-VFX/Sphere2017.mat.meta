@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 18c7d88133ab19c4aa4656690ffcc89c
+timeCreated: 1510083746
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Materials/2017-VFX/Sphere2017.mat
+  uploadId: 223263

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 534f61b0527b95e498215230f4ffca7f
+timeCreated: 1443863708
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Materials/LineRender.mat
+  uploadId: 223263
