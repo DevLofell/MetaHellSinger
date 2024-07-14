@@ -285,6 +285,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160638487}
   m_CullTransparentMesh: 1
+--- !u!1 &174798569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8885201015968146820, guid: 49294ac16b40962478aec569bf03d0c8, type: 3}
+  m_PrefabInstance: {fileID: 1270241133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220807985
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +356,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 231.5, y: -315}
-  m_SizeDelta: {x: 387.2, y: 100}
+  m_SizeDelta: {x: 389.8, y: 24.58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &231858499
 MonoBehaviour:
@@ -375,7 +380,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -1819972184, guid: 0a02efb25ad4e8e4c9794e359a78e0b1, type: 3}
   m_Type: 3
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 1
@@ -1905,7 +1910,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 241097163504534381, guid: 49294ac16b40962478aec569bf03d0c8, type: 3}
       propertyPath: maxHp
-      value: 1000
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 6579355451246170870, guid: 49294ac16b40962478aec569bf03d0c8, type: 3}
       propertyPath: m_Name
@@ -1917,7 +1922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874498960321768913, guid: 49294ac16b40962478aec569bf03d0c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8874498960321768913, guid: 49294ac16b40962478aec569bf03d0c8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2299,13 +2304,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currHP: 0
   maxHP: 1000
-  currMP: 0
+  currSkullMP: 0
+  currSwordMP: 0
   maxMP: 1000
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   stunRadius: 50
   stunEffectFactory: {fileID: 1614648838348040, guid: 6b12f08cfea33d1429a5fb9ca7e5f9fe, type: 3}
+  stunEffectPos: {fileID: 174798569}
   rotSpeed: 500
   moveSpeed: 7
   dir: {x: 0, y: 0, z: 0}
