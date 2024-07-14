@@ -11,6 +11,9 @@ using static EnemyGroggyState;
 
 public class EnemyFsmJiwon : MonoBehaviour
 {
+    //엠피게이지 받기 추가 (규현)
+    float attackMPUP = 100;
+
     public float findDistance = 8f;
     public float moveSpeed = 5f;
     public float attackDistance = 2f;
@@ -287,6 +290,9 @@ public class EnemyFsmJiwon : MonoBehaviour
                 OnDamageUI(hitPower);
                 _anim.SetTrigger(Damaged1);
                 Damaged(prevEnemyState);
+                //엠피게이지 받기 추가 (규현)
+                _playerScript.UpdateMP(attackMPUP);
+
             }
         }
         else
@@ -300,6 +306,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     {
         // TODO: 플레이어 피격 함수로 변경
         _playerScript.UpdateHP(-attackPower);
+
     }
 
     private void Groggy()

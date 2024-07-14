@@ -14,7 +14,8 @@ public class Player : MonoBehaviour
     public float maxHP = 1000;
 
     //플레이어 마나
-    public float currMP = 0;
+    public float currSkullMP = 0;
+    public float currSwordMP = 0;
     public float maxMP = 1000;
 
     //즉살 공격
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayer;
     public float stunRadius = 5.0f;
     public GameObject stunEffectFactory;
+    public GameObject stunEffectPos;
 
     #region 플레이어 기본 움직임
     //플레이어 회전값
@@ -104,14 +106,14 @@ public class Player : MonoBehaviour
 
             speTime += Time.deltaTime;
             //적과 플레이어의 거리
-            float distance;
-
-            distance = Vector3.Distance(transform.position, nearestEnemy.transform.position);
-            if (distance > 2.5f)
+            float distances = Vector3.Distance(transform.position, nearestEnemy.transform.position);
+            if (distances > 2.5f)
             {
                 Vector3 spedir = nearestEnemy.transform.position - transform.position;
                 spedir.Normalize();
                 transform.Translate(spedir * 100 * Time.deltaTime, Space.World);
+                print("원샷 함수 실행3");
+
 
             }
             else
@@ -124,6 +126,7 @@ public class Player : MonoBehaviour
                 onOneShot = false;
                 speTime = 0;
                 nearestEnemy = null;
+
             }
 
 
@@ -140,7 +143,7 @@ public class Player : MonoBehaviour
 
     void PlayerRotate()
     {
-        
+
         float mouseX = Input.GetAxis("Mouse X");
 
         mx += mouseX * rotSpeed * Time.deltaTime;
@@ -172,7 +175,7 @@ public class Player : MonoBehaviour
 
         if (!cc.isGrounded)
         {
-           
+
             yVelocity += gravity * Time.deltaTime;
 
         }
@@ -273,9 +276,11 @@ public class Player : MonoBehaviour
                 onOneShot = false;
 
             }
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2") && currSwordMP == maxMP)
             {
                 playerAnimator.OnSpeSwordState();
+                //스워드 스페셜 스킬 임시 엠피 0 만들기
+                Invoke("SwordMP0", 5);
             }
         }
 
@@ -289,33 +294,26 @@ public class Player : MonoBehaviour
 
                 RaycastHit hitInfo = new RaycastHit();
 
-                //���̾�� �����Ѵ�
                 GameObject fireBall = Instantiate(fireBallFactory);
-                //���̾�� ��ġ�� ������ġ�� �����.
                 fireBall.transform.position = fireBallPos.transform.position;
-                //���̸� ���µ�...
-                //���𰡿� �ε������� �ε��� ������
+                
                 if (Physics.Raycast(ray, out hitInfo))
                 {
-                    //���̾�� ������ ȭ�� �߾�(����)���� �Ѵ�.
                     fireBallDir = hitInfo.point - fireBall.transform.position;
-                    //������ �̵��Ѵ�.
                     fireBall.transform.forward = fireBallDir.normalized;
                 }
-                //�ε������� ������ ī�޶� �ٶ󺸴� ��������
                 else
                 {
-                    //���̾�� ���� ���������� �ٲ۴�.
                     fireBall.transform.forward = Camera.main.transform.forward;
                 }
-                //2�� �ڿ� ���̾�� �ı��Ѵ�.
                 Destroy(fireBall, 2);
                 #endregion
             }
 
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire2") && currSkullMP == maxMP)
             {
                 StunSkill();
+                currSkullMP = 0;
             }
         }
 
@@ -325,8 +323,8 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 //칼질 이펙트
-                //SlashAni();
                 playerAnimator.OnSpeSwordAttack();
+
             }
         }
         //칼상태로 변경
@@ -363,7 +361,9 @@ public class Player : MonoBehaviour
                 {
                     print("스턴발생");
                     enemy.OnStunChanged();
-                    //이펙트 추가
+                    GameObject stunEffect = Instantiate(stunEffectFactory);
+                    stunEffect.transform.position = stunEffectPos.transform.position;
+
                 }
 
             }
@@ -374,18 +374,15 @@ public class Player : MonoBehaviour
     {
         print("oneShot 호출");
         LayerMask layerMask = LayerMask.GetMask("Enemy");
-        //�������� ���̸� ���� ���������ȿ� �ִ� ������ ���� ã�´�
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, layerMask);
-        EnemyFsmJiwon nearestEnemy = null;
+        nearestEnemy = null;
         float nearestDistance = float.MaxValue;
 
-        //ã�� ������ �迭�� �����Ѵ�
         foreach (Collider hitCollider in hitColliders)
         {
             EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
             if (enemy)
             {
-                //����(1. ȭ�鳻�� �־�� �Ѵ� 2. ���� ����� ��)
                 Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
                 if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
                 {
@@ -396,6 +393,8 @@ public class Player : MonoBehaviour
                         {
                             nearestDistance = distance;
                             nearestEnemy = enemy;
+                            playerAnimator.GroggyAttack();
+                            print("원샷 함수 실행");
                         }
 
                     }
@@ -404,6 +403,9 @@ public class Player : MonoBehaviour
         }
         if (nearestEnemy)
         {
+            onOneShot = true;
+            print("원샷 함수 실행2");
+
             nearestEnemy.Die();
         }
     }
@@ -426,5 +428,34 @@ public class Player : MonoBehaviour
             // 파괴하자
             Destroy(gameObject);
         }
+    }
+    public void UpdateMP(float value)
+    {
+        if (playerAnimator.animator.GetInteger("weaponState") == 0)
+        {
+            currSwordMP += value;
+        }
+        else if (playerAnimator.animator.GetInteger("weaponState") == 1)
+        {
+            currSkullMP += value;
+        }
+        else
+        {
+            value = 0;
+        }
+
+        if (currSwordMP >= maxMP)
+        {
+            currSwordMP = maxMP;
+        }
+        if (currSkullMP >= maxMP)
+        {
+            currSkullMP = maxMP;
+        }
+    }
+
+    void SwordMP0()
+    {
+        currSwordMP = 0;
     }
 }

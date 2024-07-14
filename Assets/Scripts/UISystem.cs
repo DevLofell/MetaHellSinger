@@ -12,8 +12,6 @@ public class UISystem : MonoBehaviour
     public Image hpbar;
     public Image mpbar;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         WeaponChange();
@@ -39,7 +37,16 @@ public class UISystem : MonoBehaviour
         hpbar.fillAmount = Mathf.Lerp(hpbar.fillAmount, Player.instance.currHP / Player.instance.maxHP, 10 * Time.deltaTime);
 
         //mp¹Ù
-        mpbar.fillAmount = Mathf.Lerp(mpbar.fillAmount, Player.instance.currMP / Player.instance.maxMP, 10 * Time.deltaTime);
+        if (playerAni.GetInteger("weaponState") == 0)
+        {
+
+            mpbar.fillAmount = Mathf.Lerp(mpbar.fillAmount, Player.instance.currSwordMP / Player.instance.maxMP, 10 * Time.deltaTime);
+        }
+        else if (playerAni.GetInteger("weaponState") == 1)
+        {
+
+            mpbar.fillAmount = Mathf.Lerp(mpbar.fillAmount, Player.instance.currSkullMP / Player.instance.maxMP, 10 * Time.deltaTime);
+        }
 
     }
 
