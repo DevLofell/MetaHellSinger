@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: f449efe5f274bd544a7577fe10285240
+timeCreated: 1426440005
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Shaders/Special FX/Air Distortion/Air Distortion
+    - Single.shader
+  uploadId: 223263

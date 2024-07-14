@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0afddb8a228c1c54884a1839b93d75ca
+timeCreated: 1446286155
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Materials/Special FX Tile Flag.mat
+  uploadId: 223263

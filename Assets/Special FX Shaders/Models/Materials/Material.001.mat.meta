@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d09fa39fd1071024681251460e6e51b5
+timeCreated: 1446463886
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Models/Materials/Material.001.mat
+  uploadId: 223263

@@ -7,13 +7,14 @@ public class PlayerFire : MonoBehaviour
     private Camera _camera;
     private ParticleSystem _particleSystem;
 
-    public int weaponPower = 5;
+    public int weaponPower;
     public GameObject bulletEffect;
     
     // Start is called before the first frame update
     void Start()
     {
         _camera = Camera.main;
+        weaponPower = 30;
         _particleSystem = bulletEffect.GetComponent<ParticleSystem>();
     }
 

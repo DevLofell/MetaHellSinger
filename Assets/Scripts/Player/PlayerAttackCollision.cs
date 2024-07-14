@@ -23,23 +23,20 @@ public class PlayerAttackCollision : MonoBehaviour
         //트리거 안에 들어온게 Enemy라면
         if (other.CompareTag("Enemy"))
         {
+            int damage;
             //애니메이터가 3번째 콤보일때
             if (stateInfo.IsName("Great Sword Slash3"))
             {
                 //세번째 공격 데미지가 들어간다.
-                other.GetComponent<EnemyController_GH>().TakeDamage(swordThirdDamage);
-                EnemyController_GH enemeyCon = other.GetComponent<EnemyController_GH>();
-                enemeyCon.OnDamageUI(swordThirdDamage);
+                damage = swordThirdDamage;
             }
             else
-
             {
                 //그냥 검 공격 데미지가 들어간다.
-                other.GetComponent<EnemyController_GH>().TakeDamage(swordDamage);
-                EnemyController_GH enemeyCon = other.GetComponent<EnemyController_GH>();
-                enemeyCon.OnDamageUI(swordDamage);
+                damage = swordDamage;
 
             }
+            other.GetComponent<EnemyFsmJiwon>().HitEnemy(damage);
         }
     }
     private IEnumerator AutoDisable()

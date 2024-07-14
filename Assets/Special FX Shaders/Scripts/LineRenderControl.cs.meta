@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 948dfbe37acba2547844ecc3ee2e49fa
+timeCreated: 1443867009
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Scripts/LineRenderControl.cs
+  uploadId: 223263

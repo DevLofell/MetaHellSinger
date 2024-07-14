@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: aa40ccf844594764ebcd6230cd706991
+timeCreated: 1443024650
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Materials/Dome/Dome_2_Dis.mat
+  uploadId: 223263

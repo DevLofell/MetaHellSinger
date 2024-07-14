@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PlayerAnimator : MonoBehaviour
     public GameObject skull;
     public GameObject sword;
 
+  
+
+
 
     private void Awake()
     {
@@ -20,6 +24,10 @@ public class PlayerAnimator : MonoBehaviour
 
         sword.SetActive(false);
     }
+    private void Update()
+    {
+    }
+
 
     //칼을든 무빙 애니메이션 구현(기본)
     public void OnMovement(float horizontal, float vertical)
@@ -64,9 +72,15 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetInteger("weaponState", 2);
         print("스페셜 검 상태");
         Invoke("OnSwordState", 5f);
+        /////////////
+        if (animator.GetInteger("weaponState") != 2)
+        {
+            Player.instance.currSwordMP = 0;
+        }
     }
-    public void OnAttackCollision() 
+    public void OnAttackCollision(int attackNum) 
     {
+        GetComponentInParent<Player>().SlashAni(attackNum);
         attackCollision.SetActive(true);
     }
 

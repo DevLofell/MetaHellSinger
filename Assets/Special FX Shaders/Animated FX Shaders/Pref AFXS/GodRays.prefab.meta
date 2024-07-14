@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6c5414937f68d1e439b1c3eddf737990
+timeCreated: 1450014729
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animated FX Shaders/Pref AFXS/GodRays.prefab
+  uploadId: 223263

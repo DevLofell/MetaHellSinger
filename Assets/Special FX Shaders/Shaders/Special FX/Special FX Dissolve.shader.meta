@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 928b84b2793d11b4a873f3bc4333e164
+timeCreated: 1429186123
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Shaders/Special FX/Special FX Dissolve.shader
+  uploadId: 223263

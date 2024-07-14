@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f4bddfbcd4a0d75439d19aa1760f01b9
+timeCreated: 1443023208
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Materials/Trail/Trail_2.mat
+  uploadId: 223263

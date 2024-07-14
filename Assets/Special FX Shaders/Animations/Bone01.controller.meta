@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 45f3228fda655ec4ebb07815845ae8c0
+timeCreated: 1442054457
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Animations/Bone01.controller
+  uploadId: 223263

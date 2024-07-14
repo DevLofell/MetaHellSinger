@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 01ead66edbba37847a59459642d9793c
+timeCreated: 1446284793
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 49104
+  packageName: Special FX Shaders
+  packageVersion: 1.2
+  assetPath: Assets/Special FX Shaders/Materials/Special FX Tile.mat
+  uploadId: 223263

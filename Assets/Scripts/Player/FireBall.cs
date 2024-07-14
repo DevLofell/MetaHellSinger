@@ -34,9 +34,7 @@ public class FireBall : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             //데미지를 준다
-            other.GetComponent<EnemyController_GH>().TakeDamage(fireBallDamage);
-            EnemyController_GH enemeyCon = other.GetComponent<EnemyController_GH>();
-            enemeyCon.OnDamageUI(fireBallDamage);
+            other.GetComponent<EnemyFsmJiwon>().HitEnemy(fireBallDamage);
         }
     }
    
