@@ -39,10 +39,6 @@ public class PlayerMove : MonoBehaviour
         yVelocity += gravity * Time.deltaTime;
         dir.y = yVelocity;
 
-        if (Input.GetButtonDown($"E"))
-        {
-            
-        }
 
         if (_characterController.collisionFlags == CollisionFlags.Below)
         {

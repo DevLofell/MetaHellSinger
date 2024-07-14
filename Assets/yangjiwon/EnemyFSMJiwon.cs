@@ -72,7 +72,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         mState = EnemyState.Idle;
         stunTimer = stunTime;
         // TODO: 플레이어로 변경
-        _player = GameObject.Find("PlayerTest").transform;
+        _player = GameObject.Find("Player").transform;
         _playerMove = _player.GetComponent<PlayerMove>();
         _characterController = GetComponent<CharacterController>();
         _originPos = transform.position;

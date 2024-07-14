@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8014358666189031824}
   - component: {fileID: 7785241714105073472}
   m_Layer: 5
-  m_Name: Note
+  m_Name: TargetNote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -175, y: 0}
   m_SizeDelta: {x: 50, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1241362002483714604
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b46e9941d1393774a9fee5f8193470e3, type: 3}
+  m_Texture: {fileID: 2800000, guid: 0eb1645cb6d530d42ac2db35c7c4c142, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0.2
