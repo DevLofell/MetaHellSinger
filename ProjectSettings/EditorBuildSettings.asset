@@ -4,5 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scripts/Boss/Scenes/00.MainMenu.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scripts/Boss/Scenes/TestMap/PlayerTest.unity
+    guid: 8ec182cd48e680549b58997f300bb1d4
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
