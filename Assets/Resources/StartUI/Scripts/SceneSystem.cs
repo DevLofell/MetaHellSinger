@@ -21,6 +21,6 @@ public class SceneSystem : MonoBehaviour
     }
     public void GameStart()
     {
-        SceneManager.LoadScene("PlayerTest");
+        SceneManager.LoadScene("CollapseTest");
     }
 }

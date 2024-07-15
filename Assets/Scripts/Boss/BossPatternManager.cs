@@ -16,7 +16,7 @@ public enum BossState
     Die
 }
 
-public class BossPatternManager : MonoBehaviour
+public class BossPatternManager : MonoSingleton<BossPatternManager>
 {
     // 패턴 관리
     // 위치 관리
@@ -29,6 +29,7 @@ public class BossPatternManager : MonoBehaviour
 
     public BossState state;
 
+    
     
     // 날기 관련
     public Transform flyingPos;

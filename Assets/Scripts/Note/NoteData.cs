@@ -42,6 +42,10 @@ public class NoteData : MonoBehaviour
                     OnNoteHit?.Invoke("Good");
                     Destroy(gameObject);
                 }
+                else
+                {
+                    OnNoteHit?.Invoke("Bad");
+                }
             }
 
             float t = (Time.time - spawnTime) / duration;

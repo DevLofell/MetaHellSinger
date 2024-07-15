@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ActBlock : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ActBlock : MonoBehaviour
     public AudioClip ChangeClipx2;
     public AudioClip ChangeClipx3;
     public AudioClip ChangeClipx5;
+
+    public bool isBossTrigger = false;
 
     public IEnumerator Start()
     {
@@ -23,6 +26,9 @@ public class ActBlock : MonoBehaviour
         {
             NoteManager.instance.AudioChange(this);
         }
-
+        if(isBossTrigger)
+        {
+            BossPatternManager.instance.isBossStart = true;
+        }
     }
 }
