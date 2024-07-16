@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c8659756ff47c094bb31157ec185ffb1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Scripts/HS_ZoneTrigger.cs
+  uploadId: 610788

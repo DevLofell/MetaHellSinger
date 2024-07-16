@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: e24cfb966f425fa47bfec1667489bb42
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Scripts/HS_TargetProjectile.cs
+  uploadId: 610788

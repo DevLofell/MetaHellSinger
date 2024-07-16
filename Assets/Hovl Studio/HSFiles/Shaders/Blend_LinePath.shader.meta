@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a94def2acffda4e4bb6a001369871457
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Shaders/Blend_LinePath.shader
+  uploadId: 610788

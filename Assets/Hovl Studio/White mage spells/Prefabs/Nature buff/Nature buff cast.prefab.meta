@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 499ae38ba7b9449458cf7a142c7f4526
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/White mage spells/Prefabs/Nature buff/Nature buff
+    cast.prefab
+  uploadId: 610788

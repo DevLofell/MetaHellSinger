@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a4ca5efb641d8634a9ec2fdc65f1f7d2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Scripts/For demo scenes/HS_CameraController.cs
+  uploadId: 610788

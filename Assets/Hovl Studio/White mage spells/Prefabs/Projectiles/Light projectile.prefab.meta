@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a0be4fb98ccc9c2478b05ccdf7b61225
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/White mage spells/Prefabs/Projectiles/Light projectile.prefab
+  uploadId: 610788

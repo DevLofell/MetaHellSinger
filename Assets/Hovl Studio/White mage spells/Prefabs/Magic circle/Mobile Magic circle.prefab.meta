@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 97c011a075a604441847441fe793419e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/White mage spells/Prefabs/Magic circle/Mobile Magic
+    circle.prefab
+  uploadId: 610788

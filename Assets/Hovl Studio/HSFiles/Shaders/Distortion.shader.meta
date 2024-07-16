@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 36121c42b945b624fb938cb9637f28d0
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Shaders/Distortion.shader
+  uploadId: 610788

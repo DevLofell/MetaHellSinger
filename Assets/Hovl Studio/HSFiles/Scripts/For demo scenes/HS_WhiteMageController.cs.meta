@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c0b44eb232eca4c479f87352565a78e9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Scripts/For demo scenes/HS_WhiteMageController.cs
+  uploadId: 610788

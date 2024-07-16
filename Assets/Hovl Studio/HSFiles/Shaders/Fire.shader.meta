@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0cca3c4f7b649204a9c9edee0085da26
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 161173
+  packageName: White mage spells
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Shaders/Fire.shader
+  uploadId: 610788
