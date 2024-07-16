@@ -125,8 +125,8 @@ public class NoteManager : MonoSingleton<NoteManager>
                 NoteData rnote = rgo.GetComponent<NoteData>();
                 if (lnote != null && rnote != null)
                 {
-                    lnote.Initialize(leftStartPos, leftEndPos, interval * 3);
-                     rnote.Initialize(rightStartPos, rightEndPos, interval * 3);
+                    lnote.Initialize(leftStartPos, leftEndPos, interval * 3, false);
+                     rnote.Initialize(rightStartPos, rightEndPos, interval * 3,true);
                 }
             }
             
@@ -138,8 +138,7 @@ public class NoteManager : MonoSingleton<NoteManager>
     {
         if (hitType == "Great" || hitType == "Good")
         {
-            Debug.Log(1);
-            player.Fire();
+            //player.PlayerFire();
             //comboText.gameObject.SetActive(true);
             comboint++;
             comboText.text = comboint.ToString();

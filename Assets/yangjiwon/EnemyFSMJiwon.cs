@@ -306,6 +306,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     {
         // TODO: 플레이어 피격 함수로 변경
         _playerScript.UpdateHP(-attackPower);
+        Debug.Log("PlayerHit");
 
     }
 

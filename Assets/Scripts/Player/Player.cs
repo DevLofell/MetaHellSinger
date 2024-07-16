@@ -214,48 +214,6 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Fire()
-    {
-        //플레이어가 검 상태일 때
-        if (playerAnimator.animator.GetInteger("weaponState") == 0)
-        {
-            //검 애니메이션을 실행
-            playerAnimator.OnSwordAttack();
-
-        }
-        if (playerAnimator.animator.GetInteger("weaponState") == 1)
-        {
-            #region 조준선에 정면에 레이를 쏜다
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-            RaycastHit hitInfo = new RaycastHit();
-
-            //스컬 공격을 생성
-            GameObject fireBall = Instantiate(fireBallFactory);
-            //스컬 공격 위치 설정
-            fireBall.transform.position = fireBallPos.transform.position;
-            //앞에 물건이 있을 때
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-
-                //파이어볼을 조준선으로 발사
-                fireBallDir = hitInfo.point - fireBall.transform.position;
-                fireBall.transform.forward = fireBallDir.normalized;
-
-            }
-            //조준선에 물건이 없을 때
-            else
-            {
-                //그냥 파이어 볼을 앞으로
-                fireBall.transform.forward = Camera.main.transform.forward;
-
-            }
-            //파이어볼을 2초 뒤 파괴한다.
-            Destroy(fireBall, 2);
-            #endregion
-
-        }
-    }
 
     public void PlayerFire()
     {
@@ -362,7 +320,7 @@ public class Player : MonoBehaviour
                     print("스턴발생");
                     enemy.OnStunChanged();
                     GameObject stunEffect = Instantiate(stunEffectFactory);
-                    stunEffect.transform.position = stunEffectPos.transform.position;
+                    stunEffect.transform.position = enemy.transform.position;
 
                 }
 
