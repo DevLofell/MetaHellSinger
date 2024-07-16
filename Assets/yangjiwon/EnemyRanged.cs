@@ -21,9 +21,14 @@ public class EnemyRanged : EnemyFsmJiwon
         base.Start();
     }
 
-    protected override void Attack()
+    protected override void Update()
     {
         transform.LookAt(_player);
+        base.Update();
+    }
+
+    protected override void Attack()
+    {
         base.Attack();
     }
 

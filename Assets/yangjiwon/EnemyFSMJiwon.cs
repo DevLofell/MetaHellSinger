@@ -90,7 +90,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
         switch (mState)
@@ -292,8 +292,7 @@ public class EnemyFsmJiwon : MonoBehaviour
                 _anim.SetTrigger(Damaged1);
                 Damaged(prevEnemyState);
                 //엠피게이지 받기 추가 (규현)
-                // TODO: 주석 풀기
-                // _playerScript.UpdateMP(attackMPUP);
+                 _playerScript.UpdateMP(attackMPUP);
 
             }
         }
