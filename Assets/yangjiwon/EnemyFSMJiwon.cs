@@ -14,12 +14,11 @@ public class EnemyFsmJiwon : MonoBehaviour
     //엠피게이지 받기 추가 (규현)
     float attackMPUP = 0;
 
-    public float findDistance = 8f;
-    public float moveSpeed = 5f;
-    public float attackDistance = 2f;
-    public float moveDistance = 20f;
-    public int attackPower = 3;
-    public int maxHp = 1000;
+    public float findDistance;
+    public float attackDistance;
+    public float moveDistance;
+    public int attackPower;
+    public int maxHp;
     public int hp;
     public float waitDamagedSec = 1.0f;
     public float attackDelay = 2f;
@@ -55,13 +54,12 @@ public class EnemyFsmJiwon : MonoBehaviour
     private GameObject _groggyUIObj;
     private LayerMask _enemyLayer;
     private NavMeshAgent _navMeshAgent;
-    private Transform _player;
+    protected Transform _player;
     private Player _playerScript;
     private float _currentTime;
     private Vector3 _originPos;
     private Quaternion _originRot;
     private Animator _anim;
-    private CharacterController _characterController;
     private static readonly int IdleToMove = Animator.StringToHash("IdleToMove");
     private static readonly int MoveToIdle = Animator.StringToHash("MoveToIdle");
     private static readonly int MoveToAttackDelay = Animator.StringToHash("MoveToAttackDelay");
@@ -72,7 +70,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     private static readonly int OnStun = Animator.StringToHash("OnStun");
     private static readonly int OnGroggy = Animator.StringToHash("OnGroggy");
 
-    void Start()
+    public virtual void Start()
     {
         //MP받기 (규)
         attackMPUP = Player.instance.maxMP / 10f;
@@ -81,10 +79,8 @@ public class EnemyFsmJiwon : MonoBehaviour
         hp = maxHp;
         mState = EnemyState.Idle;
         stunTimer = stunTime;
-        // TODO: 플레이어로 변경
-        _player = GameObject.Find("Player").transform;
+        _player = GameObject.FindWithTag("Player").transform;
         _playerScript = _player.GetComponent<Player>();
-        _characterController = GetComponent<CharacterController>();
         _originPos = transform.position;
         _originRot = transform.rotation;
         _anim = GetComponentInChildren<Animator>();
@@ -136,19 +132,20 @@ public class EnemyFsmJiwon : MonoBehaviour
         // 피격 모션 만큼 기다리기
         yield return new WaitForSeconds(waitDamagedSec);
 
-        if (mState is not EnemyState.Groggy and EnemyState.Stun)
+        if (prevState is EnemyState.Groggy or EnemyState.Stun)
         {
-            mState = EnemyState.Idle;
+            mState = prevState;
         }
         else
         {
-            mState = prevState;
+            mState = EnemyState.Idle;        
         }
         print("상태 전환: Damaged -> " + mState);
     }
 
     private void Return()
     {
+        print("Return Distance : " + Vector3.Distance(transform.position, _originPos));
         if (Vector3.Distance(transform.position, _originPos) > 0.1f)
         {
             _navMeshAgent.SetDestination(_originPos);
@@ -176,15 +173,13 @@ public class EnemyFsmJiwon : MonoBehaviour
 
         StartCoroutine(DieProcess());
     }
-
-    // TODO: 그로기 상태 시 죽여야 함
+    
     private IEnumerator DieProcess()
     {
         mState = EnemyState.Die;
         _anim.SetBool(OnStun, false);
         _anim.SetBool(OnGroggy, false);
         _anim.SetTrigger(Die1);
-        _characterController.enabled = false;
         groggyState = WAS_GROGGY;
         print("죽음 당시 mState : " + mState);
         OnDieWhenStun();
@@ -197,7 +192,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         // 플레이어가 공격 범위 내
         if (Vector3.Distance(transform.position, _player.position) < attackDistance)
@@ -231,6 +226,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         }
         else
         {
+            print(gameObject.name + " Move Distance : " + currentToOriginDistance);
             var currentToPlayerDistance = Vector3.Distance(transform.position, _player.position);
             if (mState is EnemyState.Stun or EnemyState.Groggy) return;
             if (currentToPlayerDistance > attackDistance)
@@ -254,6 +250,8 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     private void Idle()
     {
+        print(_player);
+        print(transform);
         if (Vector3.Distance(transform.position, _player.position) < findDistance)
         {
             mState = EnemyState.Move;
@@ -294,7 +292,8 @@ public class EnemyFsmJiwon : MonoBehaviour
                 _anim.SetTrigger(Damaged1);
                 Damaged(prevEnemyState);
                 //엠피게이지 받기 추가 (규현)
-                _playerScript.UpdateMP(attackMPUP);
+                // TODO: 주석 풀기
+                // _playerScript.UpdateMP(attackMPUP);
 
             }
         }
@@ -307,7 +306,6 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     public void AttackAction()
     {
-        // TODO: 플레이어 피격 함수로 변경
         _playerScript.UpdateHP(-attackPower);
         Debug.Log("PlayerHit");
 

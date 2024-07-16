@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f67c5bbbd66747941ba4848c9f4fe6e7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157651
+  packageName: Epic Toon VFX 2
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Scripts/HS_FrontMover.cs
+  uploadId: 606927

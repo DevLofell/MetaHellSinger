@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 36dd14b7ef773c54e96eb7d110c8b5ce
+timeCreated: 1493377202
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 77121
+  packageName: Dragon the Terror Bringer and Dragon Boar
+  packageVersion: 1.1
+  assetPath: Assets/FourEvilDragonsHP/Prefab/DragonBoarPBR/GoldBoarPBR.prefab
+  uploadId: 345602
