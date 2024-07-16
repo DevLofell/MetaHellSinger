@@ -217,12 +217,93 @@ public class Player : MonoBehaviour
 
     public void PlayerFire()
     {
+        #region 마우스 왼쪽 버튼 - 무기 별 기본 공격
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (playerAnimator.animator.GetInteger("weaponState") == 0)
+            {
+                //칼질 애니메이션
+                playerAnimator.OnSwordAttack();
+                //칼질 이펙트
+                //SlashAni();
+                onOneShot = false;
+            }
+            if (playerAnimator.animator.GetInteger("weaponState") == 1)
+            {
+                #region 스컬 공격
+                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+                RaycastHit hitInfo = new RaycastHit();
+
+                GameObject fireBall = Instantiate(fireBallFactory);
+                fireBall.transform.position = fireBallPos.transform.position;
+
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    fireBallDir = hitInfo.point - fireBall.transform.position;
+                    fireBall.transform.forward = fireBallDir.normalized;
+                }
+                else
+                {
+                    fireBall.transform.forward = Camera.main.transform.forward;
+                }
+                Destroy(fireBall, 2);
+                #endregion
+            }
+            //칼 공격 스킬----- 박자 두배로 하기
+            if (playerAnimator.animator.GetInteger("weaponState") == 2)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    //칼질 이펙트
+                    playerAnimator.OnSpeSwordAttack();
+                }
+            }
+
+        }
+        #endregion
+        #region 마우스 오른쪽 - 특수 스킬
+        //오른쪽 마우스를 클릭하면
+        if (Input.GetButtonDown("Fire2") && currSwordMP == maxMP)
+        {
+            if (playerAnimator.animator.GetInteger("weaponState") == 0)
+            {
+                playerAnimator.OnSpeSwordState();
+                //스워드 스페셜 스킬 임시 엠피 0 만들기
+                Invoke("SwordMP0", 5);
+            }
+
+            if (playerAnimator.animator.GetInteger("weaponState") == 1)
+            {
+                StunSkill();
+                currSkullMP = 0;
+            }
+        }
+        #endregion
+        #region 1번 2번 - 무기변경
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            //칼 애니메이션
+            playerAnimator.OnSwordState();
+        }
+
+        //해골 상태 변경
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            //해골 애니메이션
+            playerAnimator.OnFireState();
+        }
+        #endregion
+        #region E버튼 - 그로기 즉살 스킬
+        //즉살 스킬
         if (Input.GetKeyDown(KeyCode.E))
         {
             OneShot();
-
         }
+        #endregion
 
+        /*
+        //칼 상태일 때
         if (playerAnimator.animator.GetInteger("weaponState") == 0)
         {
             if (Input.GetButtonDown("Fire1"))
@@ -241,20 +322,20 @@ public class Player : MonoBehaviour
                 Invoke("SwordMP0", 5);
             }
         }
-
+        //스컬 상태일 때
         if (playerAnimator.animator.GetInteger("weaponState") == 1)
         {
             if (Input.GetButtonDown("Fire1"))
             {
 
-                #region �÷��̾� ���Ÿ�
+                #region 스컬 공격
                 Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
                 RaycastHit hitInfo = new RaycastHit();
 
                 GameObject fireBall = Instantiate(fireBallFactory);
                 fireBall.transform.position = fireBallPos.transform.position;
-                
+
                 if (Physics.Raycast(ray, out hitInfo))
                 {
                     fireBallDir = hitInfo.point - fireBall.transform.position;
@@ -297,12 +378,10 @@ public class Player : MonoBehaviour
         {
             //해골 애니메이션
             playerAnimator.OnFireState();
-
-
         }
+         */
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     void StunSkill()
     {
         print("StunSkill 호출");
