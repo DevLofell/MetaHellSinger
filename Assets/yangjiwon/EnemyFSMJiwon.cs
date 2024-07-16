@@ -12,7 +12,7 @@ using static EnemyGroggyState;
 public class EnemyFsmJiwon : MonoBehaviour
 {
     //엠피게이지 받기 추가 (규현)
-    float attackMPUP = 100;
+    float attackMPUP = 0;
 
     public float findDistance;
     public float attackDistance;
@@ -72,6 +72,9 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     public virtual void Start()
     {
+        //MP받기 (규)
+        attackMPUP = Player.instance.maxMP / 10f;
+
         groggyHp = maxHp / 10;
         hp = maxHp;
         mState = EnemyState.Idle;

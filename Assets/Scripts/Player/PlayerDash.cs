@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerDash : MonoBehaviour
 {
@@ -16,6 +17,20 @@ public class PlayerDash : MonoBehaviour
     private bool isDashing;
     private float dashStartTime;
 
+    PostProcessVolume ppv;
+    MotionBlur dasheEffect;
+
+    private void Start()
+    {
+        ppv = Camera.main.GetComponent<PostProcessVolume>();
+        //vignetteEffect = ppv.GetComponentInChildren<Vignette>();
+
+        if (ppv.profile.TryGetSettings(out dasheEffect))
+        {
+            // Vignette 초기 설정
+            dasheEffect.active = false;
+        }
+    }
 
     void Update()
     {
@@ -49,6 +64,10 @@ public class PlayerDash : MonoBehaviour
         dashStartTime = Time.time;
         nextDashTime = Time.time + dashCooldown;
         isDashing = true;
+
+
+        dasheEffect.active = true;
+
     }
 
     void PerformDash()
@@ -61,6 +80,8 @@ public class PlayerDash : MonoBehaviour
         else
         {
             isDashing = false;
+            dasheEffect.active = false;
+
         }
     }
 }

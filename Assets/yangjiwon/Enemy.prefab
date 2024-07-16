@@ -125,7 +125,7 @@ MonoBehaviour:
   attackDistance: 2
   moveDistance: 20
   attackPower: 3
-  maxHp: 1000
+  maxHp: 3000
   hp: 100
   waitDamagedSec: 0.5
   attackDelay: 2
