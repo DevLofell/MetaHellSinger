@@ -71,12 +71,8 @@ public class PlayerAnimator : MonoBehaviour
     {
         animator.SetInteger("weaponState", 2);
         print("스페셜 검 상태");
-        Invoke("OnSwordState", 5f);
-        /////////////
-        if (animator.GetInteger("weaponState") != 2)
-        {
-            Player.instance.currSwordMP = 0;
-        }
+
+        
     }
     public void OnAttackCollision(int attackNum) 
     {
