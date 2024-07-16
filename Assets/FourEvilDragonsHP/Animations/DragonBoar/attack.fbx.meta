@@ -1,0 +1,506 @@
+fileFormatVersion: 2
+guid: 3fd80404506c6734282c368b3d3b36f0
+AssetOrigin:
+  serializedVersion: 1
+  productId: 77121
+  packageName: Dragon the Terror Bringer and Dragon Boar
+  packageVersion: 1.1
+  assetPath: Assets/FourEvilDragonsHP/Animations/DragonBoar/attack.fbx
+  uploadId: 345602
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Chest
+  - first:
+      1: 100004
+    second: DragonBoar
+  - first:
+      1: 100006
+    second: Head
+  - first:
+      1: 100008
+    second: Jaw1
+  - first:
+      1: 100010
+    second: Jaw2
+  - first:
+      1: 100012
+    second: Jaw3
+  - first:
+      1: 100014
+    second: joint5
+  - first:
+      1: 100016
+    second: joint6
+  - first:
+      1: 100018
+    second: joint7
+  - first:
+      1: 100020
+    second: joint8
+  - first:
+      1: 100022
+    second: L_Feet
+  - first:
+      1: 100024
+    second: L_Fingers
+  - first:
+      1: 100026
+    second: L_Hand
+  - first:
+      1: 100028
+    second: L_Horn1
+  - first:
+      1: 100030
+    second: L_Horn2
+  - first:
+      1: 100032
+    second: L_LowerArm
+  - first:
+      1: 100034
+    second: L_LowerEye
+  - first:
+      1: 100036
+    second: L_LowerLeg
+  - first:
+      1: 100038
+    second: L_Toes
+  - first:
+      1: 100040
+    second: L_UpperArm
+  - first:
+      1: 100042
+    second: L_UpperEye
+  - first:
+      1: 100044
+    second: L_UpperLeg
+  - first:
+      1: 100046
+    second: R_Feet
+  - first:
+      1: 100048
+    second: R_Fingers
+  - first:
+      1: 100050
+    second: R_Hand
+  - first:
+      1: 100052
+    second: R_Horn1
+  - first:
+      1: 100054
+    second: R_Horn2
+  - first:
+      1: 100056
+    second: R_LowerEye
+  - first:
+      1: 100058
+    second: R_RowerArm
+  - first:
+      1: 100060
+    second: R_RowerReg
+  - first:
+      1: 100062
+    second: R_Toes
+  - first:
+      1: 100064
+    second: R_UpperArm
+  - first:
+      1: 100066
+    second: R_UpperEye
+  - first:
+      1: 100068
+    second: R_UpperReg
+  - first:
+      1: 100070
+    second: Root
+  - first:
+      1: 100072
+    second: Root_CTRL
+  - first:
+      1: 100074
+    second: Spine1
+  - first:
+      1: 100076
+    second: Tongue1
+  - first:
+      1: 100078
+    second: Tongue2
+  - first:
+      1: 100080
+    second: Tongue3
+  - first:
+      1: 100082
+    second: UpperMouth1
+  - first:
+      1: 100084
+    second: UpperMouth2
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Chest
+  - first:
+      4: 400004
+    second: DragonBoar
+  - first:
+      4: 400006
+    second: Head
+  - first:
+      4: 400008
+    second: Jaw1
+  - first:
+      4: 400010
+    second: Jaw2
+  - first:
+      4: 400012
+    second: Jaw3
+  - first:
+      4: 400014
+    second: joint5
+  - first:
+      4: 400016
+    second: joint6
+  - first:
+      4: 400018
+    second: joint7
+  - first:
+      4: 400020
+    second: joint8
+  - first:
+      4: 400022
+    second: L_Feet
+  - first:
+      4: 400024
+    second: L_Fingers
+  - first:
+      4: 400026
+    second: L_Hand
+  - first:
+      4: 400028
+    second: L_Horn1
+  - first:
+      4: 400030
+    second: L_Horn2
+  - first:
+      4: 400032
+    second: L_LowerArm
+  - first:
+      4: 400034
+    second: L_LowerEye
+  - first:
+      4: 400036
+    second: L_LowerLeg
+  - first:
+      4: 400038
+    second: L_Toes
+  - first:
+      4: 400040
+    second: L_UpperArm
+  - first:
+      4: 400042
+    second: L_UpperEye
+  - first:
+      4: 400044
+    second: L_UpperLeg
+  - first:
+      4: 400046
+    second: R_Feet
+  - first:
+      4: 400048
+    second: R_Fingers
+  - first:
+      4: 400050
+    second: R_Hand
+  - first:
+      4: 400052
+    second: R_Horn1
+  - first:
+      4: 400054
+    second: R_Horn2
+  - first:
+      4: 400056
+    second: R_LowerEye
+  - first:
+      4: 400058
+    second: R_RowerArm
+  - first:
+      4: 400060
+    second: R_RowerReg
+  - first:
+      4: 400062
+    second: R_Toes
+  - first:
+      4: 400064
+    second: R_UpperArm
+  - first:
+      4: 400066
+    second: R_UpperEye
+  - first:
+      4: 400068
+    second: R_UpperReg
+  - first:
+      4: 400070
+    second: Root
+  - first:
+      4: 400072
+    second: Root_CTRL
+  - first:
+      4: 400074
+    second: Spine1
+  - first:
+      4: 400076
+    second: Tongue1
+  - first:
+      4: 400078
+    second: Tongue2
+  - first:
+      4: 400080
+    second: Tongue3
+  - first:
+      4: 400082
+    second: UpperMouth1
+  - first:
+      4: 400084
+    second: UpperMouth2
+  - first:
+      43: 4300000
+    second: DragonBoar
+  - first:
+      74: 7400000
+    second: Basic Attack
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: DragonBoar
+  externalObjects: {}
+  materials:
+    materialImportMode: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Basic Attack
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.32212886
+        functionName: FireToPlayer
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c319c0ae3d7eec44ca4a19ae9adbd688, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: DragonBoar
+        weight: 1
+      - path: Root
+        weight: 1
+      - path: Root/joint5
+        weight: 1
+      - path: Root/joint5/joint6
+        weight: 1
+      - path: Root/joint5/joint6/joint7
+        weight: 1
+      - path: Root/joint5/joint6/joint7/joint8
+        weight: 1
+      - path: Root/L_UpperLeg
+        weight: 1
+      - path: Root/L_UpperLeg/L_LowerLeg
+        weight: 1
+      - path: Root/L_UpperLeg/L_LowerLeg/L_Feet
+        weight: 1
+      - path: Root/L_UpperLeg/L_LowerLeg/L_Feet/L_Toes
+        weight: 1
+      - path: Root/R_UpperReg
+        weight: 1
+      - path: Root/R_UpperReg/R_RowerReg
+        weight: 1
+      - path: Root/R_UpperReg/R_RowerReg/R_Feet
+        weight: 1
+      - path: Root/R_UpperReg/R_RowerReg/R_Feet/R_Toes
+        weight: 1
+      - path: Root/Spine1
+        weight: 1
+      - path: Root/Spine1/Chest
+        weight: 1
+      - path: Root/Spine1/Chest/Head
+        weight: 1
+      - path: Root/Spine1/Chest/Head/Jaw1
+        weight: 1
+      - path: Root/Spine1/Chest/Head/Jaw1/Jaw2
+        weight: 1
+      - path: Root/Spine1/Chest/Head/Jaw1/Jaw2/Jaw3
+        weight: 1
+      - path: Root/Spine1/Chest/Head/L_Horn1
+        weight: 1
+      - path: Root/Spine1/Chest/Head/L_Horn1/L_Horn2
+        weight: 1
+      - path: Root/Spine1/Chest/Head/R_Horn1
+        weight: 1
+      - path: Root/Spine1/Chest/Head/R_Horn1/R_Horn2
+        weight: 1
+      - path: Root/Spine1/Chest/Head/Tongue1
+        weight: 1
+      - path: Root/Spine1/Chest/Head/Tongue1/Tongue2
+        weight: 1
+      - path: Root/Spine1/Chest/Head/Tongue1/Tongue2/Tongue3
+        weight: 1
+      - path: Root/Spine1/Chest/Head/UpperMouth1
+        weight: 1
+      - path: Root/Spine1/Chest/Head/UpperMouth1/L_LowerEye
+        weight: 1
+      - path: Root/Spine1/Chest/Head/UpperMouth1/L_UpperEye
+        weight: 1
+      - path: Root/Spine1/Chest/Head/UpperMouth1/R_LowerEye
+        weight: 1
+      - path: Root/Spine1/Chest/Head/UpperMouth1/R_UpperEye
+        weight: 1
+      - path: Root/Spine1/Chest/Head/UpperMouth1/UpperMouth2
+        weight: 1
+      - path: Root/Spine1/Chest/L_UpperArm
+        weight: 1
+      - path: Root/Spine1/Chest/L_UpperArm/L_LowerArm
+        weight: 1
+      - path: Root/Spine1/Chest/L_UpperArm/L_LowerArm/L_Hand
+        weight: 1
+      - path: Root/Spine1/Chest/L_UpperArm/L_LowerArm/L_Hand/L_Fingers
+        weight: 1
+      - path: Root/Spine1/Chest/R_UpperArm
+        weight: 1
+      - path: Root/Spine1/Chest/R_UpperArm/R_RowerArm
+        weight: 1
+      - path: Root/Spine1/Chest/R_UpperArm/R_RowerArm/R_Hand
+        weight: 1
+      - path: Root/Spine1/Chest/R_UpperArm/R_RowerArm/R_Hand/R_Fingers
+        weight: 1
+      - path: Root_CTRL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
