@@ -71,9 +71,9 @@ public class PlayerMove : MonoBehaviour
         _characterController.Move(dir * (moveSpeed * Time.deltaTime));
     }
 
-    public void DamageAction(int damage)
+    public void UpdateHP(int damage)
     {
-        hp -= damage;
+        hp += damage;
         print("Player hp : " + hp);
         
     }
@@ -106,7 +106,7 @@ public class PlayerMove : MonoBehaviour
         print("oneShot 호출");
         LayerMask layerMask = LayerMask.GetMask("Enemy");
         //�������� ���̸� ���� ���������ȿ� �ִ� ������ ���� ã�´�
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, layerMask);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 30f, layerMask);
         EnemyFsmJiwon nearestEnemy = null;
         float nearestDistance = float.MaxValue;
 
@@ -133,6 +133,7 @@ public class PlayerMove : MonoBehaviour
                 }
             }
         }
+        print(nearestEnemy + " / " + nearestDistance);
         if (nearestEnemy)
         {
             nearestEnemy.Die();

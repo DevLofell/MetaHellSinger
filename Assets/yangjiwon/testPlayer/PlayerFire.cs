@@ -14,7 +14,7 @@ public class PlayerFire : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
-        weaponPower = 30;
+        weaponPower = 450;
         _particleSystem = bulletEffect.GetComponent<ParticleSystem>();
     }
 

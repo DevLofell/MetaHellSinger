@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 56bedbcbfe68e1345a5e87fe73790dab
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {instanceID: 0}
+  - _Mask: {instanceID: 0}
+  - _Noise: {instanceID: 0}
+  - _texcoord: {instanceID: 0}
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 157651
+  packageName: Epic Toon VFX 2
+  packageVersion: 1.1
+  assetPath: Assets/Hovl Studio/HSFiles/Shaders/Blend_TwoSides.shader
+  uploadId: 606927

@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 241097163504534381}
   - component: {fileID: 7347538097572587634}
   - component: {fileID: 8921289829887381259}
-  - component: {fileID: 2210157951818467641}
   - component: {fileID: 7285102863749646823}
   m_Layer: 7
   m_Name: Enemy
@@ -93,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 6579355451246170870}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 10}
+  m_LocalPosition: {x: 0.071, y: 1.129, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -123,13 +122,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   findDistance: 8
-  moveSpeed: 5
   attackDistance: 2
   moveDistance: 20
   attackPower: 3
-  maxHp: 1000
+  maxHp: 3000
   hp: 100
-  waitDamagedSec: 1
+  waitDamagedSec: 0.5
   attackDelay: 2
   mState: 0
   groggyState: 0
@@ -207,36 +205,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!143 &2210157951818467641
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6579355451246170870}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &7285102863749646823
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -246,7 +218,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6579355451246170870}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -256,7 +228,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &607843193114328205

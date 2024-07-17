@@ -16,18 +16,21 @@ public class Player : MonoBehaviour
     //플레이어 마나
     public float currSkullMP = 0;
     public float currSwordMP = 0;
-    public float maxMP = 1000;
+    public float maxMP = 1f;
 
     //즉살 공격
     bool onOneShot = false;
     EnemyFsmJiwon nearestEnemy = null;
     float speTime = 0;
+    public float oneShotDistance = 50;
 
     //스컬 특수공격
     public LayerMask enemyLayer;
     public float stunRadius = 5.0f;
     public GameObject stunEffectFactory;
     public GameObject stunEffectPos;
+    public float swordSKillTime = 5.0f;
+
 
     #region 플레이어 기본 움직임
     //플레이어 회전값
@@ -138,6 +141,20 @@ public class Player : MonoBehaviour
             PlayerRotate();
             PlayerFire();
 
+            //스페셜 검 상태 게이지 낮추기
+            if (playerAnimator.animator.GetInteger("weaponState") == 2)
+            {
+                if (currSwordMP > 0)
+                {
+                    currSwordMP -= (Time.deltaTime / swordSKillTime);
+                }
+                else if(currSwordMP <= 0)
+                {
+                    currSwordMP = 0;
+                    playerAnimator.OnSwordState();
+                }
+
+            }
         }
     }
 
@@ -214,89 +231,30 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Fire()
-    {
-        //플레이어가 검 상태일 때
-        if (playerAnimator.animator.GetInteger("weaponState") == 0)
-        {
-            //검 애니메이션을 실행
-            playerAnimator.OnSwordAttack();
-
-        }
-        if (playerAnimator.animator.GetInteger("weaponState") == 1)
-        {
-            #region 조준선에 정면에 레이를 쏜다
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-            RaycastHit hitInfo = new RaycastHit();
-
-            //스컬 공격을 생성
-            GameObject fireBall = Instantiate(fireBallFactory);
-            //스컬 공격 위치 설정
-            fireBall.transform.position = fireBallPos.transform.position;
-            //앞에 물건이 있을 때
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-
-                //파이어볼을 조준선으로 발사
-                fireBallDir = hitInfo.point - fireBall.transform.position;
-                fireBall.transform.forward = fireBallDir.normalized;
-
-            }
-            //조준선에 물건이 없을 때
-            else
-            {
-                //그냥 파이어 볼을 앞으로
-                fireBall.transform.forward = Camera.main.transform.forward;
-
-            }
-            //파이어볼을 2초 뒤 파괴한다.
-            Destroy(fireBall, 2);
-            #endregion
-
-        }
-    }
 
     public void PlayerFire()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        #region 마우스 왼쪽 버튼 - 무기 별 기본 공격
+        if (Input.GetButtonDown("Fire1"))
         {
-            OneShot();
-
-        }
-
-        if (playerAnimator.animator.GetInteger("weaponState") == 0)
-        {
-            if (Input.GetButtonDown("Fire1"))
+            if (playerAnimator.animator.GetInteger("weaponState") == 0)
             {
                 //칼질 애니메이션
                 playerAnimator.OnSwordAttack();
                 //칼질 이펙트
                 //SlashAni();
                 onOneShot = false;
-
             }
-            if (Input.GetButtonDown("Fire2") && currSwordMP == maxMP)
+            if (playerAnimator.animator.GetInteger("weaponState") == 1)
             {
-                playerAnimator.OnSpeSwordState();
-                //스워드 스페셜 스킬 임시 엠피 0 만들기
-                Invoke("SwordMP0", 5);
-            }
-        }
-
-        if (playerAnimator.animator.GetInteger("weaponState") == 1)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-
-                #region �÷��̾� ���Ÿ�
+                #region 스컬 공격
                 Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
                 RaycastHit hitInfo = new RaycastHit();
 
                 GameObject fireBall = Instantiate(fireBallFactory);
                 fireBall.transform.position = fireBallPos.transform.position;
-                
+
                 if (Physics.Raycast(ray, out hitInfo))
                 {
                     fireBallDir = hitInfo.point - fireBall.transform.position;
@@ -309,25 +267,35 @@ public class Player : MonoBehaviour
                 Destroy(fireBall, 2);
                 #endregion
             }
+            //칼 공격 스킬----- 박자 두배로 하기
+            if (playerAnimator.animator.GetInteger("weaponState") == 2)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    //칼질 이펙트
+                    playerAnimator.OnSpeSwordAttack();
+                }
+            }
 
-            if (Input.GetButtonDown("Fire2") && currSkullMP == maxMP)
+        }
+        #endregion
+        #region 마우스 오른쪽 - 특수 스킬
+        //오른쪽 마우스를 클릭하면
+        if (Input.GetButtonDown("Fire2"))
+        {
+            if (playerAnimator.animator.GetInteger("weaponState") == 0 && currSwordMP == maxMP)
+            {
+                playerAnimator.OnSpeSwordState();
+            }
+
+            if (playerAnimator.animator.GetInteger("weaponState") == 1 && currSkullMP == maxMP)
             {
                 StunSkill();
                 currSkullMP = 0;
             }
         }
-
-        //칼질 특수 공격
-        if (playerAnimator.animator.GetInteger("weaponState") == 2)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                //칼질 이펙트
-                playerAnimator.OnSpeSwordAttack();
-
-            }
-        }
-        //칼상태로 변경
+        #endregion
+        #region 1번 2번 - 무기변경
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             //칼 애니메이션
@@ -339,12 +307,19 @@ public class Player : MonoBehaviour
         {
             //해골 애니메이션
             playerAnimator.OnFireState();
-
-
         }
+        #endregion
+        #region E버튼 - 그로기 즉살 스킬
+        //즉살 스킬
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OneShot();
+        }
+        #endregion
+
+
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     void StunSkill()
     {
         print("StunSkill 호출");
@@ -362,7 +337,7 @@ public class Player : MonoBehaviour
                     print("스턴발생");
                     enemy.OnStunChanged();
                     GameObject stunEffect = Instantiate(stunEffectFactory);
-                    stunEffect.transform.position = stunEffectPos.transform.position;
+                    stunEffect.transform.position = enemy.transform.position;
 
                 }
 
@@ -374,7 +349,7 @@ public class Player : MonoBehaviour
     {
         print("oneShot 호출");
         LayerMask layerMask = LayerMask.GetMask("Enemy");
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5f, layerMask);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, oneShotDistance, layerMask);
         nearestEnemy = null;
         float nearestDistance = float.MaxValue;
 
@@ -383,7 +358,7 @@ public class Player : MonoBehaviour
             EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
             if (enemy)
             {
-                Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
+                Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position + Vector3.up);
                 if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
                 {
                     if (enemy.mState == EnemyState.Groggy)
@@ -454,8 +429,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    void SwordMP0()
-    {
-        currSwordMP = 0;
-    }
+   
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -13,7 +14,13 @@ public class NoteManager : MonoSingleton<NoteManager>
     public Coroutine nowCoroutine;
 
     public AudioClip startClip;
-    public ActBlock nowActBlock;
+
+
+    public AudioClip nowx1Clip;
+    public AudioClip nowx2Clip;
+    public AudioClip nowx3Clip;
+    public AudioClip nowx5Clip;
+
     public List<ActBlock> prePlayClipList;
 
     public RectTransform leftNoteparent;
@@ -33,6 +40,8 @@ public class NoteManager : MonoSingleton<NoteManager>
     private float interval;
     private Player player;
 
+    public Text comboText;
+    public int comboint = 0;
 
     private void Awake()
     {
@@ -46,6 +55,7 @@ public class NoteManager : MonoSingleton<NoteManager>
     public void AudioChange(ActBlock block) => nowCoroutine = StartCoroutine(AudioChangeSync(block));
     private IEnumerator AudioChangeSync(ActBlock block)
     {
+        float nowtime = audioSource.time;
         interval = 60f / block.songBPM;
         audioSource.Pause();
         AudioClip tempClip;
@@ -69,6 +79,7 @@ public class NoteManager : MonoSingleton<NoteManager>
 
         }
         audioSource.resource = tempClip;
+        audioSource.time = nowtime;
         audioSource.Play();
         yield return new WaitUntil(() => (audioSource.isPlaying));
     }
@@ -89,7 +100,8 @@ public class NoteManager : MonoSingleton<NoteManager>
         prePlayClipList = new List<ActBlock>();
         
         yield return new WaitUntil(() => (prePlayClipList.Count > 0));
-
+        yield return StartCoroutine(SpawnNotes());
+        
         
         
     }
@@ -113,8 +125,8 @@ public class NoteManager : MonoSingleton<NoteManager>
                 NoteData rnote = rgo.GetComponent<NoteData>();
                 if (lnote != null && rnote != null)
                 {
-                    lnote.Initialize(leftStartPos, leftEndPos, interval * 3);
-                     rnote.Initialize(rightStartPos, rightEndPos, interval * 3);
+                    lnote.Initialize(leftStartPos, leftEndPos, interval * 3, false);
+                     rnote.Initialize(rightStartPos, rightEndPos, interval * 3,true);
                 }
             }
             
@@ -126,7 +138,10 @@ public class NoteManager : MonoSingleton<NoteManager>
     {
         if (hitType == "Great" || hitType == "Good")
         {
-            player.Fire();
+            //player.PlayerFire();
+            //comboText.gameObject.SetActive(true);
+            comboint++;
+            comboText.text = comboint.ToString();
         }
     }
 }

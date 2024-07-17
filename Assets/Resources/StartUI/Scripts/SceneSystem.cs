@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +20,6 @@ public class SceneSystem : MonoBehaviour
     }
     public void GameStart()
     {
-        SceneManager.LoadScene("PlayerTest");
+        SceneManager.LoadScene("CollapseTest");
     }
 }
