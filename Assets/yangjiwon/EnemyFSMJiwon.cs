@@ -11,7 +11,7 @@ using static EnemyGroggyState;
 
 public class EnemyFsmJiwon : MonoBehaviour
 {
-    //ì— í”¼ê²Œì´ì§€ ë°›ê¸° ì¶”ê°€ (ê·œí˜„)
+    //¿¥ÇÇ°ÔÀÌÁö ¹Ş±â Ãß°¡ (±ÔÇö)
     float attackMPUP = 0;
 
     public float findDistance;
@@ -24,30 +24,30 @@ public class EnemyFsmJiwon : MonoBehaviour
     public float attackDelay = 2f;
     public EnemyState mState;
 
-    //ê·¸ë¡œê¸° ìƒíƒœ
+    //±×·Î±â »óÅÂ
     public EnemyGroggyState groggyState = NOT_GROGGY;
     public int groggyHp;
     public float groggyTimer = 3.0f;
 
-    //ê·¸ë¡œê¸°UI
+    //±×·Î±âUI
     public GameObject groggyUI;
     public GameObject canvas;
 
-    //ìŠ¤í„´ìŠ¤í‚¬
+    //½ºÅÏ½ºÅ³
     public float stunTimer;
     public float stunTime = 5.0f;
 
-    //ìŠ¤í„´ ì—°ê³„ ì£½ìŒ
+    //½ºÅÏ ¿¬°è Á×À½
     public float stunDeadRadius = 5.0f;
 
-    //ë°ë¯¸ì§€ UI
+    //µ¥¹ÌÁö UI
     public GameObject damageUI;
 
-    //ë°ë¯¸ì§€ê°€ ëœ¨ëŠ” ìœ„ì¹˜
+    //µ¥¹ÌÁö°¡ ¶ß´Â À§Ä¡
     public Transform damagePos;
     public Transform groggyPos;
 
-    //UIì˜ ë ‰íŠ¸í¬ì§€ì…˜
+    //UIÀÇ ·ºÆ®Æ÷Áö¼Ç
     public RectTransform rtDamageUI;
 
     private RectTransform _rectTransformGroggyUI;
@@ -72,7 +72,7 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     public virtual void Start()
     {
-        //MPë°›ê¸° (ê·œ)
+        //MP¹Ş±â (±Ô)
         attackMPUP = Player.instance.maxMP / 10f;
 
         groggyHp = maxHp / 10;
@@ -129,7 +129,7 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     private IEnumerator DamageProcess(EnemyState prevState)
     {
-        // í”¼ê²© ëª¨ì…˜ ë§Œí¼ ê¸°ë‹¤ë¦¬ê¸°
+        // ÇÇ°İ ¸ğ¼Ç ¸¸Å­ ±â´Ù¸®±â
         yield return new WaitForSeconds(waitDamagedSec);
 
         if (prevState is EnemyState.Groggy or EnemyState.Stun)
@@ -140,7 +140,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         {
             mState = EnemyState.Idle;        
         }
-        print("ìƒíƒœ ì „í™˜: Damaged -> " + mState);
+        print("»óÅÂ ÀüÈ¯: Damaged -> " + mState);
     }
 
     private void Return()
@@ -161,7 +161,7 @@ public class EnemyFsmJiwon : MonoBehaviour
 
             hp = maxHp;
             mState = EnemyState.Idle;
-            print("ìƒíƒœ ì „í™˜: Return -> Idle");
+            print("»óÅÂ ÀüÈ¯: Return -> Idle");
 
             _anim.SetTrigger(MoveToIdle);
         }
@@ -181,26 +181,26 @@ public class EnemyFsmJiwon : MonoBehaviour
         _anim.SetBool(OnGroggy, false);
         _anim.SetTrigger(Die1);
         groggyState = WAS_GROGGY;
-        print("ì£½ìŒ ë‹¹ì‹œ mState : " + mState);
+        print("Á×À½ ´ç½Ã mState : " + mState);
         OnDieWhenStun();
         if (_groggyUIObj)
         {
             Destroy(_groggyUIObj);
         }
         yield return new WaitForSeconds(5f);
-        print("!ì†Œë©¸");
-        Destroy(gameObject);
+        print("!¼Ò¸ê");
+        gameObject.SetActive(false);
     }
 
     protected virtual void Attack()
     {
-        // í”Œë ˆì´ì–´ê°€ ê³µê²© ë²”ìœ„ ë‚´
+        // ÇÃ·¹ÀÌ¾î°¡ °ø°İ ¹üÀ§ ³»
         if (Vector3.Distance(transform.position, _player.position) < attackDistance)
         {
             _currentTime += Time.deltaTime;
             if (_currentTime > attackDelay)
             {
-                print("ê³µê²©");
+                print("°ø°İ");
                 _currentTime = 0;
                 _anim.SetTrigger(StartAttack);
             }
@@ -208,7 +208,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         else
         {
             mState = EnemyState.Move;
-            print("ìƒíƒœ ì „í™˜: Attack -> Move");
+            print("»óÅÂ ÀüÈ¯: Attack -> Move");
             _currentTime = 0;
 
             _anim.SetTrigger(AttackToMove);
@@ -217,12 +217,12 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     private void Move()
     {
-        // í˜„ì¬ ìœ„ì¹˜ê°€ ì´ˆê¸° ìœ„ì¹˜ì—ì„œ ì´ë™ ê°€ëŠ¥ ë²”ìœ„ë¥¼ ë„˜ì–´ì„ ë‹¤ë©´
+        // ÇöÀç À§Ä¡°¡ ÃÊ±â À§Ä¡¿¡¼­ ÀÌµ¿ °¡´É ¹üÀ§¸¦ ³Ñ¾î¼±´Ù¸é
         var currentToOriginDistance = Vector3.Distance(transform.position, _originPos);
         if (currentToOriginDistance > moveDistance)
         {
             mState = EnemyState.Return;
-            print("ìƒíƒœ ì „í™˜: Move -> Return");
+            print("»óÅÂ ÀüÈ¯: Move -> Return");
         }
         else
         {
@@ -239,9 +239,9 @@ public class EnemyFsmJiwon : MonoBehaviour
             else
             {
                 mState = EnemyState.Attack;
-                print("ìƒíƒœ ì „í™˜: Move -> Attack");
+                print("»óÅÂ ÀüÈ¯: Move -> Attack");
 
-                _currentTime = attackDelay;
+                _currentTime = 0;
 
                 _anim.SetTrigger(MoveToAttackDelay);
             }
@@ -250,12 +250,11 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     private void Idle()
     {
-        print(_player);
-        print(transform);
+
         if (Vector3.Distance(transform.position, _player.position) < findDistance)
         {
             mState = EnemyState.Move;
-            print("ìƒíƒœ ì „í™˜ : Idle -> Move");
+            print("»óÅÂ ÀüÈ¯ : Idle -> Move");
 
             _anim.SetTrigger(IdleToMove);
         }
@@ -270,20 +269,20 @@ public class EnemyFsmJiwon : MonoBehaviour
 
         EnemyState prevEnemyState = mState;
         hp -= hitPower;
-        print("ì  ì²´ë ¥ hp : " + hp);
+        print("Àû Ã¼·Â hp : " + hp);
         _navMeshAgent.isStopped = true;
         _navMeshAgent.ResetPath();
 
         if (hp > 0)
         {
             mState = EnemyState.Damaged;
-            print("ìƒíƒœ ì „í™˜: Any state -> Damaged");
+            print("»óÅÂ ÀüÈ¯: Any state -> Damaged");
             if (hp <= groggyHp && groggyState == NOT_GROGGY)
             {
                 mState = EnemyState.Groggy;
                 _anim.SetBool(OnStun, false);
                 _anim.SetBool(OnGroggy, true);
-                print("ìƒíƒœ ì „í™˜: Any State -> Groggy");
+                print("»óÅÂ ÀüÈ¯: Any State -> Groggy");
                 Groggy();
             }
             else
@@ -291,14 +290,14 @@ public class EnemyFsmJiwon : MonoBehaviour
                 OnDamageUI(hitPower);
                 _anim.SetTrigger(Damaged1);
                 Damaged(prevEnemyState);
-                //ì— í”¼ê²Œì´ì§€ ë°›ê¸° ì¶”ê°€ (ê·œí˜„)
+                //¿¥ÇÇ°ÔÀÌÁö ¹Ş±â Ãß°¡ (±ÔÇö)
                  _playerScript.UpdateMP(attackMPUP);
 
             }
         }
         else
         {
-            print("ìƒíƒœ ì „í™˜: Any state -> Die");
+            print("»óÅÂ ÀüÈ¯: Any state -> Die");
             Die();
         }
     }
@@ -323,7 +322,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         groggyTimer -= Time.deltaTime;
         _navMeshAgent.isStopped = true;
 
-        // ì ì˜ ì¤‘ì•™ì— Eë¼ëŠ” ê¸€ì”¨ê°€ ëœ¬ë‹¤
+        // ÀûÀÇ Áß¾Ó¿¡ E¶ó´Â ±Û¾¾°¡ ¶á´Ù
         OnGroggyUI();
     }
     
@@ -354,14 +353,14 @@ public class EnemyFsmJiwon : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void OnDieWhenStun()
     {
-        print("OnDieWhenStun í˜¸ì¶œ");
-        // ì£¼ë³€ì˜ ì ë“¤ì„ íƒìƒ‰í•˜ê³ 
+        print("OnDieWhenStun È£Ãâ");
+        // ÁÖº¯ÀÇ ÀûµéÀ» Å½»öÇÏ°í
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunDeadRadius, _enemyLayer);
         foreach (Collider hitCollider in hitColliders)
         {
             EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
             if (!enemy) continue;
-            // ì£¼ë³€ ì ë“¤ì´ ìŠ¤í„´ ìƒíƒœì¸ì§€ í™•ì¸í•˜ê³ ;
+            // ÁÖº¯ ÀûµéÀÌ ½ºÅÏ »óÅÂÀÎÁö È®ÀÎÇÏ°í;
             if (enemy.mState == EnemyState.Stun)
             {
                 enemy.Die();
