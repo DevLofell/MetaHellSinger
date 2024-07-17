@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 7adcba7041d76554e91426df09a57150
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 221704
+  packageName: Monsters and Humanoids Sound Pack
+  packageVersion: 1.0
+  assetPath: Assets/Monsters and Humanoids Sound Pack/Gift/RAW Files/Halloween -
+    Monsters Zombie Breath 01 - RAW.wav
+  uploadId: 498767

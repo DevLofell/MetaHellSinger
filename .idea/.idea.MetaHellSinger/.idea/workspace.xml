@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="96d053d9-bbb8-47d4-9437-b5e6e8c2bc20" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MetaHellSinger/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MetaHellSinger/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MetaHellSinger/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MetaHellSinger/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KriptoFX/Realistic Effects Pack v4/HDRP and URP patches/HDRP Patch.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KriptoFX/Realistic Effects Pack v4/HDRP and URP patches/URP Patch.unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/yangjiwon/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yangjiwon/Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/yangjiwon/EnemyFSMJiwon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yangjiwon/EnemyFSMJiwon.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/yangjiwon/EnemyRanged.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yangjiwon/EnemyRanged.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/yangjiwon/EnemyState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yangjiwon/EnemyState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/yangjiwon/EnemyTestJiwon.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yangjiwon/EnemyTestJiwon.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/yangjiwon/RangedEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/yangjiwon/RangedEnemy.prefab" afterDir="false" />
     </list>
@@ -24,6 +21,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/86ad06026d274df99efa33ee7b0aa90618600/fd/407613be/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e509afeff7384f24a8f0ac30527ff01c1cbe00/50/02ed1c98/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e509afeff7384f24a8f0ac30527ff01c1cbe00/8c/0980ab01/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e509afeff7384f24a8f0ac30527ff01c1cbe00/92/9ff1016f/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
@@ -118,7 +116,7 @@
       <workItem from="1720773270632" duration="54000" />
       <workItem from="1720773368798" duration="24716000" />
       <workItem from="1721178599691" duration="6026000" />
-      <workItem from="1721189273307" duration="2406000" />
+      <workItem from="1721189273307" duration="12760000" />
     </task>
     <servers />
   </component>
