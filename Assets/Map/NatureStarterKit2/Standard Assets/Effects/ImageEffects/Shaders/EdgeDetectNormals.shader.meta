@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 0d1644bdf064147baa97f235fc5b4903
+ShaderImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 52977
+  packageName: Nature Starter Kit 2
+  packageVersion: 1.0
+  assetPath: Assets/NatureStarterKit2/Standard Assets/Effects/ImageEffects/Shaders/EdgeDetectNormals.shader
+  uploadId: 96407

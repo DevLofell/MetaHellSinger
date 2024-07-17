@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
+    //카메라 쉐이크
+    public CameraShake cameraShake;
+
+
     //플레이어 체력
     public float currHP = 0;
     public float maxHP = 1000;
@@ -100,6 +104,10 @@ public class Player : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         currHP = maxHP;
+        if(cameraShake == null)
+        {
+            cameraShake = Camera.main.GetComponent<CameraShake>();
+        }
     }
 
     void Update()
@@ -239,6 +247,9 @@ public class Player : MonoBehaviour
         {
             if (playerAnimator.animator.GetInteger("weaponState") == 0)
             {
+
+                //카메라 쉐이크
+                StartCoroutine(cameraShake.Shake(0.1f, 0.01f));
                 //칼질 애니메이션
                 playerAnimator.OnSwordAttack();
                 //칼질 이펙트
@@ -247,6 +258,9 @@ public class Player : MonoBehaviour
             }
             if (playerAnimator.animator.GetInteger("weaponState") == 1)
             {
+
+                
+
                 #region 스컬 공격
                 Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
@@ -344,6 +358,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+
     //즉살스킬
     void OneShot()
     {
@@ -389,9 +404,11 @@ public class Player : MonoBehaviour
         GameObject effectex = Instantiate(slashEffectList[attackNum - 1]);
         effectex.transform.position = slashPos.transform.position;
         effectex.transform.forward = slashPos.transform.forward;
-        Destroy(effectex, 0.3f);
+        Destroy(effectex, 0.2f);
 
     }
+
+   
     public void UpdateHP(float value)
     {
         // 현재 HP를 value 더하자.

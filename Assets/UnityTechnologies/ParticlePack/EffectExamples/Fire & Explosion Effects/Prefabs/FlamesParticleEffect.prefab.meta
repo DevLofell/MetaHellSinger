@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3228a22491941734bb83ad691d17fcb9
+timeCreated: 1473159169
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36897
+  packageName: Old Sea Port
+  packageVersion: 1.2
+  assetPath: Assets/UnityTechnologies/ParticlePack/EffectExamples/Fire & Explosion
+    Effects/Prefabs/FlamesParticleEffect.prefab
+  uploadId: 387609

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e47337031c34c7d438b6770da19acdf4
+timeCreated: 1451735050
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 52977
+  packageName: Nature Starter Kit 2
+  packageVersion: 1.0
+  assetPath: Assets/NatureStarterKit2/info.txt
+  uploadId: 96407

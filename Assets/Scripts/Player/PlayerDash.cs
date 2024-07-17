@@ -65,7 +65,7 @@ public class PlayerDash : MonoBehaviour
         nextDashTime = Time.time + dashCooldown;
         isDashing = true;
 
-
+        Application.targetFrameRate = 20;
         dasheEffect.active = true;
 
     }
@@ -81,7 +81,7 @@ public class PlayerDash : MonoBehaviour
         {
             isDashing = false;
             dasheEffect.active = false;
-
+            Application.targetFrameRate = 60;
         }
     }
 }

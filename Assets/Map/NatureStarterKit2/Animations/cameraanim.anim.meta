@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7789fd8934a705745a05db5f410316ba
+timeCreated: 1451500309
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 52977
+  packageName: Nature Starter Kit 2
+  packageVersion: 1.0
+  assetPath: Assets/NatureStarterKit2/Animations/cameraanim.anim
+  uploadId: 96407

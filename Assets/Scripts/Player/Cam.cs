@@ -13,7 +13,7 @@ public class Cam : MonoBehaviour
     {
     }
 
-    void Update()
+    void LateUpdate()
     {
         CamRotate();
         CamFollow();
@@ -37,6 +37,6 @@ public class Cam : MonoBehaviour
 
     void CamFollow()
     {
-        transform.position = target.position;
+        //transform.position = target.position;
     }
 }
