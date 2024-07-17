@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: f95dfe9e54443fb4db85366b6040174c
+timeCreated: 1501982327
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 105546
+  packageName: Dehumaniser Monster Voice - Rage Monster
+  packageVersion: 1.0
+  assetPath: Assets/Dehumaniser/Voices/DehumaniserAudioComponent.cs
+  uploadId: 224517
