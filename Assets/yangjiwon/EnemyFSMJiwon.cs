@@ -250,8 +250,8 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     private void Idle()
     {
-        print(_player);
-        print(transform);
+        //print(_player);
+        //print(transform);
         if (Vector3.Distance(transform.position, _player.position) < findDistance)
         {
             mState = EnemyState.Move;

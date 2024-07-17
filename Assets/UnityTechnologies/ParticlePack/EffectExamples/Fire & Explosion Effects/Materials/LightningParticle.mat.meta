@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5e1cf1f3811c95a448a6173c1d04d499
+timeCreated: 1472052335
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36897
+  packageName: Old Sea Port
+  packageVersion: 1.2
+  assetPath: Assets/UnityTechnologies/ParticlePack/EffectExamples/Fire & Explosion
+    Effects/Materials/LightningParticle.mat
+  uploadId: 387609

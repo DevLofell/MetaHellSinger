@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 51ae11a5cd82fda468a85179946d672a
+ShaderImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 52977
+  packageName: Nature Starter Kit 2
+  packageVersion: 1.0
+  assetPath: Assets/NatureStarterKit2/Standard Assets/Effects/ImageEffects/Shaders/frag_ao.cginc
+  uploadId: 96407

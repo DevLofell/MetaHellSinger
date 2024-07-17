@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f88239865da4c79468e051ceb78c0317
+timeCreated: 1472113426
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36897
+  packageName: Old Sea Port
+  packageVersion: 1.2
+  assetPath: Assets/UnityTechnologies/ParticlePack/EffectExamples/Fire & Explosion
+    Effects/Materials/ShockWaveParticle.mat
+  uploadId: 387609
