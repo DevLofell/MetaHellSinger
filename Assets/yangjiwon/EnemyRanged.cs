@@ -23,7 +23,11 @@ public class EnemyRanged : EnemyFsmJiwon
 
     protected override void Update()
     {
-        transform.LookAt(_player);
+        if (mState != EnemyState.Die)
+        {
+            transform.LookAt(_player);
+        }
+        
         base.Update();
     }
 

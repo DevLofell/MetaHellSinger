@@ -20,7 +20,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     public int attackPower;
     public int maxHp;
     public int hp;
-    public float waitDamagedSec = 1.0f;
+    public float waitDamagedSec = 0.2f;
     public float attackDelay = 2f;
     public EnemyState mState;
     [FormerlySerializedAs("AudioClips")] public AudioClip[] audioClips;

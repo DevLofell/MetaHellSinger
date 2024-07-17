@@ -129,7 +129,7 @@ MonoBehaviour:
   attackPower: 3
   maxHp: 1000
   hp: 0
-  waitDamagedSec: 1
+  waitDamagedSec: 0.2
   attackDelay: 2
   mState: 0
   audioClips:
