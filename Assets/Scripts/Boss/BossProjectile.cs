@@ -15,7 +15,9 @@ public class BossProjectile : MonoBehaviour
     {
         yield return new WaitUntil(()=>(target != null));
         direction = target.position - this.transform.position;
+        direction += new Vector3(0, 1, 0);
         direction.Normalize();
+        Destroy(this, 300f);
     }
 
     // Update is called once per frame
@@ -30,5 +32,6 @@ public class BossProjectile : MonoBehaviour
         {
             other.gameObject.GetComponent<Player>().UpdateHP(-AttackValue);
         }
+        
     }
 }

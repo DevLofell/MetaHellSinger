@@ -672,7 +672,7 @@ Transform:
   m_GameObject: {fileID: 25455974}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 4.59, z: -20}
+  m_LocalPosition: {x: -5, y: -1.2, z: -20}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -695,7 +695,7 @@ MonoBehaviour:
   BossRig: {fileID: 415217919}
   isPatternOver: 0
   Projectile: {fileID: 7228384383602391000, guid: 8dc1c5a2262d6cc4ea670b78bc0fdca9, type: 3}
-  target: {fileID: 0}
+  target: {fileID: 1037361103}
   nowPosIndex: 0
   firePosList:
   - {fileID: 1183887034}
@@ -7669,7 +7669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.16470589}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -25924,6 +25924,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec78ebca7517fb745a45a931cb06d2bd, type: 3}
+--- !u!1 &587839077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3462507118800820777, guid: b856fc9b593e14f47a289cbc7872b8f9, type: 3}
+  m_PrefabInstance: {fileID: 1251290156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &587839080
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587839077}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &591209729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27436,15 +27468,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632073329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5, y: 0, z: 20}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -5, y: -1.2, z: 20}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 341101131}
   - {fileID: 628857042}
   m_Father: {fileID: 1631628845}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &632073331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27460,7 +27492,7 @@ MonoBehaviour:
   BossRig: {fileID: 341101131}
   isPatternOver: 0
   Projectile: {fileID: 7228384383602391000, guid: 8dc1c5a2262d6cc4ea670b78bc0fdca9, type: 3}
-  target: {fileID: 0}
+  target: {fileID: 1037361103}
   nowPosIndex: 0
   firePosList:
   - {fileID: 1343968031}
@@ -36899,7 +36931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.16470589}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -58842,7 +58874,7 @@ Transform:
   m_GameObject: {fileID: 1142262932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 25.58, y: 1, z: 0}
+  m_LocalPosition: {x: 25.58, y: -1.2, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58865,7 +58897,7 @@ MonoBehaviour:
   BossRig: {fileID: 1693803244}
   isPatternOver: 0
   Projectile: {fileID: 7228384383602391000, guid: 8dc1c5a2262d6cc4ea670b78bc0fdca9, type: 3}
-  target: {fileID: 0}
+  target: {fileID: 1037361103}
   nowPosIndex: 0
   firePosList:
   - {fileID: 1044862038}
@@ -62921,7 +62953,7 @@ PrefabInstance:
       objectReference: {fileID: 1251290157}
     - target: {fileID: 686937691347223611, guid: b856fc9b593e14f47a289cbc7872b8f9, type: 3}
       propertyPath: isStartBoss
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 686937691347223611, guid: b856fc9b593e14f47a289cbc7872b8f9, type: 3}
       propertyPath: 'bossPatterns.Array.data[0]'
@@ -62982,7 +63014,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3462507118800820777, guid: b856fc9b593e14f47a289cbc7872b8f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 587839080}
   m_SourcePrefab: {fileID: 100100000, guid: b856fc9b593e14f47a289cbc7872b8f9, type: 3}
 --- !u!95 &1251290157 stripped
 Animator:
@@ -73550,10 +73585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songBPM: 120
-  ChangeClipx1: {fileID: 8300000, guid: 65cf53c81553745438a4ff8b566f1e46, type: 3}
-  ChangeClipx2: {fileID: 8300000, guid: 5ef15e03b57747048939a40f6b190429, type: 3}
-  ChangeClipx3: {fileID: 8300000, guid: 522abb2c495880c4fb2defe43816a5b0, type: 3}
-  ChangeClipx5: {fileID: 8300000, guid: dc4744f0b93e7fd45847f986a435ab99, type: 3}
+  ChangeClipx1: {fileID: 8300000, guid: 7f8632a31340bc74c86593f6f2917e3b, type: 3}
+  ChangeClipx2: {fileID: 8300000, guid: 7f8632a31340bc74c86593f6f2917e3b, type: 3}
+  ChangeClipx3: {fileID: 8300000, guid: 7f8632a31340bc74c86593f6f2917e3b, type: 3}
+  ChangeClipx5: {fileID: 8300000, guid: 7f8632a31340bc74c86593f6f2917e3b, type: 3}
   isBossTrigger: 1
 --- !u!65 &1444413317
 BoxCollider:
@@ -73637,6 +73672,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1445477672}
+  - component: {fileID: 1445477673}
   m_Layer: 0
   m_Name: BossMap
   m_TagString: Untagged
@@ -73664,6 +73700,37 @@ Transform:
   - {fileID: 1233582147}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1445477673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445477671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 53e6ec7d22988cb40b97c134ea0106eb, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1446987398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97470,15 +97537,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3513973075789744823, guid: 8f4298491027ce64594fc34d7668c6aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 118.02293
+      value: -44.975006
       objectReference: {fileID: 0}
     - target: {fileID: 3513973075789744823, guid: 8f4298491027ce64594fc34d7668c6aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.0067673
+      value: 0.64330435
       objectReference: {fileID: 0}
     - target: {fileID: 3513973075789744823, guid: 8f4298491027ce64594fc34d7668c6aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 140.61508
+      value: 122.138374
       objectReference: {fileID: 0}
     - target: {fileID: 3513973075789744823, guid: 8f4298491027ce64594fc34d7668c6aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -98858,10 +98925,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 845354071}
   startClip: {fileID: 8300000, guid: 4751b62f7033b4a4695f1cd5c52e77b1, type: 3}
-  nowx1Clip: {fileID: 0}
-  nowx2Clip: {fileID: 0}
-  nowx3Clip: {fileID: 0}
-  nowx5Clip: {fileID: 0}
+  nowx1Clip: {fileID: 8300000, guid: 4751b62f7033b4a4695f1cd5c52e77b1, type: 3}
+  nowx2Clip: {fileID: 8300000, guid: b9045674e5609134c95ab379208bf832, type: 3}
+  nowx3Clip: {fileID: 8300000, guid: 00f1256cdf7d98b4c92b149db5e14d27, type: 3}
+  nowx5Clip: {fileID: 8300000, guid: 2e5cd5c3a6ad97942b857939eff472ee, type: 3}
   prePlayClipList:
   - {fileID: 1444413316}
   leftNoteparent: {fileID: 92409226}
