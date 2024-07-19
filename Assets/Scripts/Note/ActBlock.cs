@@ -28,7 +28,7 @@ public class ActBlock : MonoBehaviour
         }
         if(isBossTrigger)
         {
-            BossPatternManager.instance.isBossStart = true;
+            BossFSM.instance.isStartBoss = true;
         }
     }
 }

@@ -17370,7 +17370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d015e08e7f24e547af36d813c8df941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAni: {fileID: 8506266127799504343}
+  player: {fileID: 0}
+  playerAni: {fileID: 0}
   swordState: {fileID: 1339340055}
   skullState: {fileID: 1062253666}
   swordStateSkill: {fileID: 1913615136}
@@ -54025,11 +54026,6 @@ GameObject:
 --- !u!4 &8276226104284955540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3513973075789744823, guid: 8f4298491027ce64594fc34d7668c6aa, type: 3}
-  m_PrefabInstance: {fileID: 2222150800767007673}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8506266127799504343 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8316752894728269741, guid: 8f4298491027ce64594fc34d7668c6aa, type: 3}
   m_PrefabInstance: {fileID: 2222150800767007673}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8647661225945166156
