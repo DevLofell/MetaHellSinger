@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
-
 
 public class Player : MonoBehaviour
 {
@@ -26,11 +27,12 @@ public class Player : MonoBehaviour
     bool onOneShot = false;
     EnemyFsmJiwon nearestEnemy = null;
     float speTime = 0;
-    public float oneShotDistance = 50;
+    public float oneShotRange = 50;
 
     //스컬 특수공격
     public LayerMask enemyLayer;
     public float stunRadius = 5.0f;
+    public float stunRange = 15.0f;
     public GameObject stunEffectFactory;
     public GameObject stunEffectPos;
     public float swordSKillTime = 5.0f;
@@ -76,8 +78,14 @@ public class Player : MonoBehaviour
     //스컬 공격 방향
     public Vector3 fireBallDir;
 
+    Arm arm;
+
+
     //플레이어 애니메이터
     private PlayerAnimator playerAnimator;
+    //플레이어 날개 애니메이터
+    public Animator wingAni;
+
     //칼질 애니메이션
     public List<GameObject> slashEffectList;
     //칼질 애니메이션 위치
@@ -102,9 +110,14 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        arm = GetComponent<Arm>();
+
+        //armRot = true;
         cc = GetComponent<CharacterController>();
+        arm = GetComponent<Arm>();
+
         currHP = maxHP;
-        if(cameraShake == null)
+        if (cameraShake == null)
         {
             cameraShake = Camera.main.GetComponent<CameraShake>();
         }
@@ -156,7 +169,7 @@ public class Player : MonoBehaviour
                 {
                     currSwordMP -= (Time.deltaTime / swordSKillTime);
                 }
-                else if(currSwordMP <= 0)
+                else if (currSwordMP <= 0)
                 {
                     currSwordMP = 0;
                     playerAnimator.OnSwordState();
@@ -227,7 +240,18 @@ public class Player : MonoBehaviour
             yVelocity = jumpPower;
             isJumping = true;
             nowJumpCount++;
+            if (nowJumpCount == 2)
+            {
+                wingAni.SetTrigger("OnJump");
+
+            }
         }
+        //else
+        //{
+        //    wingAni.SetInteger("Mode", 0);
+
+        //}
+
 
 
         dir.y = yVelocity;
@@ -247,20 +271,25 @@ public class Player : MonoBehaviour
         {
             if (playerAnimator.animator.GetInteger("weaponState") == 0)
             {
+                if (playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName("Great Sword Slash2"))
+                {
+                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_THSWORD);
 
-                //카메라 쉐이크
-                StartCoroutine(cameraShake.Shake(0.1f, 0.01f));
+                }
+                else
+                {
+
+                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
+                }
                 //칼질 애니메이션
                 playerAnimator.OnSwordAttack();
                 //칼질 이펙트
-                //SlashAni();
                 onOneShot = false;
             }
             if (playerAnimator.animator.GetInteger("weaponState") == 1)
             {
-
-                
-
+                arm.armMovePlay = true;
+                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_FIRE);
                 #region 스컬 공격
                 Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
@@ -338,7 +367,7 @@ public class Player : MonoBehaviour
     {
         print("StunSkill 호출");
         LayerMask enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 5, enemyLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRange, enemyLayer);
         foreach (Collider hitCollider in hitColliders)
         {
             EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
@@ -364,7 +393,7 @@ public class Player : MonoBehaviour
     {
         print("oneShot 호출");
         LayerMask layerMask = LayerMask.GetMask("Enemy");
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, oneShotDistance, layerMask);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, oneShotRange, layerMask);
         nearestEnemy = null;
         float nearestDistance = float.MaxValue;
 
@@ -408,7 +437,7 @@ public class Player : MonoBehaviour
 
     }
 
-   
+
     public void UpdateHP(float value)
     {
         // 현재 HP를 value 더하자.
@@ -446,5 +475,6 @@ public class Player : MonoBehaviour
         }
     }
 
-   
+
+
 }

@@ -6,7 +6,7 @@ public class Cam : MonoBehaviour
 {
     public Transform target;
 
-    public float rotSpeed = 500f;
+    public float rotSpeed = 300f;
     float mx = 0;
     float my = 0;
     void Start()

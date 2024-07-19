@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UISystem : MonoBehaviour
 {
+    public Player player;
+
     public Animator playerAni;
     public GameObject swordState;
     public GameObject skullState;
@@ -65,18 +67,18 @@ public class UISystem : MonoBehaviour
     void HPMP()
     {
         //hp바
-        hpbar.fillAmount = Mathf.Lerp(hpbar.fillAmount, Player.instance.currHP / Player.instance.maxHP, 10 * Time.deltaTime);
+        hpbar.fillAmount = Mathf.Lerp(hpbar.fillAmount, player.currHP / player.maxHP, 10 * Time.deltaTime);
 
         //mp바
         if (playerAni.GetInteger("weaponState") == 0 || playerAni.GetInteger("weaponState") == 2)
         {
 
-            mpbar.fillAmount = Mathf.Lerp(mpbar.fillAmount, Player.instance.currSwordMP / Player.instance.maxMP, 10 * Time.deltaTime);
+            mpbar.fillAmount = Mathf.Lerp(mpbar.fillAmount, player.currSwordMP / player.maxMP, 10 * Time.deltaTime);
         }
         else if (playerAni.GetInteger("weaponState") == 1)
         {
 
-            mpbar.fillAmount = Mathf.Lerp(mpbar.fillAmount, Player.instance.currSkullMP / Player.instance.maxMP, 10 * Time.deltaTime);
+            mpbar.fillAmount = Mathf.Lerp(mpbar.fillAmount, player.currSkullMP / player.maxMP, 10 * Time.deltaTime);
         }
     }
     void ParticleUI()
@@ -92,7 +94,7 @@ public class UISystem : MonoBehaviour
             else
             {
 
-                vignetteEffect.intensity.value = 0.3f; // 강도
+                vignetteEffect.intensity.value = 0.4f; // 강도
             }
         }
         else

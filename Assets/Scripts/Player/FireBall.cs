@@ -23,18 +23,23 @@ public class FireBall : MonoBehaviour
         {
             cameraShake = Camera.main.GetComponent<CameraShake>();
         }
+
+        //GetComponent<Rigidbody>().velocity = transform.forward * fireBallSpeed;
     }
     void Update()
     {
         ////앞으로 이동한다.
         transform.position += transform.forward * fireBallSpeed * Time.deltaTime;
     }
+
+
+
     //파이어볼에 다른 물체가 감지되면
     private void OnTriggerEnter(Collider other)
     {
         print("카메라 흔들");
         //카메라 쉐이크
-        //cameraShake.PlayShake(0.3f, 0.1f);
+        cameraShake.PlayShake(0.3f, 0.1f);
 
         //파이어볼 폭발 효과를 생성한다.
         GameObject fireBallEffect = Instantiate(fireBallEffectFactory);

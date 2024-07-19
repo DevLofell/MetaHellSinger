@@ -22,6 +22,10 @@ public class DamageSystem : MonoBehaviour
         Vector3 pos = Camera.main.WorldToScreenPoint(target.position);
         up += Vector3.up * (uiSpeed * Time.deltaTime);
         rt.anchoredPosition = pos + up;
+
+        float angle = Vector3.Angle(Camera.main.transform.forward, target.position - Camera.main.transform.position);
+        if (angle < 60) text.enabled = true;
+        else text.enabled = false;
     }
     public void DamageMove(Transform tr)
     {

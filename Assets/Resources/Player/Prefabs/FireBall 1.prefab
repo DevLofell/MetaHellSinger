@@ -9707,7 +9707,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &6325029030071459181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9720,6 +9720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc8b679772b22c408a70cda7287180c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraShake: {fileID: 0}
   fireBallSpeed: 35
   fireBallEffectFactory: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
   fireBallDamage: 120
