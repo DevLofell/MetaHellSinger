@@ -29,7 +29,7 @@ public class BossPatternManager : MonoSingleton<BossPatternManager>
 
     public BossState state;
 
-    
+   
     
     // 날기 관련
     public Transform flyingPos;
@@ -132,7 +132,7 @@ public class BossPatternManager : MonoSingleton<BossPatternManager>
         if (distance < 0.1f) // 거리 비교 (0.1f는 임계값으로, 필요에 따라 조정 가능)
         {
             BossObject.transform.position = flyingPos.transform.position; // 보스를 정확히 목표 위치에 맞추기
-            ChangeState(BossState.FlyRotate); // 상태를 FlyAttack으로 변경하여 공격 시작
+            
         }
         else
         {
@@ -151,9 +151,9 @@ public class BossPatternManager : MonoSingleton<BossPatternManager>
     float nowRotateTime = 0;
     void FlyRotate()
     {
-        //BossObject.transform.forward = Vector3.Lerp(BossObject.transform.forward, flyingPos.forward, 10 * Time.deltaTime);
+        BossObject.transform.forward = Vector3.Lerp(BossObject.transform.forward, flyingPos.forward, 10 * Time.deltaTime);
 
-        BossObject.transform.rotation = Quaternion.Lerp(BossObject.transform.rotation, flyingPos.rotation, 10 * Time.deltaTime);
+        //BossObject.transform.rotation = Quaternion.Lerp(BossObject.transform.rotation, flyingPos.rotation, 10 * Time.deltaTime);
 
         if(Vector3.Angle(BossObject.transform.forward, flyingPos.transform.forward) < 5)
         {
