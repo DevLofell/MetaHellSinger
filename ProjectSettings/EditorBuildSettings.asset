@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scripts/Boss/Scenes/00.MainMenu.unity
     guid: c938e4a8df41e294c9eabb539ff4284a
   - enabled: 1
-    path: Assets/Scenes/Collapse/CollapseTest.unity
+    path: Assets/Map/Scenes/CollapseTest.unity
     guid: 67e49751684980f418195f69a6cb5b9e
   - enabled: 1
     path: Assets/Scripts/Boss/Scenes/02.GameOver.unity

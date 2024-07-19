@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9bcd2cc9b44d87d4bb9e5eb0feaca6c4
+timeCreated: 1473155171
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36897
+  packageName: Old Sea Port
+  packageVersion: 1.2
+  assetPath: Assets/UnityTechnologies/ParticlePack/EffectExamples/Fire & Explosion
+    Effects/Materials/PlasmaFireParticle.mat
+  uploadId: 387609

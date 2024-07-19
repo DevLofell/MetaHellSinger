@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: e63091ca6420aef40badd679c391c90a
+timeCreated: 1434792473
+licenseType: Store
+PluginImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder: {}
+  isPreloaded: 0
+  platformData:
+    Any:
+      enabled: 0
+      settings: {}
+    Editor:
+      enabled: 1
+      settings:
+        DefaultValueInitialized: true
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 105546
+  packageName: Dehumaniser Monster Voice - Rage Monster
+  packageVersion: 1.0
+  assetPath: Assets/Fabric/Editor/Fabric.Core.Editor.dll
+  uploadId: 224517

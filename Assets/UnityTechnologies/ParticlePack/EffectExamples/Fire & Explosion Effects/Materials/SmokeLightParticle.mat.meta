@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 23b6f720d67d67e499481e606f5eb4c7
+timeCreated: 1472824610
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 36897
+  packageName: Old Sea Port
+  packageVersion: 1.2
+  assetPath: Assets/UnityTechnologies/ParticlePack/EffectExamples/Fire & Explosion
+    Effects/Materials/SmokeLightParticle.mat
+  uploadId: 387609

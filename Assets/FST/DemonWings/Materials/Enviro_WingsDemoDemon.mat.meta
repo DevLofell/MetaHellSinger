@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d9fe698c2d74ee048bdeef71358245ca
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165503
+  packageName: Low Poly Animated Demon Wings
+  packageVersion: 2.0
+  assetPath: Assets/FST/DemonWings/Materials/Enviro_WingsDemoDemon.mat
+  uploadId: 549183

@@ -20,6 +20,9 @@ public class PlayerDash : MonoBehaviour
     PostProcessVolume ppv;
     MotionBlur dasheEffect;
 
+    public Animator wingAni;
+
+
     private void Start()
     {
         ppv = Camera.main.GetComponent<PostProcessVolume>();
@@ -34,11 +37,8 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Time.time > nextDashTime)
-        {
-            StartDash();
-        }
 
+        WingAni();
         if (isDashing)
         {
             PerformDash();
@@ -65,7 +65,7 @@ public class PlayerDash : MonoBehaviour
         nextDashTime = Time.time + dashCooldown;
         isDashing = true;
 
-
+        Application.targetFrameRate = 30;
         dasheEffect.active = true;
 
     }
@@ -81,7 +81,31 @@ public class PlayerDash : MonoBehaviour
         {
             isDashing = false;
             dasheEffect.active = false;
+            Application.targetFrameRate = 60;
+        }
+    }
 
+    void WingAni()
+    {
+        if (Input.GetKey(KeyCode.A) && Input.GetKeyDown(KeyCode.LeftShift) && Time.time > nextDashTime)
+        {
+            wingAni.SetTrigger("OnDashL");
+            StartDash();
+        }
+        else if (Input.GetKey(KeyCode.D) && Input.GetKeyDown(KeyCode.LeftShift) && Time.time > nextDashTime)
+        {
+            wingAni.SetTrigger("OnDashR");
+            StartDash();
+        }
+        else if (Input.GetKey(KeyCode.S) && Input.GetKeyDown(KeyCode.LeftShift) && Time.time > nextDashTime)
+        {
+            wingAni.SetTrigger("OnDashB");
+            StartDash();
+        }
+        else if(Input.GetKeyDown(KeyCode.LeftShift) && Time.time > nextDashTime)
+        {
+            //print("´ë½¬");
+            StartDash();
         }
     }
 }

@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: da310021e2a4142429d95c537846dc38
+ShaderImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 52977
+  packageName: Nature Starter Kit 2
+  packageVersion: 1.0
+  assetPath: Assets/NatureStarterKit2/Standard Assets/Effects/ImageEffects/Shaders/ShowAlphaChannel.shader
+  uploadId: 96407

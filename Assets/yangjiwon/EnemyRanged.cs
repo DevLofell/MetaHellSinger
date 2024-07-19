@@ -9,7 +9,7 @@ public class EnemyRanged : EnemyFsmJiwon
     public override void Start()
     {
         maxHp = 2000;
-        attackDelay = 5f;
+        attackDelay = 3f;
         findDistance = 30f;
         moveDistance = 50f;
         attackDistance = 20f;
@@ -23,7 +23,11 @@ public class EnemyRanged : EnemyFsmJiwon
 
     protected override void Update()
     {
-        transform.LookAt(_player);
+        if (mState != EnemyState.Die)
+        {
+            transform.LookAt(_player);
+        }
+        
         base.Update();
     }
 

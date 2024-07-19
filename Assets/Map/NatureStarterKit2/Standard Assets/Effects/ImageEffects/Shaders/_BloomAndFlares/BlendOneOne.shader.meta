@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: f7898d203e9b94c0dbe2bf9dd5cb32c0
+ShaderImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 52977
+  packageName: Nature Starter Kit 2
+  packageVersion: 1.0
+  assetPath: Assets/NatureStarterKit2/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlendOneOne.shader
+  uploadId: 96407

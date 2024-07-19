@@ -1,0 +1,93 @@
+Unknown --> unknown
+Unknown Rig:Root --> unknown rig:root
+Unknown Rig:Hips --> unknown rig:hips
+ValveBiped.Bip01 L Thigh --> valvebiped.bip01 l thigh
+ValveBiped.Bip01 L Calf --> valvebiped.bip01 l calf
+ValveBiped.Bip01 L Foot --> valvebiped.bip01 l foot
+ValveBiped.Bip01 L Toe0 --> valvebiped.bip01 l toe0
+Unknown Rig:joint12 --> unknown rig:joint12
+Unknown Rig:LeftUpLeg IKHelper --> unknown rig:leftupleg ikhelper
+Unknown Rig:LeftLeg IKHelper --> unknown rig:leftleg ikhelper
+Unknown Rig:LeftFoot IKHelper --> unknown rig:leftfoot ikhelper
+ValveBiped.Bip01 R Thigh --> valvebiped.bip01 r thigh
+ValveBiped.Bip01 R Calf --> valvebiped.bip01 r calf
+ValveBiped.Bip01 R Foot --> valvebiped.bip01 r foot
+ValveBiped.Bip01 R Toe0 --> valvebiped.bip01 r toe0
+Unknown Rig:joint12 1 --> unknown rig:joint12 1
+Unknown Rig:RightUpLeg IKHelper --> unknown rig:rightupleg ikhelper
+Unknown Rig:RightLeg IKHelper --> unknown rig:rightleg ikhelper
+Unknown Rig:RightFoot IKHelper --> unknown rig:rightfoot ikhelper
+ValveBiped.Bip01 Spine --> valvebiped.bip01 spine
+ValveBiped.Bip01 Spine1 --> valvebiped.bip01 spine1
+Unknown Rig:SpineX --> unknown rig:spinex
+ValveBiped.Bip01 Spine2 --> valvebiped.bip01 spine2
+ValveBiped.Bip01 L Clavicle --> valvebiped.bip01 l clavicle
+ValveBiped.Bip01 L UpperArm --> valvebiped.bip01 l upperarm
+ValveBiped.Bip01 L Forearm --> valvebiped.bip01 l forearm
+ValveBiped.Bip01 L Hand --> valvebiped.bip01 l hand
+ValveBiped.Bip01 L Finger1 --> valvebiped.bip01 l finger1
+ValveBiped.Bip01 L Finger11 --> valvebiped.bip01 l finger11
+ValveBiped.Bip01 L Finger12 --> valvebiped.bip01 l finger12
+ValveBiped.Bip01 L Finger4 --> valvebiped.bip01 l finger4
+ValveBiped.Bip01 L Finger41 --> valvebiped.bip01 l finger41
+ValveBiped.Bip01 L Finger42 --> valvebiped.bip01 l finger42
+ValveBiped.Bip01 L Finger2 --> valvebiped.bip01 l finger2
+ValveBiped.Bip01 L Finger21 --> valvebiped.bip01 l finger21
+ValveBiped.Bip01 L Finger22 --> valvebiped.bip01 l finger22
+ValveBiped.Bip01 L Finger3 --> valvebiped.bip01 l finger3
+ValveBiped.Bip01 L Finger31 --> valvebiped.bip01 l finger31
+ValveBiped.Bip01 L Finger32 --> valvebiped.bip01 l finger32
+ValveBiped.Bip01 L Finger0 --> valvebiped.bip01 l finger0
+ValveBiped.Bip01 L Finger01 --> valvebiped.bip01 l finger01
+ValveBiped.Bip01 L Finger02 --> valvebiped.bip01 l finger02
+ValveBiped.Bip01 Neck --> valvebiped.bip01 neck
+ValveBiped.Bip01 Head --> valvebiped.bip01 head
+Unknown Rig:joint6 --> unknown rig:joint6
+Unknown Rig:Left Eye JNT --> unknown rig:left eye jnt
+Unknown Rig:Right Eye JNT --> unknown rig:right eye jnt
+Unknown Rig:Center Eye JNT --> unknown rig:center eye jnt
+ValveBiped.Bip01 R Clavicle --> valvebiped.bip01 r clavicle
+ValveBiped.Bip01 R UpperArm --> valvebiped.bip01 r upperarm
+ValveBiped.Bip01 R Forearm --> valvebiped.bip01 r forearm
+ValveBiped.Bip01 R Hand --> valvebiped.bip01 r hand
+ValveBiped.Bip01 R Finger1 --> valvebiped.bip01 r finger1
+ValveBiped.Bip01 R Finger11 --> valvebiped.bip01 r finger11
+ValveBiped.Bip01 R Finger12 --> valvebiped.bip01 r finger12
+ValveBiped.Bip01 R Finger4 --> valvebiped.bip01 r finger4
+ValveBiped.Bip01 R Finger41 --> valvebiped.bip01 r finger41
+ValveBiped.Bip01 R Finger42 --> valvebiped.bip01 r finger42
+ValveBiped.Bip01 R Finger2 --> valvebiped.bip01 r finger2
+ValveBiped.Bip01 R Finger21 --> valvebiped.bip01 r finger21
+ValveBiped.Bip01 R Finger22 --> valvebiped.bip01 r finger22
+ValveBiped.Bip01 R Finger3 --> valvebiped.bip01 r finger3
+ValveBiped.Bip01 R Finger31 --> valvebiped.bip01 r finger31
+ValveBiped.Bip01 R Finger32 --> valvebiped.bip01 r finger32
+ValveBiped.Bip01 R Finger0 --> valvebiped.bip01 r finger0
+ValveBiped.Bip01 R Finger01 --> valvebiped.bip01 r finger01
+ValveBiped.Bip01 R Finger02 --> valvebiped.bip01 r finger02
+Unknown Rig:Wing JNT L 01 --> unknown rig:wing jnt l 01
+Unknown Rig:Wing JNT L 02 --> unknown rig:wing jnt l 02
+Unknown Rig:Wing JNT L 03 --> unknown rig:wing jnt l 03
+Unknown Rig:Wing JNT L 04 --> unknown rig:wing jnt l 04
+Unknown Rig:Wing JNT L 05 --> unknown rig:wing jnt l 05
+Unknown Rig:Wing JNT L 07 --> unknown rig:wing jnt l 07
+Unknown Rig:Wing JNT L 09 --> unknown rig:wing jnt l 09
+Unknown Rig:Wing JNT L 11 --> unknown rig:wing jnt l 11
+Unknown Rig:Wing JNT R 01 --> unknown rig:wing jnt r 01
+Unknown Rig:Wing JNT R 02 --> unknown rig:wing jnt r 02
+Unknown Rig:Wing JNT R 03 --> unknown rig:wing jnt r 03
+Unknown Rig:Wing JNT R 04 --> unknown rig:wing jnt r 04
+Unknown Rig:Wing JNT R 05 --> unknown rig:wing jnt r 05
+Unknown Rig:Wing JNT R 07 --> unknown rig:wing jnt r 07
+Unknown Rig:Wing JNT R 09 --> unknown rig:wing jnt r 09
+Unknown Rig:Wing JNT R 11 --> unknown rig:wing jnt r 11
+FSkirt --> fskirt
+FSkirt1 --> fskirt1
+FSkirt2 --> fskirt2
+BSkirt --> bskirt
+BSkirt1 --> bskirt1
+BSkirt2 --> bskirt2
+Unknown Rig:Hips IKHelper --> unknown rig:hips ikhelper
+Unknown Rig:Hips IKHelper1 --> unknown rig:hips ikhelper1
+=========
+0
