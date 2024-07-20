@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using Random = UnityEngine.Random;
 
 
@@ -31,7 +32,7 @@ public enum BossFlyState
 
 
 
-public class BossFSM : MonoSingleton<BossFSM>
+public class BossFSM : MonoBehaviour
 {
     
     public List<BossPattern> bossPatterns;
@@ -52,6 +53,19 @@ public class BossFSM : MonoSingleton<BossFSM>
     public Animator animator;
 
     public Coroutine nowCoroutine;
+
+    public int maxHp = 3000;
+    public int hp;
+
+    //데미지 UI
+    public GameObject damageUI;
+
+    //UI의 렉트포지션
+    public RectTransform rtDamageUI;
+
+    private Player _playerScript;
+
+
     //이동하고 공격하고 루프 돌기 위한 변수
     //초기 공격을 위해 true처리
 
@@ -137,10 +151,15 @@ public class BossFSM : MonoSingleton<BossFSM>
 
     IEnumerator Start()
     {
+        hp = maxHp;
+        player = player ?? GameObject.FindWithTag("Player").transform;
+        _playerScript = player.GetComponent<Player>();
+
+
         bossPatterns = bossPatterns ?? new List<BossPattern>();
         animator = boss.GetComponent<Animator>();
         yield return new WaitUntil(()=>(isStartBoss));
-        player = player ?? GameObject.FindWithTag("Player").transform;
+        
      
         
         
@@ -182,6 +201,9 @@ public class BossFSM : MonoSingleton<BossFSM>
             case BossMainState.CloseAttack:
                 closeAttackPos = player.transform.position;
                 animator.SetTrigger("StartAttack");
+                break;
+            case BossMainState.Die:
+                animator.SetTrigger("Die");
                 break;
 
 
@@ -275,7 +297,7 @@ public class BossFSM : MonoSingleton<BossFSM>
 
     private void Die()
     {
-        throw new NotImplementedException();
+        
     }
 
     private void Hurt()
@@ -460,7 +482,21 @@ public class BossFSM : MonoSingleton<BossFSM>
     {
         
     }
+    public void HitBoss(int hitPower)
+    {
+        if (mainstate == BossMainState.Die) return;
+        Debug.Log("보스 현재 hp :" + hp);
+        Debug.Log("때린 대미지 : " + hitPower);
+        hp -= hitPower;
 
+        if (hp < 0)
+        {
+            hp = 0;
+            ChangeMainState(BossMainState.Die);
+        }
+        
+
+    }
 
 
 

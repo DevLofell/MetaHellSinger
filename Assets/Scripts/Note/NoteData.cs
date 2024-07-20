@@ -32,24 +32,26 @@ public class NoteData : MonoBehaviour
                 float elapsed = Time.time - spawnTime;
                 float timingRatio = elapsed / duration;
 
-                if (timingRatio >= 0.75f && timingRatio < 0.8f)
+                if (timingRatio >= 0.667f && timingRatio < 0.792f)
                 {
-                    //Debug.Log("Great");
+                    Debug.Log("Great");
                     if(isMainNote) OnNoteHit?.Invoke("Great");
                     
                     Destroy(gameObject);
                 }
-                else if (timingRatio >= 0.8f && timingRatio < 0.9f)
+                else if (timingRatio >= 0.625f && timingRatio < 0.833f)
                 {
-                    //Debug.Log("Good");
+                    Debug.Log("Good");
                     if (isMainNote)
                         OnNoteHit?.Invoke("Good");
                     Destroy(gameObject);
                 }
-                else
+                else if (timingRatio >= 0.583f && timingRatio < 0.875f)
                 {
+                    Debug.Log("Bad");
                     if (isMainNote)
                         OnNoteHit?.Invoke("Bad");
+                    Destroy(gameObject);
                 }
             }
 
@@ -57,6 +59,7 @@ public class NoteData : MonoBehaviour
             rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, t);
             yield return null;
         }
+        OnNoteHit?.Invoke("Miss");
         Destroy(gameObject);
     }
 }

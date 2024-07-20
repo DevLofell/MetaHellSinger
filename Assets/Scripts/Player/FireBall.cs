@@ -56,6 +56,10 @@ public class FireBall : MonoBehaviour
             //데미지를 준다
             other.GetComponent<EnemyFsmJiwon>().HitEnemy(fireBallDamage);
         }
+        else if(other.CompareTag("Boss"))
+        {
+            other.GetComponent<BossFSM>().HitBoss(fireBallDamage);
+        }
     }
    
 

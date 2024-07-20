@@ -138,10 +138,14 @@ public class NoteManager : MonoSingleton<NoteManager>
     {
         if (hitType == "Great" || hitType == "Good")
         {
-            //player.PlayerFire();
+            player.Fire();
             //comboText.gameObject.SetActive(true);
             comboint++;
             comboText.text = comboint.ToString();
+        }
+        else
+        {
+            comboint = 0;
         }
     }
 }

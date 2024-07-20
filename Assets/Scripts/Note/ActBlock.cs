@@ -11,6 +11,8 @@ public class ActBlock : MonoBehaviour
     public AudioClip ChangeClipx3;
     public AudioClip ChangeClipx5;
 
+    public BossFSM bossTrigger;
+
     public bool isBossTrigger = false;
 
     public IEnumerator Start()
@@ -28,7 +30,7 @@ public class ActBlock : MonoBehaviour
         }
         if(isBossTrigger)
         {
-            BossFSM.instance.isStartBoss = true;
+            bossTrigger.isStartBoss = true;
         }
     }
 }
