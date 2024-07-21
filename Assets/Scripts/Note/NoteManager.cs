@@ -5,53 +5,40 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class NoteManager : MonoSingleton<NoteManager>
 {
     public AudioSource audioSource;
-
     public Coroutine nowCoroutine;
-
     public AudioClip startClip;
-
-
     public AudioClip nowx1Clip;
     public AudioClip nowx2Clip;
     public AudioClip nowx3Clip;
     public AudioClip nowx5Clip;
-
     public List<ActBlock> prePlayClipList;
-
     public RectTransform leftNoteparent;
     public RectTransform rightNoteparent;
     public Vector2 rightStartPos;
-    public Vector2 rightEndPos; 
+    public Vector2 rightEndPos;
     public Vector2 leftStartPos;
     public Vector2 leftEndPos;
-
     public GameObject notePrefab;
-    
     public int bpm = 120;
-
     public int nowmultiply = 1;
-
-
-    private float interval;
+    public float interval;
     private Player player;
-
     public Text comboText;
     public int comboint = 0;
+    private float nextNoteTime;
+
+    // Add an offset to adjust the note spawning time
+    public float offset = 0f;
 
     private void Awake()
     {
-        
         interval = 60f / bpm;
         player = FindObjectOfType<Player>();
     }
 
-
-    
     public void AudioChange(ActBlock block) => nowCoroutine = StartCoroutine(AudioChangeSync(block));
     private IEnumerator AudioChangeSync(ActBlock block)
     {
@@ -59,7 +46,7 @@ public class NoteManager : MonoSingleton<NoteManager>
         interval = 60f / block.songBPM;
         audioSource.Pause();
         AudioClip tempClip;
-        switch(nowmultiply)
+        switch (nowmultiply)
         {
             case 1:
                 tempClip = block.ChangeClipx1;
@@ -76,14 +63,12 @@ public class NoteManager : MonoSingleton<NoteManager>
             default:
                 tempClip = null;
                 break;
-
         }
-        audioSource.resource = tempClip;
+        audioSource.clip = tempClip;
         audioSource.time = nowtime;
         audioSource.Play();
         yield return new WaitUntil(() => (audioSource.isPlaying));
     }
-   
 
     private void OnEnable()
     {
@@ -98,39 +83,38 @@ public class NoteManager : MonoSingleton<NoteManager>
     private IEnumerator Start()
     {
         prePlayClipList = new List<ActBlock>();
-        
         yield return new WaitUntil(() => (prePlayClipList.Count > 0));
+        nextNoteTime = audioSource.time + interval + (interval/3);
         yield return StartCoroutine(SpawnNotes());
-        
-        
-        
     }
-
-    //ToDo : 왼쪽 노트 시작 위치/ 왼쪽 노트 끝 위치/ 우측 노트 시작 위치/ 우측 노트 끝 위치
-    //계산하는 함수 만들어서 대입 하기
 
     private IEnumerator SpawnNotes()
     {
         audioSource.Play();
         while (true)
         {
-            if ((audioSource.time % interval) >= 0)
+            if (audioSource.time >= nextNoteTime)
             {
-                GameObject lgo = Instantiate(notePrefab, leftNoteparent);
-                GameObject rgo = Instantiate(notePrefab, rightNoteparent);
-                lgo.GetComponent<RectTransform>().anchoredPosition = leftStartPos;
-                rgo.GetComponent<RectTransform>().anchoredPosition = rightStartPos;
-                lgo.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, 180);
-                NoteData lnote = lgo.GetComponent<NoteData>();
-                NoteData rnote = rgo.GetComponent<NoteData>();
-                if (lnote != null && rnote != null)
-                {
-                    lnote.Initialize(leftStartPos, leftEndPos, interval * 3, false);
-                     rnote.Initialize(rightStartPos, rightEndPos, interval * 3,true);
-                }
+                SpawnNote();
+                nextNoteTime += interval;
             }
-            
-            yield return new WaitForSeconds(interval);
+            yield return null; // Wait for the next frame
+        }
+    }
+
+    private void SpawnNote()
+    {
+        GameObject lgo = Instantiate(notePrefab, leftNoteparent);
+        GameObject rgo = Instantiate(notePrefab, rightNoteparent);
+        lgo.GetComponent<RectTransform>().anchoredPosition = leftStartPos;
+        rgo.GetComponent<RectTransform>().anchoredPosition = rightStartPos;
+        lgo.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, 180);
+        NoteData lnote = lgo.GetComponent<NoteData>();
+        NoteData rnote = rgo.GetComponent<NoteData>();
+        if (lnote != null && rnote != null)
+        {
+            lnote.Initialize(leftStartPos, leftEndPos, interval * 3, false);
+            rnote.Initialize(rightStartPos, rightEndPos, interval * 3, true);
         }
     }
 

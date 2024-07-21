@@ -494,13 +494,20 @@ public class BossFSM : MonoBehaviour
         hp -= hitPower;
         bossHPSlider.fillAmount = ((float)hp / (float)maxHp);
 
-        if (hp < 0)
+        if (hp <= 0)
         {
             hp = 0;
             ChangeMainState(BossMainState.Die);
+            StartCoroutine(GameClear());
         }
         
 
+    }
+
+    public IEnumerator GameClear()
+    {
+        yield return new WaitForSeconds(4f);
+        SceneSystem.instance.GameClear();
     }
 
 

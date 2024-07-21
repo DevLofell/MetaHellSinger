@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scripts/Boss/Scenes/02.GameOver.unity
     guid: 99de381723ce3084f999e744edcd7d14
+  - enabled: 1
+    path: Assets/Scripts/Boss/Scenes/03.GameClear.unity
+    guid: 27c58e0adaae1a745a5f1a2cc709d4df
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

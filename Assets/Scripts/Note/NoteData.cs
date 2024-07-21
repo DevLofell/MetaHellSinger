@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteData : MonoBehaviour
 {
@@ -25,11 +26,25 @@ public class NoteData : MonoBehaviour
     private IEnumerator MoveNote()
     {
         RectTransform rectTransform = GetComponent<RectTransform>();
+        RawImage image = GetComponent<RawImage>();
         while (Time.time - spawnTime < duration)
-        {
+        { 
+            float elapsed = Time.time - spawnTime;
+            float t = (Time.time - spawnTime) / duration;
+            float alpha;
+            if (t < 0.75f)
+            {
+                alpha = Mathf.SmoothStep(0, 1, t / 0.75f);
+            }
+            else
+            {
+                alpha = Mathf.SmoothStep(1, 0, (t - 0.75f) / 0.25f);
+            }
+            image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
+
             if (Input.GetMouseButtonDown(0))
             {
-                float elapsed = Time.time - spawnTime;
+               
                 float timingRatio = elapsed / duration;
 
                 if (timingRatio >= 0.667f && timingRatio < 0.792f)
@@ -55,7 +70,7 @@ public class NoteData : MonoBehaviour
                 }
             }
 
-            float t = (Time.time - spawnTime) / duration;
+            
             rectTransform.anchoredPosition = Vector2.Lerp(startPos, endPos, t);
             yield return null;
         }

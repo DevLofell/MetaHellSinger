@@ -172,6 +172,7 @@ public class Player : MonoBehaviour
                 }
                 else if (currSwordMP <= 0)
                 {
+                    NoteManager.instance.bpm *= 2;
                     currSwordMP = 0;
                     playerAnimator.OnSwordState();
                 }
@@ -340,6 +341,7 @@ public class Player : MonoBehaviour
         {
             if (playerAnimator.animator.GetInteger("weaponState") == 0 && currSwordMP == maxMP)
             {
+                NoteManager.instance.bpm /= 2;
                 playerAnimator.OnSpeSwordState();
             }
 
