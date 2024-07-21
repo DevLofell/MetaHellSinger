@@ -34,6 +34,7 @@ public class FadeEffect : MonoBehaviour
             yield return null;
         }
         fadeImage.color = new Color(color.r, color.g, color.b, 0f);
+        Destroy(gameObject, 1);
     }
 
     public IEnumerator FadeOut()

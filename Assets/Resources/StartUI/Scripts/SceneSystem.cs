@@ -20,7 +20,6 @@ public class SceneSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -56,4 +55,8 @@ public class SceneSystem : MonoBehaviour
         SceneManager.LoadScene("03.GameClear");
     }
 
+    public void GameQuit()
+    {
+        Application.Quit();
+    }
 }
