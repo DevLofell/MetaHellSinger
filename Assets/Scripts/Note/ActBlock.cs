@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 public class ActBlock : MonoBehaviour
 {
     public int songBPM;
+    public float offset;
     public AudioClip ChangeClipx1;
     public AudioClip ChangeClipx2;
     public AudioClip ChangeClipx3;

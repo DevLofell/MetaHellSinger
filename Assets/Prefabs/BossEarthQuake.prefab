@@ -4644,7 +4644,7 @@ GameObject:
   - component: {fileID: 198345217066185332}
   - component: {fileID: 199528594520767084}
   m_Layer: 0
-  m_Name: CustomEarthShatter
+  m_Name: BossEarthQuake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28687,7 +28687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleSystem: {fileID: 198770071860600260}
-  damage: 20
+  damage: 3
 --- !u!1 &1874298289322158
 GameObject:
   m_ObjectHideFlags: 0
