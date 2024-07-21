@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
@@ -269,12 +270,10 @@ public class Player : MonoBehaviour
 
     }
 
-
-    public void PlayerFire()
+    public void Fire()
     {
         #region 마우스 왼쪽 버튼 - 무기 별 기본 공격
-        if (Input.GetButtonDown("Fire1"))
-        {
+        
             if (playerAnimator.animator.GetInteger("weaponState") == 0)
             {
                 if (playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName("Great Sword Slash2"))
@@ -328,8 +327,12 @@ public class Player : MonoBehaviour
                 }
             }
 
-        }
+        
         #endregion
+    }
+    public void PlayerFire()
+    {
+       
         #region 마우스 오른쪽 - 특수 스킬
         //오른쪽 마우스를 클릭하면
         if (Input.GetButtonDown("Fire2"))
@@ -485,6 +488,5 @@ public class Player : MonoBehaviour
         }
     }
 
-
-
+    
 }
