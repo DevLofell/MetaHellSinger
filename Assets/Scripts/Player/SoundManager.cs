@@ -8,7 +8,8 @@ public class SoundManager : MonoBehaviour
     {
         EFT_FIRE,
         EFT_SWORD,
-        EFT_THSWORD
+        EFT_THSWORD,
+        EFT_Dash
     }
 
     //나를 담을 static 변수

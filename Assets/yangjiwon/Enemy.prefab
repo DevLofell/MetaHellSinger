@@ -144,7 +144,7 @@ MonoBehaviour:
   canvas: {fileID: 0}
   stunTimer: 0
   stunTime: 5
-  stunDeadRadius: 5
+  stunDeadRadius: 15
   damageUI: {fileID: 498900224039504634, guid: 165c8a44c9fac744f8ee62c9f6fdedfa, type: 3}
   damagePos: {fileID: 4597904643506990513}
   groggyPos: {fileID: 1086174525012123215}

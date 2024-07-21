@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 7650848961676914295}
   - component: {fileID: 3439473232420483737}
   - component: {fileID: 1981502665633900577}
-  - component: {fileID: 6330464093778398360}
+  - component: {fileID: 4390208431704930077}
   - component: {fileID: 8335827332400228543}
   - component: {fileID: 2354766638056018263}
   m_Layer: 9
@@ -194,8 +194,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6330464093778398360
-BoxCollider:
+--- !u!136 &4390208431704930077
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -212,9 +212,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 3, z: 6}
-  m_Center: {x: 0, y: 1.5, z: 0.5}
+  serializedVersion: 2
+  m_Radius: 2.11
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 1.43}
 --- !u!195 &8335827332400228543
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1527,7 +1529,7 @@ Animator:
   m_GameObject: {fileID: 6231730618402133971}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5c658df0d8d544b4c860c0ad70993a2a, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 13f90100fa954bd4f98829bfbe125e67, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

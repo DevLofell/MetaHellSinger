@@ -22,6 +22,18 @@ public class UISystem : MonoBehaviour
     PostProcessVolume ppv;
     Vignette vignetteEffect;
 
+    public GameObject stage01Mision;
+    public GameObject stage02Mision;
+    public GameObject bossMision;
+
+    public Text stage01MiZombi;
+    public Text stage02MiZombi;
+    public Text stage02Miminidragon;
+
+
+
+
+
 
 
     void Start()
@@ -37,6 +49,10 @@ public class UISystem : MonoBehaviour
             vignetteEffect.roundness.value = 1.0f; // µÕ±Û±â
         }
 
+        stage01Mision.SetActive(true);
+        stage02Mision.SetActive(true);
+        bossMision.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -47,6 +63,8 @@ public class UISystem : MonoBehaviour
         HPMP();
 
         ParticleUI();
+
+        MonsterCheck();
     }
 
 
@@ -129,5 +147,22 @@ public class UISystem : MonoBehaviour
 
         }
     }
+
+    void MonsterCheck()
+    {
+        if(StageCheck.instance.listStage01.Count == 0)
+        {
+            stage01Mision.SetActive(false);
+        }
+        if (StageCheck.instance.listStage02_1.Count == 0 && StageCheck.instance.listStage02_2.Count == 0)
+        {
+            stage02Mision.SetActive(false);
+            bossMision.SetActive(true);
+        }
+        stage01MiZombi.text = "Á»ºñ (" + StageCheck.instance.listStage01.Count + "/9)";
+        stage02MiZombi.text = "Á»ºñ (" + StageCheck.instance.listStage02_2.Count + "/6)";
+        stage02Miminidragon.text = "»õ³¢ µå·¡°ï (" + StageCheck.instance.listStage02_1.Count + "/3)";
+    }
+
 }
 

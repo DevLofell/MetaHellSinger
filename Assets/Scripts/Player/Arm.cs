@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Arm : MonoBehaviour
 {
+    public Animator playerAini;
+
     public Transform tr;
 
     public bool armMovePlay;
 
     Vector3 rot;
     Vector3 rot2;
+    Vector3 ori;
+
 
     bool armRot;
     // Start is called before the first frame update
@@ -18,6 +22,7 @@ public class Arm : MonoBehaviour
         armRot = true;
         armMovePlay = false;
         rot2 = rot = tr.localEulerAngles;
+        ori = tr.localEulerAngles;
     }
 
     // Update is called once per frame
@@ -28,9 +33,9 @@ public class Arm : MonoBehaviour
 
     private void LateUpdate()
     {
-     
-            ArmMoving();
-      
+
+        ArmMoving();
+        ArmReset();
     }
 
     float n = -1;
@@ -38,7 +43,7 @@ public class Arm : MonoBehaviour
     {
         if (armMovePlay)
         {
-            if(n == -1)
+            if (n == -1)
             {
                 rot2 = tr.localEulerAngles;
             }
@@ -64,12 +69,21 @@ public class Arm : MonoBehaviour
             armMovePlay = false;
         }
 
-        if(n != -1)
+        if (n != -1)
         {
             n += Time.deltaTime * 10;
             if (n > 1) n = 1;
             tr.localEulerAngles = Vector3.Lerp(rot2, rot, n);
             //tr.localEulerAngles += rot;
+
+        }
+    }
+
+    void ArmReset()
+    {
+        if (playerAini.GetInteger("weaponState") != 1)
+        {
+            tr.localEulerAngles = ori;
 
         }
     }

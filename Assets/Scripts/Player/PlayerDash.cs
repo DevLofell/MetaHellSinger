@@ -50,6 +50,10 @@ public class PlayerDash : MonoBehaviour
         Vector3 dashDir = playerScript.dir;
         dashDir.y = 0;
 
+
+        //대쉬 소리
+        SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_Dash);
+
         if (dashDir.magnitude == 0)
         {
             dashDirection = playerScript.transform.forward;

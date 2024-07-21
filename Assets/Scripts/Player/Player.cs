@@ -131,11 +131,11 @@ public class Player : MonoBehaviour
             speTime += Time.deltaTime;
             //적과 플레이어의 거리
             float distances = Vector3.Distance(transform.position, nearestEnemy.transform.position);
-            if (distances > 2.5f)
+            if (distances > 3f)
             {
                 Vector3 spedir = nearestEnemy.transform.position - transform.position;
                 spedir.Normalize();
-                transform.Translate(spedir * 100 * Time.deltaTime, Space.World);
+                transform.Translate(spedir * 40 * Time.deltaTime, Space.World);
                 print("원샷 함수 실행3");
 
 
@@ -321,6 +321,8 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetButtonDown("Fire1"))
                 {
+                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
+
                     //칼질 이펙트
                     playerAnimator.OnSpeSwordAttack();
                 }
@@ -432,6 +434,8 @@ public class Player : MonoBehaviour
             print("원샷 함수 실행2");
 
             nearestEnemy.Die();
+            //스테이지 체크(규)
+            StageCheck.instance.EnemyDead(nearestEnemy.gameObject);
         }
     }
     public void SlashAni(int attackNum)

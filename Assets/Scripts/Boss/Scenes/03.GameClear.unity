@@ -441,7 +441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -397.32}
+  m_AnchoredPosition: {x: 0, y: -405.91}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &721716369
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.13192493, b: 0, a: 1}
+  m_Color: {r: 0.31383532, g: 0.7075472, b: 0.09011214, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -466,7 +466,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2ae05c12515f48742b3e70981f03e899, type: 3}
-    m_FontSize: 64
+    m_FontSize: 59
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
@@ -477,7 +477,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Game Over
+  m_Text: Game Clear
 --- !u!222 &721716370
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -787,15 +787,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: cfa5cd38b0eeb5d45aafdbe57871168c, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.13419163
+      value: 0.9339623
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: cfa5cd38b0eeb5d45aafdbe57871168c, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.14222556
+      value: 0.7558489
       objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: cfa5cd38b0eeb5d45aafdbe57871168c, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.72327036
+      value: 0.2951673
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: cfa5cd38b0eeb5d45aafdbe57871168c, type: 3}
       propertyPath: m_Materials.Array.size
