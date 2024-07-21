@@ -315,24 +315,25 @@ public class Player : MonoBehaviour
                 Destroy(fireBall, 2);
                 #endregion
             }
-            //칼 공격 스킬----- 박자 두배로 하기
-            if (playerAnimator.animator.GetInteger("weaponState") == 2)
-            {
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
-
-                    //칼질 이펙트
-                    playerAnimator.OnSpeSwordAttack();
-                }
-            }
+            
 
         
         #endregion
     }
     public void PlayerFire()
     {
-       
+
+        //칼 공격 스킬----- 박자 두배로 하기
+        if (playerAnimator.animator.GetInteger("weaponState") == 2)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
+
+                //칼질 이펙트
+                playerAnimator.OnSpeSwordAttack();
+            }
+        }
         #region 마우스 오른쪽 - 특수 스킬
         //오른쪽 마우스를 클릭하면
         if (Input.GetButtonDown("Fire2"))
