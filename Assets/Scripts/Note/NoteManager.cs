@@ -22,7 +22,7 @@ public class NoteManager : MonoSingleton<NoteManager>
     public GameObject notePrefab;
     public int bpm = 120;
     public int nowmultiply = 1;
-    private float interval;
+    public float interval;
     private Player player;
     public Text comboText;
     public int comboint = 0;

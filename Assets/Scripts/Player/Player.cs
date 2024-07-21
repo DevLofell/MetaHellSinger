@@ -93,6 +93,9 @@ public class Player : MonoBehaviour
     //칼질 애니메이션 위치
     public GameObject slashPos;
 
+
+    bool intervalCheck;
+
     private void Awake()
     {
         if (instance == null)
@@ -104,13 +107,14 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        
+
 
         playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
     void Start()
     {
+        intervalCheck = false;
 
         arm = GetComponent<Arm>();
 
@@ -178,7 +182,12 @@ public class Player : MonoBehaviour
                 }
                 else if (currSwordMP <= 0)
                 {
-                    NoteManager.instance.bpm *= 2;
+                    if (intervalCheck == true)
+                    {
+                        NoteManager.instance.interval *= 2;
+                        intervalCheck = false;
+                    }
+                    //노트
                     currSwordMP = 0;
                     playerAnimator.OnSwordState();
                 }
@@ -323,6 +332,23 @@ public class Player : MonoBehaviour
             #endregion
         }
 
+        if (playerAnimator.animator.GetInteger("weaponState") == 2)
+        {
+            if (intervalCheck == false)
+            {
+                NoteManager.instance.interval /= 2;
+
+                intervalCheck = true;
+            }
+            if (Input.GetButtonDown("Fire1"))
+            {
+
+                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
+
+                //칼질 이펙트
+                playerAnimator.OnSpeSwordAttack();
+            }
+        }
 
 
         #endregion
@@ -331,23 +357,12 @@ public class Player : MonoBehaviour
     {
 
         //칼 공격 스킬----- 박자 두배로 하기
-        if (playerAnimator.animator.GetInteger("weaponState") == 2)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
-
-                //칼질 이펙트
-                playerAnimator.OnSpeSwordAttack();
-            }
-        }
         #region 마우스 오른쪽 - 특수 스킬
         //오른쪽 마우스를 클릭하면
         if (Input.GetButtonDown("Fire2"))
         {
             if (playerAnimator.animator.GetInteger("weaponState") == 0 && currSwordMP == maxMP)
             {
-                NoteManager.instance.bpm /= 2;
                 playerAnimator.OnSpeSwordState();
             }
 
@@ -386,25 +401,47 @@ public class Player : MonoBehaviour
     void StunSkill()
     {
         print("StunSkill 호출");
-        LayerMask enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+        // LayerMask enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, stunRange, enemyLayer);
         foreach (Collider hitCollider in hitColliders)
         {
-            EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
-
-            if (enemy != null)
+            if (hitCollider.CompareTag("Enemy"))
             {
-                Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
-                if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
+                EnemyFsmJiwon enemy = hitCollider.GetComponent<EnemyFsmJiwon>();
+
+                if (enemy != null)
                 {
-                    print("스턴발생");
-                    enemy.OnStunChanged();
-                    GameObject stunEffect = Instantiate(stunEffectFactory);
-                    stunEffect.transform.position = enemy.transform.position;
+                    Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
+                    if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
+                    {
+                        print("스턴발생");
+                        enemy.OnStunChanged();
+                        GameObject stunEffect = Instantiate(stunEffectFactory);
+                        stunEffect.transform.position = enemy.transform.position;
+
+                    }
 
                 }
-
             }
+            else if (hitCollider.CompareTag("Boss"))
+            {
+                BossFSM enemy = hitCollider.GetComponent<BossFSM>();
+                if (enemy != null)
+                {
+                    Vector3 viewportPoint = Camera.main.WorldToViewportPoint(enemy.transform.position);
+                    if (viewportPoint.x >= 0 && viewportPoint.x <= 1 && viewportPoint.y >= 0 && viewportPoint.y <= 1 && viewportPoint.z > 0)
+                    {
+                        print("스턴발생");
+                        enemy.OnStunChanged();
+                        GameObject stunEffect = Instantiate(stunEffectFactory);
+                        stunEffect.transform.position = enemy.transform.position;
+
+                    }
+
+                }
+            }
+
+
         }
     }
 

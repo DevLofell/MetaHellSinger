@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 using Random = UnityEngine.Random;
@@ -35,7 +36,11 @@ public enum BossFlyState
 
 public class BossFSM : MonoBehaviour
 {
-    
+
+    //스턴스킬(규)
+    public float stunTimer;
+    public float stunTime = 5.0f;
+
     public List<BossPattern> bossPatterns;
     public int selectPattern = 0;
 
@@ -65,6 +70,9 @@ public class BossFSM : MonoBehaviour
 
     //UI의 렉트포지션
     public RectTransform rtDamageUI;
+    public Transform damagePos;
+    public GameObject canvas;
+
 
     private Player _playerScript;
 
@@ -76,11 +84,11 @@ public class BossFSM : MonoBehaviour
     {
         get
         {
-            switch(flyState)
+            switch (flyState)
             {
                 case BossFlyState.Walk:
                     return walkRange;
-                case BossFlyState.Run:  
+                case BossFlyState.Run:
                     return runRange;
                 case BossFlyState.Fly:
                     return flyRange;
@@ -154,15 +162,16 @@ public class BossFSM : MonoBehaviour
 
     IEnumerator Start()
     {
-       
+
         hp = maxHp;
         player = player ?? GameObject.FindWithTag("Player").transform;
         _playerScript = player.GetComponent<Player>();
 
         bossPatterns = bossPatterns ?? new List<BossPattern>();
         animator = boss.GetComponent<Animator>();
-        yield return new WaitUntil(()=>(isStartBoss));
+        yield return new WaitUntil(() => (isStartBoss));
         bossSliderObect.SetActive(true);
+        canvas = GameObject.Find("Canvas");
 
 
 
@@ -172,7 +181,7 @@ public class BossFSM : MonoBehaviour
     {
         Debug.Log("보스 메인 상태 변경: " + mainstate + ">>>" + state);
         this.mainstate = state;
-        switch(state)
+        switch (state)
         {
             case BossMainState.StartMoveRotate:
                 bossMovePos = bossPatterns[selectPattern].BossRig;
@@ -181,12 +190,12 @@ public class BossFSM : MonoBehaviour
                 int randValue;
                 do
                 {
-                     randValue = Random.Range(0, 3);
+                    randValue = Random.Range(0, 3);
                 }
                 while (randValue == (int)flyState);
                 animator.SetInteger("FlyState", randValue);
                 nowCoroutine = StartCoroutine(ChangeFlyState((BossFlyState)randValue));
-                    break;
+                break;
             case BossMainState.Move:
                 animator.SetTrigger("IdleToMove");
                 break;
@@ -220,8 +229,8 @@ public class BossFSM : MonoBehaviour
     public IEnumerator ChangeFlyState(BossFlyState state)
     {
         Debug.Log("보스 날기 상태 변경: " + flyState + ">>>" + state);
-        
-        
+
+
         if (flyState == BossFlyState.Fly ||
             state == BossFlyState.Fly)
         {
@@ -232,20 +241,20 @@ public class BossFSM : MonoBehaviour
             isAnimationFinished = true;
         }
         yield return new WaitUntil(() => (isAnimationFinished));
-        
+
         isAnimationFinished = false;
         ChangeMainState(BossMainState.StartMoveRotate);
         this.flyState = state;
-        
-        
-        
+
+
+
     }
 
     private void Update()
     {
         //보스 시작전 처리 금지용
         if (!isStartBoss) return;
-        
+
         UpdateMainState();
     }
 
@@ -276,7 +285,7 @@ public class BossFSM : MonoBehaviour
                 break;
             case BossMainState.CloseMove:
                 CloseMove();
-                break; 
+                break;
             case BossMainState.AttackDelay:
                 AttackDelay();
                 break;
@@ -297,11 +306,11 @@ public class BossFSM : MonoBehaviour
         }
     }
 
-    
+
 
     private void Die()
     {
-        
+
     }
 
     private void Hurt()
@@ -332,10 +341,10 @@ public class BossFSM : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        
+
         Vector3 dir = bossPatterns[selectPattern].transform.position - boss.transform.position;
         this.transform.position += dir.normalized * moveSpeed * Time.deltaTime;
-        if(Vector3.Distance(boss.transform.position, bossPatterns[selectPattern].transform.position) <  0.1f)
+        if (Vector3.Distance(boss.transform.position, bossPatterns[selectPattern].transform.position) < 0.1f)
         {
             boss.transform.position = bossPatterns[selectPattern].transform.position;
             ChangeMainState(BossMainState.EndMoveRotate);
@@ -360,7 +369,7 @@ public class BossFSM : MonoBehaviour
         }
     }
 
- 
+
     private void Scream()
     {
         throw new NotImplementedException();
@@ -371,30 +380,30 @@ public class BossFSM : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    
+
     private void Idle()
     {
         //대기시간 넣기
         currIdleTime += Time.deltaTime;
-        if(currIdleTime > IdleTotalTime)
+        if (currIdleTime > IdleTotalTime)
         {
 
-           ChangeMainState(BossMainState.ChangeFlyState);
+            ChangeMainState(BossMainState.ChangeFlyState);
             currIdleTime = 0;
         }
-        
+
     }
 
 
     private void AttackDelay()
     {
         currDelayTime += Time.deltaTime;
-        if(currDelayTime > attackDelayTime)
+        if (currDelayTime > attackDelayTime)
         {
-            
+
             currDelayTime = 0;
             animator.SetInteger("AttackState", attackValue);
-            switch(attackValue)
+            switch (attackValue)
             {
                 case 0:
                     ChangeMainState(BossMainState.CloseAttack);
@@ -416,13 +425,13 @@ public class BossFSM : MonoBehaviour
         Vector3 dir = player.transform.position - boss.transform.position;
         float distance = dir.magnitude; // 보스와 목표 위치 사이의 거리 계산
 
-        if (distance < attackRange) 
+        if (distance < attackRange)
         {
             ChangeMainState(BossMainState.CloseAttack); // 상태를 FlyAttack으로 변경하여 공격 시작
         }
         else
         {
-           
+
             boss.transform.position += dir.normalized * moveSpeed * Time.deltaTime;
         }
     }
@@ -431,7 +440,7 @@ public class BossFSM : MonoBehaviour
     {
         //애니메이션 트리거
         //콜라이더 
-        switch(flyState)
+        switch (flyState)
         {
             case BossFlyState.Walk:
 
@@ -449,7 +458,7 @@ public class BossFSM : MonoBehaviour
                 currAttackTime += Time.deltaTime;
                 if (currAttackTime > attackTime)
                 {
-                   
+
                     ChangeMainState(BossMainState.Idle); // 상태를 FlyAttack으로 변경하여 공격 시작
                 }
                 else
@@ -478,13 +487,13 @@ public class BossFSM : MonoBehaviour
                 selectPattern = 0;
             }
 
-            ChangeMainState(BossMainState.Idle); 
+            ChangeMainState(BossMainState.Idle);
         }
     }
 
     private void UpdateFlyState()
     {
-        
+
     }
     public void HitBoss(int hitPower)
     {
@@ -494,13 +503,14 @@ public class BossFSM : MonoBehaviour
         hp -= hitPower;
         bossHPSlider.fillAmount = ((float)hp / (float)maxHp);
 
+
         if (hp <= 0)
         {
             hp = 0;
             ChangeMainState(BossMainState.Die);
             StartCoroutine(GameClear());
         }
-        
+
 
     }
 
@@ -517,6 +527,32 @@ public class BossFSM : MonoBehaviour
 
     public void Flying() => isAnimationFinished = true;
 
+    public void OnStunChanged()
+    {
+        
+        stunTimer = stunTime;
+        if (stunTimer > 0)
+        {
+            stunTimer -= Time.deltaTime;
+            ChangeMainState(BossMainState.Idle);
+        }
+        else if (stunTime <= 0)
+        {
+            stunTimer = 0;
+            CloseMove();
+        }
+
+    }
+    private void OnDamageUI(int damageValue)
+    {
+        GameObject damage = Instantiate(damageUI, canvas.transform);
+        Text damageText = damage.GetComponent<Text>();
+        damageText.text = Convert.ToString(damageValue);
+
+        DamageSystem ds = damage.GetComponent<DamageSystem>();
+        ds.DamageMove(damagePos);
+        Destroy(damage, 2);
+    }
 }
 
 

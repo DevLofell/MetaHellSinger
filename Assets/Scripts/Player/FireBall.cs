@@ -59,6 +59,8 @@ public class FireBall : MonoBehaviour
         else if(other.CompareTag("Boss"))
         {
             other.GetComponent<BossFSM>().HitBoss(fireBallDamage);
+            Player.instance.UpdateMP(0.1f);
+
         }
     }
    

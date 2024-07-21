@@ -126,7 +126,7 @@ MonoBehaviour:
   findDistance: 8
   attackDistance: 2
   moveDistance: 20
-  attackPower: 50
+  attackPower: 100
   maxHp: 1000
   hp: 100
   waitDamagedSec: 0.25

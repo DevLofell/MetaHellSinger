@@ -1895,6 +1895,7 @@ MonoBehaviour:
   animator: {fileID: 7419227164550996284}
   skull: {fileID: 7608632260618300517}
   sword: {fileID: 868263920036234239}
+  cameraShake: {fileID: 2652211345401276370}
 --- !u!1 &4759968629316195390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,7 +2609,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 1.309}
-  m_LocalScale: {x: 1, y: 1.5, z: 2}
+  m_LocalScale: {x: 1, y: 4.06155, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3513973075789744823}
@@ -3052,7 +3053,7 @@ SkinnedMeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7177461059281364389}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -3391,7 +3392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44afc43b876252e41a95dfce16c26744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraShake: {fileID: 0}
+  cameraShake: {fileID: 2652211345401276370}
   currHP: 0
   maxHP: 1000
   currSkullMP: 0
@@ -3400,7 +3401,7 @@ MonoBehaviour:
   oneShotRange: 50
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   stunRadius: 50
   stunRange: 15
   stunEffectFactory: {fileID: 1614648838348040, guid: 6b12f08cfea33d1429a5fb9ca7e5f9fe, type: 3}
@@ -3436,9 +3437,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerScript: {fileID: 2467909015800286401}
   characterController: {fileID: 6745891018740995029}
-  dashDistance: 5
+  dashDistance: 7
   dashCooldown: 1
-  dashDuration: 0.2
+  dashDuration: 0.25
   wingAni: {fileID: 8943434009180082053}
 --- !u!143 &6745891018740995029
 CharacterController:
@@ -3478,6 +3479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1349edbd10740664fa89a774d5d6bd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAini: {fileID: 7419227164550996284}
   tr: {fileID: 5857975917634069076}
   armMovePlay: 0
 --- !u!1 &8109999623644096657

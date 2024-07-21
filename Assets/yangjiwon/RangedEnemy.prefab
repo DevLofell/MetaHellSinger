@@ -220,7 +220,7 @@ MonoBehaviour:
   findDistance: 8
   attackDistance: 2
   moveDistance: 20
-  attackPower: 40
+  attackPower: 90
   maxHp: 2000
   hp: 0
   waitDamagedSec: 0.2

@@ -8,7 +8,7 @@ public class PlayerAttackCollision : MonoBehaviour
     public Animator animator;
     public int swordDamage = 330;
     public int swordThirdDamage = 670;
-
+    int damage;
    
 
 
@@ -24,15 +24,17 @@ public class PlayerAttackCollision : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            int damage;
             //애니메이터가 3번째 콤보일때
             if (stateInfo.IsName("Great Sword Slash3"))
             {
+                print("검 세번째 콜");
                 //세번째 공격 데미지가 들어간다.
                 damage = swordThirdDamage;
             }
             else
             {
+                print("검 기본 콜");
+
                 //그냥 검 공격 데미지가 들어간다.
                 damage = swordDamage;
 
@@ -43,7 +45,7 @@ public class PlayerAttackCollision : MonoBehaviour
         }
         else if(other.CompareTag("Boss"))
         {
-            int damage;
+            Player.instance.UpdateMP(0.1f);
             //애니메이터가 3번째 콤보일때
             if (stateInfo.IsName("Great Sword Slash3"))
             {
