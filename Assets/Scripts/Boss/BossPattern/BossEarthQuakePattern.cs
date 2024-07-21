@@ -41,6 +41,7 @@ public class BossEarthQuakePattern : BossPattern
         {
             GameObject go = GameObject.Instantiate(prefab);
             go.transform.position = randomPos[nowFireIndex];
+            go.transform.LookAt(target);
 
             if (nowFireIndex >= randomPos.Count - 1)
             {
@@ -77,4 +78,6 @@ public class BossEarthQuakePattern : BossPattern
         base.OnDisable();
         randomPos.Clear();
     }
+
+   
 }
