@@ -27,7 +27,6 @@ public class SceneSystem : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "MapScene")
@@ -49,16 +48,12 @@ public class SceneSystem : MonoBehaviour
     }
     public void GameOver()
     {
-        
-            SceneManager.LoadScene("02.GameOver");
-        
+
+        SceneManager.LoadScene("02.GameOver");
     }
     public void GameClear()
     {
-
         SceneManager.LoadScene("03.GameClear");
-
-
     }
 
 }

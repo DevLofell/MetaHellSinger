@@ -6,11 +6,19 @@ using UnityEngine.UI;
 public class FadeEffect : MonoBehaviour
 {
 
-    public Image fadeImage;
+    GameObject backImage;
+    Image fadeImage;
     public float fadeDuration = 1.0f;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+    }
 
     void Start()
     {
+        backImage = GameObject.Find("FadeImage");
+        fadeImage = backImage.GetComponent<Image>();
         StartCoroutine(FadeIn());
     }
 
