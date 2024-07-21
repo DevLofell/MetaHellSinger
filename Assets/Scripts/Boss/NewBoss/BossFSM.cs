@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using Random = UnityEngine.Random;
 
@@ -54,6 +55,8 @@ public class BossFSM : MonoBehaviour
 
     public Coroutine nowCoroutine;
 
+    public GameObject bossSliderObect;
+    public Image bossHPSlider;
     public int maxHp = 3000;
     public int hp;
 
@@ -151,18 +154,19 @@ public class BossFSM : MonoBehaviour
 
     IEnumerator Start()
     {
+       
         hp = maxHp;
         player = player ?? GameObject.FindWithTag("Player").transform;
         _playerScript = player.GetComponent<Player>();
 
-
         bossPatterns = bossPatterns ?? new List<BossPattern>();
         animator = boss.GetComponent<Animator>();
         yield return new WaitUntil(()=>(isStartBoss));
-        
-     
-        
-        
+        bossSliderObect.SetActive(true);
+
+
+
+
     }
     public void ChangeMainState(BossMainState state)
     {
@@ -488,6 +492,7 @@ public class BossFSM : MonoBehaviour
         Debug.Log("보스 현재 hp :" + hp);
         Debug.Log("때린 대미지 : " + hitPower);
         hp -= hitPower;
+        bossHPSlider.fillAmount = ((float)hp / (float)maxHp);
 
         if (hp < 0)
         {

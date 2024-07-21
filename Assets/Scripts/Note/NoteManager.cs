@@ -120,7 +120,7 @@ public class NoteManager : MonoSingleton<NoteManager>
                 GameObject rgo = Instantiate(notePrefab, rightNoteparent);
                 lgo.GetComponent<RectTransform>().anchoredPosition = leftStartPos;
                 rgo.GetComponent<RectTransform>().anchoredPosition = rightStartPos;
-                rgo.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, 180);
+                lgo.GetComponent<RectTransform>().localEulerAngles = new Vector3(0, 0, 180);
                 NoteData lnote = lgo.GetComponent<NoteData>();
                 NoteData rnote = rgo.GetComponent<NoteData>();
                 if (lnote != null && rnote != null)
@@ -140,12 +140,12 @@ public class NoteManager : MonoSingleton<NoteManager>
         {
             player.Fire();
             //comboText.gameObject.SetActive(true);
-            comboint++;
-            comboText.text = comboint.ToString();
+            //comboint++;
+            //comboText.text = comboint.ToString();
         }
         else
         {
-            comboint = 0;
+            //comboint = 0;
         }
     }
 }
