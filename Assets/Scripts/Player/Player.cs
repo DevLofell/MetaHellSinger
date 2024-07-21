@@ -131,11 +131,11 @@ public class Player : MonoBehaviour
             speTime += Time.deltaTime;
             //적과 플레이어의 거리
             float distances = Vector3.Distance(transform.position, nearestEnemy.transform.position);
-            if (distances > 2.5f)
+            if (distances > 3f)
             {
                 Vector3 spedir = nearestEnemy.transform.position - transform.position;
                 spedir.Normalize();
-                transform.Translate(spedir * 100 * Time.deltaTime, Space.World);
+                transform.Translate(spedir * 40 * Time.deltaTime, Space.World);
                 print("원샷 함수 실행3");
 
 
@@ -175,6 +175,12 @@ public class Player : MonoBehaviour
                     playerAnimator.OnSwordState();
                 }
 
+            }
+
+            //체력 채우기
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                currHP = maxHP;
             }
         }
     }
@@ -263,69 +269,67 @@ public class Player : MonoBehaviour
 
     }
 
-    public void Fire()
+
+    public void PlayerFire()
     {
-        if (playerAnimator.animator.GetInteger("weaponState") == 0)
-        {
-            if (playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName("Great Sword Slash2"))
-            {
-                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_THSWORD);
-
-            }
-            else
-            {
-
-                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
-            }
-            //칼질 애니메이션
-            playerAnimator.OnSwordAttack();
-            //칼질 이펙트
-            onOneShot = false;
-        }
-        if (playerAnimator.animator.GetInteger("weaponState") == 1)
-        {
-            arm.armMovePlay = true;
-            SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_FIRE);
-            #region 스컬 공격
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-            RaycastHit hitInfo = new RaycastHit();
-
-            GameObject fireBall = Instantiate(fireBallFactory);
-            fireBall.transform.position = fireBallPos.transform.position;
-
-            if (Physics.Raycast(ray, out hitInfo))
-            {
-                fireBallDir = hitInfo.point - fireBall.transform.position;
-                fireBall.transform.forward = fireBallDir.normalized;
-            }
-            else
-            {
-                fireBall.transform.forward = Camera.main.transform.forward;
-            }
-            Destroy(fireBall, 2);
-            #endregion
-        }
-        //칼 공격 스킬----- 박자 두배로 하기
-        if (playerAnimator.animator.GetInteger("weaponState") == 2)
-        {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                //칼질 이펙트
-                playerAnimator.OnSpeSwordAttack();
-            }
-        }
         #region 마우스 왼쪽 버튼 - 무기 별 기본 공격
         if (Input.GetButtonDown("Fire1"))
         {
-            
+            if (playerAnimator.animator.GetInteger("weaponState") == 0)
+            {
+                if (playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName("Great Sword Slash2"))
+                {
+                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_THSWORD);
+
+                }
+                else
+                {
+
+                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
+                }
+                //칼질 애니메이션
+                playerAnimator.OnSwordAttack();
+                //칼질 이펙트
+                onOneShot = false;
+            }
+            if (playerAnimator.animator.GetInteger("weaponState") == 1)
+            {
+                arm.armMovePlay = true;
+                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_FIRE);
+                #region 스컬 공격
+                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+                RaycastHit hitInfo = new RaycastHit();
+
+                GameObject fireBall = Instantiate(fireBallFactory);
+                fireBall.transform.position = fireBallPos.transform.position;
+
+                if (Physics.Raycast(ray, out hitInfo))
+                {
+                    fireBallDir = hitInfo.point - fireBall.transform.position;
+                    fireBall.transform.forward = fireBallDir.normalized;
+                }
+                else
+                {
+                    fireBall.transform.forward = Camera.main.transform.forward;
+                }
+                Destroy(fireBall, 2);
+                #endregion
+            }
+            //칼 공격 스킬----- 박자 두배로 하기
+            if (playerAnimator.animator.GetInteger("weaponState") == 2)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
+
+                    //칼질 이펙트
+                    playerAnimator.OnSpeSwordAttack();
+                }
+            }
 
         }
         #endregion
-    }
-    public void PlayerFire()
-    {
-        
         #region 마우스 오른쪽 - 특수 스킬
         //오른쪽 마우스를 클릭하면
         if (Input.GetButtonDown("Fire2"))
@@ -430,6 +434,8 @@ public class Player : MonoBehaviour
             print("원샷 함수 실행2");
 
             nearestEnemy.Die();
+            //스테이지 체크(규)
+            StageCheck.instance.EnemyDead(nearestEnemy.gameObject);
         }
     }
     public void SlashAni(int attackNum)

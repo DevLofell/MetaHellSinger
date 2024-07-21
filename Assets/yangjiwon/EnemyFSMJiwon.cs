@@ -39,7 +39,7 @@ public class EnemyFsmJiwon : MonoBehaviour
     public float stunTime = 5.0f;
 
     //스턴 연계 죽음
-    public float stunDeadRadius = 5.0f;
+    public float stunDeadRadius = 15.0f;
 
     //데미지 UI
     public GameObject damageUI;
@@ -159,10 +159,11 @@ public class EnemyFsmJiwon : MonoBehaviour
     private void Return()
     {
        print("Return Distance : " + Vector3.Distance(transform.position, _originPos));
-        if (Vector3.Distance(transform.position, _originPos) > 0.1f)
+        if (Vector3.Distance(transform.position, _originPos) > 1f)
         {
             _navMeshAgent.SetDestination(_originPos);
             _navMeshAgent.stoppingDistance = 0;
+            print("돌아가는 중");
         }
         else
         {
@@ -274,11 +275,11 @@ public class EnemyFsmJiwon : MonoBehaviour
 
     public void HitEnemy(int hitPower)
     {
-        if (mState is EnemyState.Damaged or EnemyState.Die or EnemyState.Return)
+        if (mState is EnemyState.Damaged or EnemyState.Die)
         {
             return;
         }
-
+        
         var prevState = mState;
         hp -= hitPower;
         print("적 체력 hp : " + hp);
@@ -308,6 +309,11 @@ public class EnemyFsmJiwon : MonoBehaviour
         }
         else
         {
+            CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+            capsuleCollider.enabled = false;
+            //스테이지 체크(규)
+            StageCheck.instance.EnemyDead(gameObject);
+
             print("상태 전환: Any state -> Die");
             Die();
         }
@@ -374,7 +380,10 @@ public class EnemyFsmJiwon : MonoBehaviour
             // 주변 적들이 스턴 상태인지 확인하고;
             if (enemy.mState == EnemyState.Stun)
             {
+                //스테이지 체크(규)
+                StageCheck.instance.EnemyDead(enemy.gameObject);
                 enemy.Die();
+
             }
         }
     }
