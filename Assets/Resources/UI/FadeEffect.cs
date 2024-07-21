@@ -11,7 +11,6 @@ public class FadeEffect : MonoBehaviour
     public float fadeDuration = 1.0f;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
 
     }
 
@@ -34,19 +33,20 @@ public class FadeEffect : MonoBehaviour
             yield return null;
         }
         fadeImage.color = new Color(color.r, color.g, color.b, 0f);
+        Destroy(gameObject, 1);
     }
 
-    public IEnumerator FadeOut()
-    {
-        float elapsedTime = 0f;
-        Color color = fadeImage.color;
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            color.a = Mathf.Clamp01(elapsedTime / fadeDuration);
-            fadeImage.color = color;
-            yield return null;
-        }
-        fadeImage.color = new Color(color.r, color.g, color.b, 1.0f);
-    }
+    //public IEnumerator FadeOut()
+    //{
+    //    float elapsedTime = 0f;
+    //    Color color = fadeImage.color;
+    //    while (elapsedTime < fadeDuration)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        color.a = Mathf.Clamp01(elapsedTime / fadeDuration);
+    //        fadeImage.color = color;
+    //        yield return null;
+    //    }
+    //    fadeImage.color = new Color(color.r, color.g, color.b, 1.0f);
+    //}
 }

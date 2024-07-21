@@ -19606,6 +19606,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319892161}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &320402208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320402210}
+  - component: {fileID: 320402209}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &320402209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320402208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e95e5023a592c4fbe0c84057d730ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &320402210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320402208}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &320849869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24762,9 +24806,9 @@ RectTransform:
   - {fileID: 19028561}
   m_Father: {fileID: 772882871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 710.00006, y: 19.07241}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -300, y: 19.07241}
   m_SizeDelta: {x: 400, y: 104.50493}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &488391090 stripped
@@ -32559,9 +32603,9 @@ RectTransform:
   - {fileID: 1798070138}
   m_Father: {fileID: 772882871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 710.00006, y: 168.91}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -300, y: 168.91}
   m_SizeDelta: {x: 400, y: 120.17999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &727401058 stripped
@@ -62002,9 +62046,9 @@ Transform:
   m_GameObject: {fileID: 1138449399}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -1.26, z: 0}
+  m_LocalScale: {x: 0.76, y: 0.76, z: 0.76}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4320433529422045000}
   - {fileID: 5829332284678551728}
@@ -63280,7 +63324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1925915751359622605, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1925915751359622605, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_AnchorMin.x
@@ -63288,7 +63332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1925915751359622605, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1925915751359622605, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -63332,7 +63376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1925915751359622605, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 913.21
+      value: -201.59998
       objectReference: {fileID: 0}
     - target: {fileID: 1925915751359622605, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -63352,7 +63396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3239031157858681951, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -5.9000015
+      value: -5.9000244
       objectReference: {fileID: 0}
     - target: {fileID: 5056619050284226033, guid: 038e309db7a316e46a41233b3d6017b5, type: 3}
       propertyPath: m_Type
@@ -100102,9 +100146,9 @@ RectTransform:
   - {fileID: 2112820602}
   m_Father: {fileID: 772882871}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 710.00006, y: 145.16248}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -297.7, y: 145.16248}
   m_SizeDelta: {x: 400, y: 146.32503}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1862025828
@@ -101700,7 +101744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 163.53}
+  m_AnchoredPosition: {x: 0, y: 163.53003}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913615138
@@ -101806,7 +101850,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 163.53}
+  m_AnchoredPosition: {x: 0, y: 163.53003}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915611048
@@ -111078,7 +111122,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 94
+    maxNumParticles: 10
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -120524,7 +120568,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 94
+    maxNumParticles: 50
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -124601,3 +124645,4 @@ SceneRoots:
   - {fileID: 1251290156}
   - {fileID: 1631628845}
   - {fileID: 1196149079}
+  - {fileID: 320402210}
