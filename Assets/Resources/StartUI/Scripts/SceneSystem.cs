@@ -20,6 +20,7 @@ public class SceneSystem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -29,7 +30,18 @@ public class SceneSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameOver();
+        if (SceneManager.GetActiveScene().name == "MapScene")
+        {
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+
+        }
     }
     public void GameStart()
     {
@@ -37,10 +49,9 @@ public class SceneSystem : MonoBehaviour
     }
     public void GameOver()
     {
-        if (Player.instance.currHP <= 0)
-        {
+        
             SceneManager.LoadScene("02.GameOver");
-        }
+        
     }
     public void GameClear()
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -13,7 +14,8 @@ public class PlayerAnimator : MonoBehaviour
     public GameObject skull;
     public GameObject sword;
 
-  
+    public CameraShake cameraShake;
+
 
 
 
@@ -109,5 +111,10 @@ public class PlayerAnimator : MonoBehaviour
         }
         animator.SetTrigger("GroggyAttack");
 
+    }
+
+    public void SlashCameraShake()
+    {
+        cameraShake.PlayShake(0.3f, 0.1f);
     }
 }

@@ -5,6 +5,7 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class Player : MonoBehaviour
@@ -103,14 +104,14 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        
 
         playerAnimator = GetComponentInChildren<PlayerAnimator>();
     }
 
     void Start()
     {
+
         arm = GetComponent<Arm>();
 
         //armRot = true;
@@ -180,7 +181,7 @@ public class Player : MonoBehaviour
             }
 
             //체력 채우기
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 currHP = maxHP;
             }
@@ -274,51 +275,51 @@ public class Player : MonoBehaviour
     public void Fire()
     {
         #region 마우스 왼쪽 버튼 - 무기 별 기본 공격
-        
-            if (playerAnimator.animator.GetInteger("weaponState") == 0)
+
+        if (playerAnimator.animator.GetInteger("weaponState") == 0)
+        {
+            if (playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName("Great Sword Slash2"))
             {
-                if (playerAnimator.animator.GetCurrentAnimatorStateInfo(0).IsName("Great Sword Slash2"))
-                {
-                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_THSWORD);
+                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_THSWORD);
 
-                }
-                else
-                {
-
-                    SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
-                }
-                //칼질 애니메이션
-                playerAnimator.OnSwordAttack();
-                //칼질 이펙트
-                onOneShot = false;
             }
-            if (playerAnimator.animator.GetInteger("weaponState") == 1)
+            else
             {
-                arm.armMovePlay = true;
-                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_FIRE);
-                #region 스컬 공격
-                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
-                RaycastHit hitInfo = new RaycastHit();
-
-                GameObject fireBall = Instantiate(fireBallFactory);
-                fireBall.transform.position = fireBallPos.transform.position;
-
-                if (Physics.Raycast(ray, out hitInfo))
-                {
-                    fireBallDir = hitInfo.point - fireBall.transform.position;
-                    fireBall.transform.forward = fireBallDir.normalized;
-                }
-                else
-                {
-                    fireBall.transform.forward = Camera.main.transform.forward;
-                }
-                Destroy(fireBall, 2);
-                #endregion
+                SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_SWORD);
             }
-            
+            //칼질 애니메이션
+            playerAnimator.OnSwordAttack();
+            //칼질 이펙트
+            onOneShot = false;
+        }
+        if (playerAnimator.animator.GetInteger("weaponState") == 1)
+        {
+            arm.armMovePlay = true;
+            SoundManager.instance.PlayEftSound(SoundManager.ESoundType.EFT_FIRE);
+            #region 스컬 공격
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
-        
+            RaycastHit hitInfo = new RaycastHit();
+
+            GameObject fireBall = Instantiate(fireBallFactory);
+            fireBall.transform.position = fireBallPos.transform.position;
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                fireBallDir = hitInfo.point - fireBall.transform.position;
+                fireBall.transform.forward = fireBallDir.normalized;
+            }
+            else
+            {
+                fireBall.transform.forward = Camera.main.transform.forward;
+            }
+            Destroy(fireBall, 2);
+            #endregion
+        }
+
+
+
         #endregion
     }
     public void PlayerFire()
@@ -462,8 +463,9 @@ public class Player : MonoBehaviour
         // 현재 HP가 0이면
         if (currHP <= 0)
         {
+            SceneSystem.instance.GameOver();
             // 파괴하자
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
     public void UpdateMP(float value)
@@ -491,5 +493,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+
 }
