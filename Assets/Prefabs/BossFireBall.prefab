@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7734589655319108904}
   - component: {fileID: 370744562311980283}
   m_Layer: 0
-  m_Name: BossAttack
+  m_Name: BossFireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
