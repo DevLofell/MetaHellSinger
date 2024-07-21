@@ -27660,31 +27660,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 632073329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a6a96055aa38649a4a02efc4bdd967, type: 3}
+  m_Script: {fileID: 11500000, guid: 2eb1e1f694a45b64eaeec08c735ed757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   BossRig: {fileID: 341101131}
   isPatternOver: 0
-  Projectile: {fileID: 7228384383602391000, guid: 8dc1c5a2262d6cc4ea670b78bc0fdca9, type: 3}
+  prefab: {fileID: 1314945738539566, guid: 20bf10b665dc67547805912f8bdfb4dc, type: 3}
   target: {fileID: 1037361103}
-  nowPosIndex: 0
-  firePosList:
-  - {fileID: 1343968031}
-  - {fileID: 1000426781}
-  - {fileID: 2086254829}
-  - {fileID: 2033292441}
-  - {fileID: 1242839231}
-  - {fileID: 1914090815}
-  - {fileID: 1746775581}
-  - {fileID: 1397496648}
-  - {fileID: 934408556}
-  - {fileID: 1596499767}
-  - {fileID: 277183992}
-  - {fileID: 1081384384}
-  nowFireTime: 0
-  nowPatternTime: 0
-  firedelay: 0.1
-  parrernDelay: 1
+  randomPos: []
+  spawningCount: 1
+  rangeLimit: 10
+  fireTime: 0
+  fireDelay: 0.3
+  nowFireIndex: 0
+  safeDistance: 5
 --- !u!1001 &632951187
 PrefabInstance:
   m_ObjectHideFlags: 0
