@@ -159,10 +159,11 @@ public class EnemyFsmJiwon : MonoBehaviour
     private void Return()
     {
        print("Return Distance : " + Vector3.Distance(transform.position, _originPos));
-        if (Vector3.Distance(transform.position, _originPos) > 0.1f)
+        if (Vector3.Distance(transform.position, _originPos) > 1f)
         {
             _navMeshAgent.SetDestination(_originPos);
             _navMeshAgent.stoppingDistance = 0;
+            print("돌아가는 중");
         }
         else
         {

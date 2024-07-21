@@ -176,6 +176,12 @@ public class Player : MonoBehaviour
                 }
 
             }
+
+            //체력 채우기
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                currHP = maxHP;
+            }
         }
     }
 

@@ -53,13 +53,12 @@ public class Arm : MonoBehaviour
             n = 0;
             if (armRot)
             {
-                print("팔 움직여");
-                rot = 시작 + new Vector3(0, 10, 0);
+                rot = 시작 + new Vector3(20, 10, -20);
                 armRot = false;
             }
             else if (!armRot)
             {
-                rot = 시작 + new Vector3(0, -10, 0);
+                rot = 시작 + new Vector3(-20, -10, 20);
                 armRot = true;
             }
             armMovePlay = false;
