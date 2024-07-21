@@ -20,6 +20,6 @@ public class SceneSystem : MonoBehaviour
     }
     public void GameStart()
     {
-        SceneManager.LoadScene("CollapseTest");
+        SceneManager.LoadScene("MapScene");
     }
 }

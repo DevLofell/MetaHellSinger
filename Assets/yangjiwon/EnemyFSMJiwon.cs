@@ -204,6 +204,7 @@ public class EnemyFsmJiwon : MonoBehaviour
         yield return new WaitForSeconds(5f);
         print("!¼Ò¸ê");
         gameObject.SetActive(false);
+        StageCheck.instance.EnemyDead(gameObject);
     }
 
     protected virtual void Attack()
